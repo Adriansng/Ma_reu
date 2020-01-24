@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Ma réu</string>
     <string name="action_settings">Settings</string>
-    <string name="reunion">Réunion A - 0H00 - Name</string>
-    <string name="adress_mails">adress mail 1 - adress mail 2 - adress mail 3</string>
+    <string name="reunion">Reunion A - 0H00 - Name</string>
+    <string name="address_mails">address mail 1, address mail 2, address mail 3, address mail 4</string>
+    <string name="avatar_reu_description">avatar reu</string>
+    <string name="button_delete_reu_description">button delete reu</string>
 </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,44 +14,38 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/date/ddmmyy"
+        android:contentDescription="@string/avatar_reu_description" />
 
     <TextView
         android:id="@+id/item_list_reunion_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="13dp"
         android:text="@string/reunion"
+        android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/item_list_reunion_avatar"
-        app:layout_constraintStart_toEndOf="@+id/item_list_reunion_avatar"
-        app:layout_constraintTop_toTopOf="@+id/item_list_reunion_avatar"
-        app:layout_constraintVertical_bias="0.0" />
+        android:textColor="@color/colorNameReunion"/>
 
     <TextView
         android:id="@+id/item_list_reunion_mail"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="@string/adress_mails"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/item_list_reunion_avatar"
-        app:layout_constraintStart_toEndOf="@+id/item_list_reunion_avatar"
-        app:layout_constraintTop_toTopOf="@+id/item_list_reunion_number"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="65dp"
+        android:text="@string/address_mails"/>
 
     <ImageButton
         android:id="@+id/item_list_user_delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:layout_gravity="center|end"
         android:background="@null"
-        app:layout_constraintBottom_toBottomOf="@+id/item_list_reunion_number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/item_list_reunion_number"
-        app:srcCompat="@drawable/ic_delete_black_24dp" />
+        app:srcCompat="@drawable/ic_delete_black_24dp"
+        android:contentDescription="@string/button_delete_reu_description" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
