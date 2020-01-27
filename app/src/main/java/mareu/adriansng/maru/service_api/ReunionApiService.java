@@ -2,6 +2,8 @@ package mareu.adriansng.maru.service_api;
 
 import java.util.List;
 
+import mareu.adriansng.maru.model.Reunion;
+
 public interface ReunionApiService {
 
     /**

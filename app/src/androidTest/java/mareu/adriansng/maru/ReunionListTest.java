@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import mareu.adriansng.maru.ui_reunion_list.ListReunionActivity;
@@ -92,14 +93,14 @@ public class ReunionListTest {
         // This is fixed
         int ITEMS_COUNT=1;
         String ITEM_MEETING_ROOM= "Reunion A";
-        String ITEM_HOUR_DATE="20200120_195959";
+        //Calendar ITEM_HOUR_DATE= 1579512600000;
         String ITEM_ORGANIZER="Pascal";
         List<String> ITEM_ADDRESS_MAIL= Arrays.asList("adress mail 1","address mail 2","adress mail 3");
         // When perform a click on launch activity
         onView(withId(R.id.add_reunion_button)).perform(click());
         // EditText info reunion
         onView(allOf(withId(R.id.info_meeting_room_edit),isDisplayed()).perform(replaceText(ITEM_MEETING_ROOM)));
-        onView(allOf(withId(R.id.info_hour_date_edit),isDisplayed()).perform(replaceText(ITEM_HOUR_DATE)));
+        //onView(allOf(withId(R.id.info_hour_date_edit),isDisplayed()).perform(replaceText(ITEM_HOUR_DATE)));
         onView(allOf(withId(R.id.info_organizer_edit),isDisplayed()).perform(replaceText(ITEM_ORGANIZER)));
         onView(allOf(withId(R.id.info_address_mail_edit),isDisplayed()).perform(replaceText(String.valueOf(ITEM_ADDRESS_MAIL))));
         // Validate reunion
@@ -109,7 +110,7 @@ public class ReunionListTest {
         // Then item meeting room
         onView(allOf(withId(R.id.item_list_reunion_number),withId(1))).check(matches(withText(ITEM_MEETING_ROOM)));
         // Then item hour and date
-        onView(allOf(withId(R.id.item_list_reunion_number),withId(1))).check(matches(withText(ITEM_HOUR_DATE)));
+        //onView(allOf(withId(R.id.item_list_reunion_number),withId(1))).check(matches(withText(ITEM_HOUR_DATE)));
         // Then item organizer
         onView(allOf(withId(R.id.item_list_reunion_number),withId(1))).check(matches(withText(ITEM_ORGANIZER)));
         // Then item address mail

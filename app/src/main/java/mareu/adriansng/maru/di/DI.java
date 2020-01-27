@@ -1,5 +1,6 @@
 package mareu.adriansng.maru.di;
 
+import mareu.adriansng.maru.service_api.DummyReunionApiService;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 
 public class DI {

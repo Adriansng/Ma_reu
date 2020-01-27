@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.List;
 
 import mareu.adriansng.maru.di.DI;
+import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 
 import static org.junit.Assert.assertEquals;
