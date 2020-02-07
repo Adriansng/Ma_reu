@@ -4,7 +4,8 @@
     tools:context="mareu.adriansng.maru.ui_reunion_list.ListReunionActivity">
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:orderInCategory="300"
+        android:title="@string/action_filtre"
+        android:icon="@drawable/baseline_filter_list_24"
+        app:showAsAction="ifRoom" />
 </menu>

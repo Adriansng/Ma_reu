@@ -95,7 +95,7 @@ public class ReunionListTest {
         String ITEM_MEETING_ROOM= "Reunion A";
         //Calendar ITEM_HOUR_DATE= 1579512600000;
         String ITEM_ORGANIZER="Pascal";
-        List<String> ITEM_ADDRESS_MAIL= Arrays.asList("adress mail 1","address mail 2","adress mail 3");
+        List<String> ITEM_ADDRESS_MAIL= Arrays.asList("address mail 1","address mail 2","address mail 3");
         // When perform a click on launch activity
         onView(withId(R.id.add_reunion_button)).perform(click());
         // EditText info reunion
@@ -115,7 +115,6 @@ public class ReunionListTest {
         onView(allOf(withId(R.id.item_list_reunion_number),withId(1))).check(matches(withText(ITEM_ORGANIZER)));
         // Then item address mail
         onView(allOf(withId(R.id.item_list_reunion_mail),withId(1))).check(matches(withText(String.valueOf(ITEM_ADDRESS_MAIL))));
-
     }
 
 
