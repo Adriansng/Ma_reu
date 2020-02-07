@@ -20,14 +20,15 @@ import mareu.adriansng.maru.ui_reunion_list.ListReunionActivity;
 import mareu.adriansng.maru.utils.DeleteViewAction;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
-import static androidx.test.espresso.matcher.ViewMatchers.isChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static mareu.adriansng.maru.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.core.AllOf.allOf;
 import static org.hamcrest.core.IsNull.notNullValue;
@@ -55,7 +56,7 @@ public class ReunionListTest {
     @Test
     public void useAppContext() {
         // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        Context appContext = getInstrumentation().getTargetContext();
 
         assertEquals("mareu.adriansng.maru", appContext.getPackageName());
     }
@@ -115,6 +116,28 @@ public class ReunionListTest {
         onView(allOf(withId(R.id.item_list_reunion_number),withId(1))).check(matches(withText(ITEM_ORGANIZER)));
         // Then item address mail
         onView(allOf(withId(R.id.item_list_reunion_mail),withId(1))).check(matches(withText(String.valueOf(ITEM_ADDRESS_MAIL))));
+    }
+
+    @Test
+    public void FiltreDateReunion() {
+        // Open the overflow menu OR open the options menu,
+        // depending on if the device has a hardware or software overflow menu button.
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
+
+        // Click the item.
+        onView(withText("Date"))
+                .perform(click());
+    }
+
+    @Test
+    public void FiltreRoomReunion() {
+        // Open the overflow menu OR open the options menu,
+        // depending on if the device has a hardware or software overflow menu button.
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
+
+        // Click the item.
+        onView(withText("Salle"))
+                .perform(click());
     }
 
 
