@@ -23,4 +23,3 @@ public class DI {
         return new DummyReunionApiService();
     }
 }
-}
