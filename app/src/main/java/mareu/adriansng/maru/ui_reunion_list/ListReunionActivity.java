@@ -3,34 +3,37 @@ package mareu.adriansng.maru.ui_reunion_list;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
+import org.greenrobot.eventbus.EventBus;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import mareu.adriansng.maru.R;
+import mareu.adriansng.maru.event.AddReunionEvent;
+import mareu.adriansng.maru.model.Reunion;
 
-public class ListReunionActivity extends AppCompatActivity {
+
+public class ListReunionActivity extends AppCompatActivity  {
+
+    // UI Components
+    @BindView(R.id.add_reunion_button)
+    FloatingActionButton mAddButton;
+
+    // OVERRIDE
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.add_reunion_button);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        ButterKnife.bind(this);
+        mAddButton.setOnClickListener(v ->
+                EventBus.getDefault().post(new AddReunionEvent(Reunion.addReunion())));
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -43,10 +46,8 @@ public class ListReunionActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_filter) {
             return true;
         }

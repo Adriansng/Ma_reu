@@ -5,7 +5,7 @@ import java.util.Objects;
 public class MeetingRoom {
 
     /** Identifier */
-    private Integer id;
+    private int id;
 
     /**  Name room*/
     private String nameRoom;

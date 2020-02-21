@@ -1,7 +1,10 @@
 package mareu.adriansng.maru.model;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Random;
+
+import mareu.adriansng.maru.service_api.DummyReunionList;
 
 public class Reunion {
 
@@ -9,52 +12,68 @@ public class Reunion {
     private Integer id;
 
     /** Meeting room */
-    private String meetingRoom;
+    private static int idMeetingRoom;
 
     /** Name organizer */
-    private String organizer;
+    private static int idOrganizer;
 
     /** Hour and Date */
-    private String hourDate;
+    private static String hourDate;
 
     /** Address mail participants */
-    private ArrayList addressMailList;
+    private static List<Person> addressMailList;
 
     /**
      * @param id
-     * @param meetingRoom
-     * @param organizer
+     * @param idMeetingRoom
+     * @param idOrganizer
      * @param hourDate
      * @param addressMailList
      */
 
-    public Reunion (Integer id, String meetingRoom, String organizer, String hourDate, ArrayList addressMailList){
+    public Reunion (Integer id, int idMeetingRoom, int idOrganizer, String hourDate, List<Person> addressMailList){
         this.id = id;
-        this.meetingRoom = meetingRoom;
-        this.organizer = organizer;
-        this.hourDate = hourDate;
-        this.addressMailList= addressMailList;
+        Reunion.idMeetingRoom = idMeetingRoom;
+        Reunion.idOrganizer = idOrganizer;
+        Reunion.hourDate = hourDate;
+        Reunion.addressMailList = addressMailList;
+    }
+
+    public static Reunion addReunion() {
+        return DummyReunionList.DUMMY_REUNION.get(new Random().nextInt(DummyReunionList.DUMMY_REUNION.size()));
     }
 
     public Integer getId() { return id; }
 
     public void setId(Integer id) { this.id = id; }
 
-    public String getMeetingRoom() { return meetingRoom; }
+    public int getIdMeetingRoom() {
+        return idMeetingRoom;
+    }
 
-    public void setMeetingRoom(String meetingRoom) { this.meetingRoom = meetingRoom; }
+    public void setIdMeetingRoom(int idMeetingRoom) {
+        Reunion.idMeetingRoom = idMeetingRoom;
+    }
 
-    public String getOrganizer() { return organizer; }
+    public int getIdOrganizer() {
+        return idOrganizer;
+    }
 
-    public void setOrganizer(String organizer) { this.organizer = organizer; }
+    public void setIdOrganizer(int idOrganizer) {
+        Reunion.idOrganizer = idOrganizer;
+    }
 
     public String getHourDate() { return hourDate; }
 
-    public void setHourDate(String hourDate) { this.hourDate = hourDate; }
+    public void setHourDate(String hourDate) { Reunion.hourDate = hourDate; }
 
-    public ArrayList getAddressMailList() { return addressMailList; }
+    public List<Person> getAddressMailList() {
+        return addressMailList;
+    }
 
-    public void setAddressMailList(ArrayList addressMailList) { this.addressMailList = addressMailList; }
+    public void setAddressMailList(List<Person> addressMailList) {
+        Reunion.addressMailList = addressMailList;
+    }
 
     @Override
     public boolean equals(Object o) {

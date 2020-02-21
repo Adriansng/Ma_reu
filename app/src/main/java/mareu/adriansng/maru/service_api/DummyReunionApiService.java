@@ -6,14 +6,16 @@ import mareu.adriansng.maru.model.Reunion;
 
 public class DummyReunionApiService implements ReunionApiService {
 
+    private List<Reunion> reunions= DummyReunionList.generateReunion();
+
     @Override
     public List<Reunion> getReunions() {
-        return null;
+        return reunions;
     }
 
     @Override
     public void deleteReunion(Reunion reunion) {
-
+        reunions.remove(reunion);
     }
 
     @Override
