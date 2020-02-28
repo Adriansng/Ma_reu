@@ -5,35 +5,58 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import mareu.adriansng.maru.R;
-import mareu.adriansng.maru.event.AddReunionEvent;
-import mareu.adriansng.maru.model.Reunion;
+import mareu.adriansng.maru.di.DI;
+import mareu.adriansng.maru.event.DeleteReunionEvent;
+import mareu.adriansng.maru.service_api.ReunionApiService;
 
 
-public class ListReunionActivity extends AppCompatActivity  {
+public class ListReunionActivity extends AppCompatActivity implements ListReunionAdapter.Listener {
 
-    // UI Components
-    @BindView(R.id.add_reunion_button)
+    // FOR DESIGN
+    RecyclerView mRecyclerView;
     FloatingActionButton mAddButton;
+
+    // FOR DATA
+    private ListReunionAdapter adapter;
+    private ReunionApiService reunionApiService;
 
     // OVERRIDE
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        mAddButton.setOnClickListener(v ->
-                EventBus.getDefault().post(new AddReunionEvent(Reunion.addReunion())));
+        reunionApiService= DI.getReunionApiService();
+        configureRecyclerView();
+ }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 
+    // Configuration
+
+    private void configureRecyclerView() {
+        mRecyclerView= findViewById(R.id.list_reunions);
+        adapter= new ListReunionAdapter(this);
+        mRecyclerView.setAdapter(adapter);
+    }
+
+    // Actions
+    @Subscribe
+    public void onDeleteNeighbour(DeleteReunionEvent event) {
+        reunionApiService.deleteReunion(event.reunion);
+        configureRecyclerView();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

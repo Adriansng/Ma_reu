@@ -18,6 +18,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../Entrevoisins/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Entrevoisins/app/src/main/java/com/openclassrooms/entrevoisins/ui/neighbour_list/DetailNeighbourActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../Entrevoisins/app/src/main/java/com/openclassrooms/entrevoisins/ui/neighbour_list/MyNeighbourRecyclerViewAdapter.java">
           <value>
             <set />
@@ -38,12 +48,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../MagicGithub/app/src/main/java/com/openclassrooms/magicgithub/ui/user_list/UserListAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/build.gradle">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/androidTest/java/mareu/adriansng/maru/ReunionListTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/mareu/adriansng/maru/utils/UserDiffCallBack.java">
           <value>
             <set />
           </value>
@@ -98,6 +118,21 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/service_api/ReunionApiService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/AddReunionActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/CountryAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/FragmentListReunion.java">
           <value>
             <set />
@@ -114,6 +149,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/ListReunionPagerAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/ListReunionViewHolder.java">
           <value>
             <set />
           </value>
@@ -138,6 +178,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/utils/UserDiffCallBack.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <value>
             <set />
@@ -148,7 +193,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/country_spinner_row.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/fragment_item_reunion.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/fragment_list_neighbour.xml">
           <value>
             <set />
           </value>
@@ -169,6 +224,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/values/arrays.xml">
           <value>
             <set />
           </value>

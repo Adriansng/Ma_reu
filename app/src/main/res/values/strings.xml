@@ -7,4 +7,8 @@
     <string name="address_mails">address mail 1, address mail 2, address mail 3, address mail 4</string>
     <string name="avatar_reu_description">avatar reu</string>
     <string name="button_delete_reu_description">button delete reu</string>
+    <string name="nom_de_l_organisateur">Nom de l\'organisateur</string>
+    <string name="date_et_heure">Date et heure</string>
+    <string name="choix_de_la_salle">Choix de la salle</string>
+    <string name="validate">Validate</string>
 </resources>
