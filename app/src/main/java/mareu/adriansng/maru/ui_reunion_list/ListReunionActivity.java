@@ -5,27 +5,35 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.ButterKnife;
 import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.di.DI;
 import mareu.adriansng.maru.event.DeleteReunionEvent;
+import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 
 
-public class ListReunionActivity extends AppCompatActivity implements ListReunionAdapter.Listener {
+public class ListReunionActivity extends AppCompatActivity {
 
     // FOR DESIGN
-    RecyclerView mRecyclerView;
     FloatingActionButton mAddButton;
+    RecyclerView recyclerView= findViewById(R.id.list_reunions);
 
     // FOR DATA
     private ListReunionAdapter adapter;
     private ReunionApiService reunionApiService;
+    private List<Reunion>  mReunions;
+
 
     // OVERRIDE
 
@@ -33,8 +41,9 @@ public class ListReunionActivity extends AppCompatActivity implements ListReunio
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         reunionApiService= DI.getReunionApiService();
-        configureRecyclerView();
+        this.configureRecyclerView();
  }
 
     @Override
@@ -46,9 +55,10 @@ public class ListReunionActivity extends AppCompatActivity implements ListReunio
     // Configuration
 
     private void configureRecyclerView() {
-        mRecyclerView= findViewById(R.id.list_reunions);
-        adapter= new ListReunionAdapter(this);
-        mRecyclerView.setAdapter(adapter);
+        this.mReunions=new ArrayList<>();
+        this.adapter= new  ListReunionAdapter(this.mReunions);
+        this.recyclerView.setAdapter((this.adapter));
+        this.recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     // Actions

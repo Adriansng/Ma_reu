@@ -14,21 +14,15 @@ import java.util.List;
 
 import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.model.Reunion;
-import mareu.adriansng.maru.utils.UserDiffCallBack;
 
 public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHolder> {
 
     // FOR DATA
-    private List<Reunion> mReunions = new ArrayList<>();
+    private List<Reunion> mReunions;
 
-    // FOR CALLBACK
-
-    private final Listener callback;
-    public interface Listener{
-    }
-
-    public ListReunionAdapter(Listener callback){
-        this.callback=callback;
+    // CONSTRUCTOR
+    public ListReunionAdapter(List<Reunion> mReunions){
+        this.mReunions = mReunions;
     }
 
     @Override
@@ -41,7 +35,7 @@ public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ListReunionViewHolder holder, int position) {
-        holder.bind(mReunions.get(position),callback);
+        holder.bind(this.mReunions.get(position));
     }
 
 
@@ -50,10 +44,4 @@ public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHold
         return mReunions.size();
     }
 
-    // PUBLIC API
-    public void updateList(List<Reunion> newList) {
-        DiffUtil.DiffResult diffResult= DiffUtil.calculateDiff(new UserDiffCallBack(newList, this.mReunions));
-        this.mReunions= new ArrayList<>(newList);
-        diffResult.dispatchUpdatesTo(this);
-    }
 }

@@ -21,7 +21,7 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
     private ReunionApiService mApiService;
     private Spinner mRoomReunion;
     private DummyReunionList mDummyReunionList;
-    private CountryAdapter mAdapter;
+    private SpinnerMeetingRoomAdapter mAdapter;
     private ArrayList<MeetingRoom> mMeetingRoom;
 
 
@@ -35,14 +35,14 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
         // Room Reunion
         initList();
         mRoomReunion = findViewById(R.id.roomReunion);
-        mAdapter = new CountryAdapter(this, mMeetingRoom);
+        mAdapter = new SpinnerMeetingRoomAdapter(this, mMeetingRoom);
         mRoomReunion.setAdapter(mAdapter);
 
         mRoomReunion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                MeetingRoom selectionRoom= mApiService.getMeetingRoom().get(position);
             }
 
             @Override
@@ -54,7 +54,7 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
 
     private void initList() {
         mMeetingRoom = new ArrayList<>();
-        mMeetingRoom = (ArrayList<MeetingRoom>) mApiService.getMeetingRoom();
+        mMeetingRoom.addAll(mApiService.getMeetingRoom());
     }
 
     @Override

@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.model.MeetingRoom;
 
-public class CountryAdapter extends ArrayAdapter<MeetingRoom> {
+public class SpinnerMeetingRoomAdapter extends ArrayAdapter<MeetingRoom> {
 
 
-    public CountryAdapter(@NonNull Context context, ArrayList<MeetingRoom> meetingRooms) {
+    public SpinnerMeetingRoomAdapter(@NonNull Context context, ArrayList<MeetingRoom> meetingRooms) {
         super(context, 0, meetingRooms);
     }
 

@@ -29,7 +29,7 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
         mDeleteButton=itemView.findViewById(R.id.item_list_user_delete_button);
     }
 
-    public void bind(Reunion mReunion, ListReunionAdapter.Listener callback) {
+    public void bind(Reunion mReunion) {
         mReunionMeetingRoom.setText(mReunion.getIdMeetingRoom());
         mReunionHourDate.setText(mReunion.getHourDate());
         mReunionOrganizer.setText(mReunion.getIdOrganizer());
