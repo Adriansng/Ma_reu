@@ -32,8 +32,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     //noinspection GradleCompatible
     implementation 'com.android.support:support-v4:28.0.0'
-    //noinspection GradleCompatible
-    implémentation 'com.android.support:recyclerview-v7:28.0.0'
+    implémentation 'androidx.recyclerview: recyclerview: 1.2.0-alpha01'
 
 
     // EVENT BUS
