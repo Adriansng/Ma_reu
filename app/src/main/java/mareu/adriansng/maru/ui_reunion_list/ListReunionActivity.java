@@ -43,7 +43,7 @@ public class ListReunionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         reunionApiService= DI.getReunionApiService();
-        this.configureRecyclerView();
+        configureRecyclerView();
  }
 
     @Override
@@ -55,10 +55,10 @@ public class ListReunionActivity extends AppCompatActivity {
     // Configuration
 
     private void configureRecyclerView() {
-        this.mReunions=new ArrayList<>();
-        this.adapter= new  ListReunionAdapter(this.mReunions);
-        this.recyclerView.setAdapter((this.adapter));
-        this.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mReunions=new ArrayList<>();
+        adapter= new  ListReunionAdapter(mReunions);
+        recyclerView.setAdapter((adapter));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     // Actions
@@ -87,4 +87,4 @@ public class ListReunionActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-}
+    }
