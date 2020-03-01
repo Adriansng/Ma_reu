@@ -27,7 +27,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/list_reunions"
         android:name="com.adrianSng.maReu.ui.reunion_list.ReunionFragment"
         android:layout_width="match_parent"
