@@ -13,6 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.event.DeleteReunionEvent;
+import mareu.adriansng.maru.model.MeetingRoom;
 import mareu.adriansng.maru.model.Reunion;
 
 class ListReunionViewHolder extends RecyclerView.ViewHolder{
@@ -34,10 +35,10 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
         ButterKnife.bind(this,itemView);
     }
 
-    public void bind(Reunion mReunion) {
-        mReunionMeetingRoom.setText(mReunion.getIdMeetingRoom());
+    public void bind(Reunion mReunion, MeetingRoom meetingRoom) {
+        mReunionMeetingRoom.setText(meetingRoom.getNameRoom());
         mReunionHourDate.setText(mReunion.getHourDate());
-        mReunionOrganizer.setText(mReunion.getIdOrganizer());
+        mReunionOrganizer.setText(mReunion.getNameOrganizer());
         mReunionListMail.setText((CharSequence) mReunion.getAddressMailList());
         mDeleteButton.setOnClickListener(v ->
                 EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
