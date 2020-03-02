@@ -1,6 +1,7 @@
 package mareu.adriansng.maru.ui_reunion_list;
 
 import android.view.View;
+import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -31,10 +32,9 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
 
     public void bind(Reunion mReunion) {
         mReunionMeetingRoom.setText(mReunion.getIdMeetingRoom());
-        mReunionHourDate.setText(mReunion.getHourDate());
+        //mReunionHourDate.setText(mReunion.getHourDate());
         mReunionOrganizer.setText(mReunion.getIdOrganizer());
         mReunionListMail.setText((CharSequence) mReunion.getAddressMailList());
-        //TODO random image //
         mDeleteButton.setOnClickListener(v ->
                 EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
     }
