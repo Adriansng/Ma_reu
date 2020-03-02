@@ -5,6 +5,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +15,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.ButterKnife;
 import mareu.adriansng.maru.R;
@@ -22,12 +24,14 @@ import mareu.adriansng.maru.event.DeleteReunionEvent;
 import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 
+import static java.security.AccessController.getContext;
+
 
 public class ListReunionActivity extends AppCompatActivity {
 
     // FOR DESIGN
     FloatingActionButton mAddButton;
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
     // FOR DATA
     private ListReunionAdapter adapter;
@@ -56,7 +60,7 @@ public class ListReunionActivity extends AppCompatActivity {
 
     private void configureRecyclerView() {
         recyclerView=findViewById(R.id.list_reunions);
-        mReunions=new ArrayList<>();
+        mReunions= reunionApiService.getReunions();
         adapter= new  ListReunionAdapter(mReunions);
         recyclerView.setAdapter((adapter));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
