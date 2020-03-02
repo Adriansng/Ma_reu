@@ -31,9 +31,9 @@ public class DummyReunionList {
     );
 
     public static List<Reunion> DUMMY_REUNION = Arrays.asList(
-            new Reunion(0, 1, 1, "10H00",DUMMY_PERSON),
-            new Reunion(0, 5, 2, "10H00", DUMMY_PERSON),
-            new Reunion(0, 7, 3, "10H00", DUMMY_PERSON)
+            new Reunion(0, 1, "Henri", "10H00",DUMMY_PERSON),
+            new Reunion(0, 5, "Bernard", "10H00", DUMMY_PERSON),
+            new Reunion(0, 7, "Arnaud", "10H00", DUMMY_PERSON)
      );
 
     static List<Reunion> generateReunion() {
