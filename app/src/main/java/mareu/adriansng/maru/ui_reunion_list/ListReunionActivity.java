@@ -27,7 +27,7 @@ public class ListReunionActivity extends AppCompatActivity {
 
     // FOR DESIGN
     FloatingActionButton mAddButton;
-    RecyclerView recyclerView= findViewById(R.id.list_reunions);
+    RecyclerView recyclerView;
 
     // FOR DATA
     private ListReunionAdapter adapter;
@@ -55,6 +55,7 @@ public class ListReunionActivity extends AppCompatActivity {
     // Configuration
 
     private void configureRecyclerView() {
+        recyclerView=findViewById(R.id.list_reunions);
         mReunions=new ArrayList<>();
         adapter= new  ListReunionAdapter(mReunions);
         recyclerView.setAdapter((adapter));
