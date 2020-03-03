@@ -11,4 +11,6 @@
     <string name="date_et_heure">Date et heure</string>
     <string name="choix_de_la_salle">Choix de la salle</string>
     <string name="validate">Validate</string>
+    <string name="date_type">1 Janvier 2019</string>
+    <string name="hour_type">10H00</string>
 </resources>

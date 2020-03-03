@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.Random;
 
 import mareu.adriansng.maru.service_api.DummyReunionList;
+import mareu.adriansng.maru.service_api.ReunionApiService;
 
 public class Reunion {
 
@@ -48,8 +49,7 @@ public class Reunion {
     public void setId(Integer id) { this.id = id; }
 
     public int getIdMeetingRoom() {
-        return idMeetingRoom;
-    }
+        return idMeetingRoom;}
 
     public void setIdMeetingRoom(int idMeetingRoom) {
         Reunion.idMeetingRoom = idMeetingRoom;

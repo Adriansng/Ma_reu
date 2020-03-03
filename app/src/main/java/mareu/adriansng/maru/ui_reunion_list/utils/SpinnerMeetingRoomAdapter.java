@@ -1,4 +1,4 @@
-package mareu.adriansng.maru.ui_reunion_list;
+package mareu.adriansng.maru.ui_reunion_list.utils;
 
 import android.content.Context;
 import android.view.LayoutInflater;

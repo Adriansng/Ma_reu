@@ -35,8 +35,8 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
         ButterKnife.bind(this,itemView);
     }
 
-    public void bind(Reunion mReunion, MeetingRoom meetingRoom) {
-        mReunionMeetingRoom.setText(meetingRoom.getNameRoom());
+    public void bind(Reunion mReunion) {
+        mReunionMeetingRoom.setText(mReunion.getIdMeetingRoom());
         mReunionHourDate.setText(mReunion.getHourDate());
         mReunionOrganizer.setText(mReunion.getNameOrganizer());
         mReunionListMail.setText((CharSequence) mReunion.getAddressMailList());

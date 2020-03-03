@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <TextView
@@ -30,12 +29,40 @@
         android:textStyle="bold"
         android:layout_gravity="center" />
 
-    <CalendarView
-        android:id="@+id/date"
+    <TextView
+        android:id="@+id/view_hour_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_gravity="center"/>
+        android:text="@string/date_type"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/date"
+        android:layout_width="136dp"
+        android:layout_height="96dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_date_range_black_24dp"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/view_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hour_type"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/hour"
+        android:layout_width="117dp"
+        android:layout_height="87dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_access_time_black_24dp"
+        android:ems="10" />
+
 
     <TextView
         android:layout_width="wrap_content"
