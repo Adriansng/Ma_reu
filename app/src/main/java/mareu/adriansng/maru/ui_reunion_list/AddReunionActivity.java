@@ -2,11 +2,14 @@ package mareu.adriansng.maru.ui_reunion_list;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -30,11 +33,20 @@ import mareu.adriansng.maru.ui_reunion_list.utils.TimerPickerFragment;
 
 public class AddReunionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
+    //Data
     private ReunionApiService mApiService;
-    private Spinner mRoomReunion;
     private DummyReunionList mDummyReunionList;
-    private SpinnerMeetingRoomAdapter mAdapter;
+
     private ArrayList<MeetingRoom> mMeetingRoom;
+    //Design
+    private Spinner mRoomReunion;
+    private SpinnerMeetingRoomAdapter mAdapter;
+    private Button finishButton;
+    //Parameter Reunion
+    private EditText editNameOrganizer;
+    private DialogFragment datePicker;
+    private DialogFragment hourPicker;
+    private MeetingRoom selectionRoom;
 
 
     @Override
@@ -43,6 +55,8 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
         setContentView(R.layout.add_reunion_activity);
         mApiService = DI.getReunionApiService();
         mDummyReunionList = new DummyReunionList();
+        //Name Organizer
+        EditText editNameOrganizer= (EditText) findViewById(R.id.name_organizer);
 
         // Date
         Button buttonDate=  findViewById(R.id.date);
@@ -53,8 +67,9 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
                 datePicker.show(getSupportFragmentManager(),"date picker");
             }
         });
+
         // Hour
-        Button buttonHour= (Button)findViewById(R.id.hour);
+        Button buttonHour= findViewById(R.id.hour);
         buttonHour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +83,6 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
         mRoomReunion = findViewById(R.id.roomReunion);
         mAdapter = new SpinnerMeetingRoomAdapter(this, mMeetingRoom);
         mRoomReunion.setAdapter(mAdapter);
-
         mRoomReunion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -81,6 +95,18 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
 
             }
         });
+
+        //Validate reunion
+        Button finishButton= (Button) findViewById(R.id.validate_btn);
+        finishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+
+
+        });
+
     }
 
     @Override
