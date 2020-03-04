@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -16,6 +17,7 @@ import butterknife.ButterKnife;
 import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.event.DeleteReunionEvent;
 import mareu.adriansng.maru.model.MeetingRoom;
+import mareu.adriansng.maru.model.Person;
 import mareu.adriansng.maru.model.Reunion;
 
 class ListReunionViewHolder extends RecyclerView.ViewHolder{
@@ -36,10 +38,10 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
     }
 
     public void bind( Reunion mReunion) {
-       // mReunionMeetingRoom.setText(mReunion.getIdMeetingRoom());
+        this.mReunionMeetingRoom.setId(mReunion.getIdMeetingRoom());
         this.mReunionHourDate.setText(mReunion.getHourDate());
         this.mReunionOrganizer.setText(mReunion.getNameOrganizer());
-        this.mReunionListMail.setText((CharSequence) mReunion.getAddressMailList());
+        //this.mReunionListMail.set(mReunion.getAddressMailList());
         this.mDeleteButton.setOnClickListener(v ->
                 EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
     }
