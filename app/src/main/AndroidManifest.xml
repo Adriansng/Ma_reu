@@ -19,6 +19,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui_reunion_list.AddReunionActivity"
+            android:parentActivityName=".ui_reunion_list.ListReunionActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui_reunion_list.ListReunionActivity"/>
+
+            </activity>
+
     </application>
 
 </manifest>
