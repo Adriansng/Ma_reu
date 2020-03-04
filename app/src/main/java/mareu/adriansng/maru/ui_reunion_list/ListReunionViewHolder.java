@@ -38,8 +38,8 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
     public void bind( Reunion mReunion) {
        // mReunionMeetingRoom.setText(mReunion.getIdMeetingRoom());
         //mReunionHourDate.setText(mReunion.getHourDate());
-        //mReunionOrganizer.setText(mReunion.getNameOrganizer());
-       // mReunionListMail.setText((CharSequence) mReunion.getAddressMailList());
+        mReunionOrganizer.setText(mReunion.getNameOrganizer());
+        mReunionListMail.setText((CharSequence) mReunion.getAddressMailList());
         //mDeleteButton.setOnClickListener(v ->
                 //EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
     }
