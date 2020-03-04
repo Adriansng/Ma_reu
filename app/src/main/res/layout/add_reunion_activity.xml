@@ -1,33 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nom_de_l_organisateur"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:paddingTop="75dp"/>
-
-    <EditText
-        android:id="@+id/name_organizer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="time"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/date_et_heure"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_gravity="center" />
 
     <TextView
         android:id="@+id/view_hour_date"
@@ -36,15 +15,8 @@
         android:text="@string/date_type"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:layout_gravity="center" />
-
-    <Button
-        android:id="@+id/date"
-        android:layout_width="136dp"
-        android:layout_height="96dp"
-        android:layout_gravity="center"
-        android:background="@drawable/ic_date_range_black_24dp"
-        android:ems="10" />
+        android:layout_marginTop="175dp"
+        android:layout_marginStart="25dp"/>
 
     <TextView
         android:id="@+id/view_hour"
@@ -53,36 +25,81 @@
         android:text="@string/hour_type"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:layout_gravity="center" />
-
-    <Button
-        android:id="@+id/hour"
-        android:layout_width="117dp"
-        android:layout_height="87dp"
-        android:layout_gravity="center"
-        android:background="@drawable/ic_access_time_black_24dp"
-        android:ems="10" />
-
+        android:layout_marginTop="175dp"
+        android:layout_marginStart="250dp"/>
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/choix_de_la_salle"
+        android:layout_gravity="center||top"
+        android:paddingTop="50dp"
+        android:text="@string/nom_de_l_organisateur"
         android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_gravity="center" />
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/name_organizer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_gravity="center||top"
+        android:layout_marginTop="100dp"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:layout_gravity="center"
+        android:text="@string/date_et_heure"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/date"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="225dp"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/ic_date_range_black_24dp"
+        android:ems="10" />
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/roomReunion"
+        android:layout_width="124dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="225dp"
+        android:layout_marginTop="415dp"
+        app:layout_anchor="@+id/roomReunion"
+        app:layout_anchorGravity="start|center" />
+
+    <Button
+        android:id="@+id/hour"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="225dp"
+        android:layout_marginStart="250dp"
+        android:background="@drawable/ic_access_time_black_24dp"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="415dp"
+        android:text="@string/choix_de_la_salle"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/validate_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/validate"
         android:layout_gravity="center"
-        android:text="@string/validate"/>
-
-</LinearLayout>
+        android:layout_marginTop="425dp"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

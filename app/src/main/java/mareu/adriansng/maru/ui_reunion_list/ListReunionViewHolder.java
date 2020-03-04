@@ -38,11 +38,11 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
     }
 
     public void bind( Reunion mReunion) {
-        this.mReunionMeetingRoom.setId(mReunion.getIdMeetingRoom());
-        this.mReunionHourDate.setText(mReunion.getHourDate());
+        //this.mReunionMeetingRoom.setId(mReunion.getIdMeetingRoom());
+        //this.mReunionHourDate.setText(mReunion.getHourDate());
         this.mReunionOrganizer.setText(mReunion.getNameOrganizer());
         //this.mReunionListMail.set(mReunion.getAddressMailList());
-        this.mDeleteButton.setOnClickListener(v ->
-                EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
+        //this.mDeleteButton.setOnClickListener(v ->
+                //EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
     }
 }
