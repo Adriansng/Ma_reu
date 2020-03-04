@@ -1,8 +1,11 @@
 package mareu.adriansng.maru.ui_reunion_list;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -48,6 +51,15 @@ public class ListReunionActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         reunionApiService= DI.getReunionApiService();
         configureRecyclerView();
+        FloatingActionButton mAddButton= (FloatingActionButton)findViewById(R.id.add_reunion_button);
+        mAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context=v.getContext();
+                Intent intent= new Intent(context,AddReunionActivity.class);
+                context.startActivity(intent);
+            }
+        });
  }
 
     @Override
