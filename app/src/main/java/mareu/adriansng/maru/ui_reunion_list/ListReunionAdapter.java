@@ -7,9 +7,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import mareu.adriansng.maru.R;
@@ -44,4 +47,17 @@ public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHold
         return mReunions.size();
     }
 
+    public void sortByRoom() {
+        List<Reunion> currentList = new ArrayList<>(getItemCount()); // 1
+        Collections.sort(currentList,
+                (o1, o2) -> o1.getMeetingRoom().compareTo(o2.getMeetingRoom())); // 2
+    }
+
+
+    public void sortByDate() {
+        List<Reunion> currentList = new ArrayList<>(getItemCount());
+        Collections.sort(currentList,
+                (o1, o2) -> o2.getDateFormat().compareTo(o1.getDateFormat()));
+    }
 }
+

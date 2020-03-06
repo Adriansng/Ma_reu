@@ -9,6 +9,7 @@ import mareu.adriansng.maru.model.Person;
 import mareu.adriansng.maru.model.Reunion;
 
 public class DummyReunionList {
+    private MeetingRoom meetingRoom;
 
     //Generate MeetingRoom
     public static List<MeetingRoom> DUMMY_MEETING_ROOM = Arrays.asList(
@@ -30,10 +31,11 @@ public class DummyReunionList {
             new Person(2, "Bran", "bran@maReu.com")
     );
 
+    private static MeetingRoom MeetingRoom;
     public static List<Reunion> DUMMY_REUNION = Arrays.asList(
-            new Reunion(0, 1, "Henri", "10H00",DUMMY_PERSON),
-            new Reunion(1, 5, "Bernard", "10H00", DUMMY_PERSON),
-            new Reunion(2,7 , "Arnaud", "10H00", DUMMY_PERSON)
+            new Reunion(0,DUMMY_MEETING_ROOM.get(1).getNameRoom(), "Henri", "02 12 2020, 10H00",DUMMY_PERSON),
+            new Reunion(1, DUMMY_MEETING_ROOM.get(5).getNameRoom(), "Bernard", "02 12 2020, 10H30", DUMMY_PERSON),
+            new Reunion(2,DUMMY_MEETING_ROOM.get(8).getNameRoom(), "Arnaud", "05 18 2020, 15H00", DUMMY_PERSON)
      );
 
     static List<Reunion> generateReunion() {

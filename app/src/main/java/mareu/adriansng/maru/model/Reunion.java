@@ -1,19 +1,24 @@
 package mareu.adriansng.maru.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
 import mareu.adriansng.maru.service_api.DummyReunionList;
-import mareu.adriansng.maru.service_api.ReunionApiService;
 
 public class Reunion {
+
+    private static final SimpleDateFormat dateFormat=
+            new SimpleDateFormat("MM dd yyyy, h");
 
     /** Identifier */
     private Integer id;
 
     /** Meeting room */
-    private static int idMeetingRoom;
+    private static String meetingRoom;
 
     /** Name organizer */
     private static String nameOrganizer;
@@ -26,18 +31,18 @@ public class Reunion {
 
     /**
      * @param id
-     * @param idMeetingRoom
+     * @param meetingRoom
      * @param nameOrganizer
      * @param hourDate
      * @param addressMailList
      */
 
-    public Reunion (Integer id, int idMeetingRoom, String nameOrganizer, String hourDate, List<Person> addressMailList){
+    public Reunion (Integer id, String meetingRoom, String nameOrganizer, String hourDate, List<Person> addressMailList){
         this.id = id;
-        Reunion.idMeetingRoom = idMeetingRoom;
+        Reunion.meetingRoom = meetingRoom;
         Reunion.nameOrganizer = nameOrganizer;
         Reunion.hourDate = hourDate;
-        Reunion.addressMailList = addressMailList;
+        this.addressMailList = addressMailList;
     }
 
     public static Reunion addReunion() {
@@ -48,11 +53,11 @@ public class Reunion {
 
     public void setId(Integer id) { this.id = id; }
 
-    public int getIdMeetingRoom() {
-        return idMeetingRoom;}
+    public String getMeetingRoom() {
+        return meetingRoom;}
 
-    public void setIdMeetingRoom(int idMeetingRoom) {
-        Reunion.idMeetingRoom = idMeetingRoom;
+    public void setMeetingRoom(String meetingRoom) {
+        Reunion.meetingRoom = meetingRoom;
     }
 
     public String getNameOrganizer() {
@@ -72,7 +77,17 @@ public class Reunion {
     }
 
     public void setAddressMailList(List<Person> addressMailList) {
-        Reunion.addressMailList = addressMailList;
+        this.addressMailList = addressMailList;
+    }
+
+    public  Long getDateFormat() {
+        try{
+            Date date= dateFormat.parse(getHourDate());
+            return date != null ? date.getTime() : null;
+        }catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
