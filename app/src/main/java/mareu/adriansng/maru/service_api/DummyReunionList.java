@@ -33,9 +33,9 @@ public class DummyReunionList {
 
     private static MeetingRoom MeetingRoom;
     public static List<Reunion> DUMMY_REUNION = Arrays.asList(
-            new Reunion(0,DUMMY_MEETING_ROOM.get(1).getNameRoom(), "Henri", "02 12 2020, 10H00",DUMMY_PERSON),
-            new Reunion(1, DUMMY_MEETING_ROOM.get(5).getNameRoom(), "Bernard", "02 12 2020, 10H30", DUMMY_PERSON),
-            new Reunion(2,DUMMY_MEETING_ROOM.get(8).getNameRoom(), "Arnaud", "05 18 2020, 15H00", DUMMY_PERSON)
+            new Reunion(0,DUMMY_MEETING_ROOM.get(1).getNameRoom(), "Henri", "10H00",DUMMY_PERSON),
+            new Reunion(1, DUMMY_MEETING_ROOM.get(5).getNameRoom(), "Bernard", "10H30", DUMMY_PERSON),
+            new Reunion(2,DUMMY_MEETING_ROOM.get(8).getNameRoom(), "Arnaud", "15H00", DUMMY_PERSON)
      );
 
     static List<Reunion> generateReunion() {

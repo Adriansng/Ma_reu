@@ -8,30 +8,23 @@
     android:fitsSystemWindows="true"
     tools:context=".ui_reunion_list.ListReunionActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/my_toolbar"
+        style="@style/HeaderBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:title="@string/app_name"
+        app:menu="@menu/menu_main"
+        android:elevation="4dp">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/my_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            style="@style/HeaderBar"
-            app:popupTheme="@style/AppTheme.AppBarOverlay"
-            app:title="@string/app_name"
-            app:menu="@menu/menu_main"
-            android:elevation="4dp"/>
-
-    </com.google.android.material.appbar.AppBarLayout>
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_reunions"
         android:name="com.adrianSng.maReu.ui.reunion_list.ReunionFragment"
         android:layout_width="396dp"
-        android:layout_height="wrap_content"
+        android:layout_height="585dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="70dp"
         android:layout_marginRight="16dp"
