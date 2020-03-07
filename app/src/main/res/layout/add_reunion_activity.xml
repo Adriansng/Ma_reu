@@ -1,38 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
 
-    <TextView
-        android:id="@+id/view_hour_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/date_type"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginTop="175dp"
-        android:layout_marginStart="25dp"/>
-
-    <TextView
-        android:id="@+id/view_hour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hour_type"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_marginTop="175dp"
-        android:layout_marginStart="250dp"/>
+    <include
+        layout="@layout/content_add_hour_day"
+        android:layout_width="match_parent"
+        android:layout_height="405dp"
+        android:layout_marginTop="100dp" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:text="@string/nom_de_l_organisateur"
         android:textSize="25sp"
         android:textStyle="bold" />
@@ -44,54 +29,7 @@
         android:ems="10"
         android:inputType="text"
         android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="75dp"/>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="125dp"
-        android:layout_gravity="center"
-        android:text="@string/date_et_heure"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/date"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="225dp"
-        android:layout_marginStart="50dp"
-        android:background="@drawable/ic_date_range_black_24dp"
-        android:ems="10" />
-
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/roomReunion"
-        android:layout_width="124dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="225dp"
-        android:layout_marginTop="415dp"
-        app:layout_anchor="@+id/roomReunion"
-        app:layout_anchorGravity="start|center" />
-
-    <Button
-        android:id="@+id/hour"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="225dp"
-        android:layout_marginStart="250dp"
-        android:background="@drawable/ic_access_time_black_24dp"
-        android:ems="10" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="415dp"
-        android:text="@string/choix_de_la_salle"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="50dp"/>
 
     <ImageButton
         android:id="@+id/validate_btn"
