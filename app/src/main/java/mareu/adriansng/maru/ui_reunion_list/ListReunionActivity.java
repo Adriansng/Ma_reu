@@ -3,13 +3,10 @@ package mareu.adriansng.maru.ui_reunion_list;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,9 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.greenrobot.eventbus.Subscribe;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import butterknife.ButterKnife;
 import mareu.adriansng.maru.R;
@@ -28,8 +23,6 @@ import mareu.adriansng.maru.di.DI;
 import mareu.adriansng.maru.event.DeleteReunionEvent;
 import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
-
-import static java.security.AccessController.getContext;
 
 
 public class ListReunionActivity extends AppCompatActivity {
@@ -58,7 +51,7 @@ public class ListReunionActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         reunionApiService= DI.getReunionApiService();
         configureRecyclerView();
-        FloatingActionButton mAddButton= (FloatingActionButton)findViewById(R.id.add_reunion_button);
+        FloatingActionButton mAddButton= findViewById(R.id.add_reunion_button);
         Toolbar mToolBar= findViewById(R.id.my_toolbar);
         mToolBar.setOnMenuItemClickListener(item -> {
            if(item.getItemId()==R.id.action_filter){
@@ -119,23 +112,22 @@ public class ListReunionActivity extends AppCompatActivity {
         configureRecyclerView();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    //@Override
+    //public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+        //getMenuInflater().inflate(R.menu.menu_main, menu);
+      //  return true;
+    //}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+   // @Override
+    //public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
-        int id = item.getItemId();
+        //int id = item.getItemId();
 
-        if (id == R.id.action_filter) {
-            return true;
-        }
+       // if (id == R.id.action_filter) {
+          //}
 
-        return super.onOptionsItemSelected(item);
-    }
+      //  return super.onOptionsItemSelected(item);
+    //}
     }

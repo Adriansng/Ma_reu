@@ -42,7 +42,7 @@ public class Reunion {
         Reunion.meetingRoom = meetingRoom;
         Reunion.nameOrganizer = nameOrganizer;
         Reunion.hourDate = hourDate;
-        this.addressMailList = addressMailList;
+        Reunion.addressMailList = addressMailList;
     }
 
     public static Reunion addReunion() {
@@ -77,7 +77,7 @@ public class Reunion {
     }
 
     public void setAddressMailList(List<Person> addressMailList) {
-        this.addressMailList = addressMailList;
+        Reunion.addressMailList = addressMailList;
     }
 
     public  Long getDateFormat() {

@@ -31,7 +31,6 @@ public class DummyReunionList {
             new Person(2, "Bran", "bran@maReu.com")
     );
 
-    private static MeetingRoom MeetingRoom;
     public static List<Reunion> DUMMY_REUNION = Arrays.asList(
             new Reunion(0,DUMMY_MEETING_ROOM.get(1).getNameRoom(), "Henri", "10H00",DUMMY_PERSON),
             new Reunion(1, DUMMY_MEETING_ROOM.get(5).getNameRoom(), "Bernard", "10H30", DUMMY_PERSON),

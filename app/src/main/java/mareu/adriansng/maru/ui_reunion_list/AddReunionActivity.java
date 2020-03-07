@@ -2,14 +2,13 @@ package mareu.adriansng.maru.ui_reunion_list;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -56,7 +55,7 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
         mApiService = DI.getReunionApiService();
         mDummyReunionList = new DummyReunionList();
         //Name Organizer
-        EditText editNameOrganizer= (EditText) findViewById(R.id.name_organizer);
+        EditText editNameOrganizer= findViewById(R.id.name_organizer);
 
         // Date
         Button buttonDate=  findViewById(R.id.date);
@@ -97,7 +96,7 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
         });
 
         //Validate reunion
-        Button finishButton= (Button) findViewById(R.id.validate_btn);
+        ImageButton finishButton= findViewById(R.id.validate_btn);
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

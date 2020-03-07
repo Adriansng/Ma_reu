@@ -30,6 +30,7 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
     }
 
     public void bind( Reunion mReunion) {
+
         this.mReunionMeetingRoom.setText(mReunion.getMeetingRoom());
         this.mReunionHourDate.setText(mReunion.getHourDate());
         this.mReunionOrganizer.setText(mReunion.getNameOrganizer());
