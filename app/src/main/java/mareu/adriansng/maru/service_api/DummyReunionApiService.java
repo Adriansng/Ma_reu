@@ -11,6 +11,13 @@ public class DummyReunionApiService implements ReunionApiService {
     private List<MeetingRoom> meetingRoom= DummyReunionList.DUMMY_MEETING_ROOM;
 
     @Override
+    public String getNameMeetingRome(Reunion reunion) {
+        String nameMeetingRoom;
+        nameMeetingRoom = meetingRoom.get(reunion.getIdMeetingRoom()).getNameRoom();
+        return nameMeetingRoom;
+    }
+
+    @Override
     public List<MeetingRoom> getMeetingRoom(){return meetingRoom;}
 
     @Override
