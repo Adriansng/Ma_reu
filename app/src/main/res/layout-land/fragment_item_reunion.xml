@@ -32,9 +32,8 @@
         android:id="@+id/item_list_reunion_mail"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:layout_gravity="center"
         android:layout_marginStart="83dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="65dp"
         android:text="@string/address_mails"/>
 

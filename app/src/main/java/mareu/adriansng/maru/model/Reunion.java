@@ -18,7 +18,7 @@ public class Reunion {
     private Integer id;
 
     /** Meeting room */
-    private static String meetingRoom;
+    private static int idMeetingRoom;
 
     /** Name organizer */
     private static String nameOrganizer;
@@ -31,15 +31,15 @@ public class Reunion {
 
     /**
      * @param id
-     * @param meetingRoom
+     * @param idMeetingRoom
      * @param nameOrganizer
      * @param hourDate
      * @param addressMailList
      */
 
-    public Reunion (Integer id, String meetingRoom, String nameOrganizer, String hourDate, List<Person> addressMailList){
+    public Reunion (Integer id, int idMeetingRoom, String nameOrganizer, String hourDate, List<Person> addressMailList){
         this.id = id;
-        Reunion.meetingRoom = meetingRoom;
+        Reunion.idMeetingRoom = idMeetingRoom;
         Reunion.nameOrganizer = nameOrganizer;
         Reunion.hourDate = hourDate;
         Reunion.addressMailList = addressMailList;
@@ -53,11 +53,11 @@ public class Reunion {
 
     public void setId(Integer id) { this.id = id; }
 
-    public String getMeetingRoom() {
-        return meetingRoom;}
+    public int getIdMeetingRoom() {
+        return idMeetingRoom;}
 
-    public void setMeetingRoom(String meetingRoom) {
-        Reunion.meetingRoom = meetingRoom;
+    public void setIdMeetingRoom(int meetingRoom) {
+        Reunion.idMeetingRoom = idMeetingRoom;
     }
 
     public String getNameOrganizer() {

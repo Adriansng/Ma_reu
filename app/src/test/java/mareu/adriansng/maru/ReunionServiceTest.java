@@ -42,7 +42,7 @@ public class ReunionServiceTest {
                 assertEquals(1,service.getReunions().size());
                 assertTrue(DummyReunionList.DUMMY_REUNION.stream().map(Reunion::getIdMeetingRoom).collect(Collectors.toList()).contains(newReunion.getIdMeetingRoom()));
                 assertTrue(DummyReunionList.DUMMY_REUNION.stream().map(Reunion::getHourDate).collect(Collectors.toList()).contains(newReunion.getHourDate()));
-                assertTrue(DummyReunionList.DUMMY_REUNION.stream().map(Reunion::getIdOrganizer).collect(Collectors.toList()).contains(newReunion.getIdOrganizer()));
+                assertTrue(DummyReunionList.DUMMY_REUNION.stream().map(Reunion::getNameOrganizer).collect(Collectors.toList()).contains(newReunion.getNameOrganizer()));
                 assertTrue(DummyReunionList.DUMMY_REUNION.stream().map(Reunion::getAddressMailList).collect(Collectors.toList()).contains(newReunion.getAddressMailList()));
     }
 
