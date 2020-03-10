@@ -17,6 +17,7 @@ import java.util.List;
 
 import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.model.Reunion;
+import mareu.adriansng.maru.service_api.ReunionApiService;
 
 public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHolder> {
 
@@ -45,19 +46,6 @@ public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHold
     @Override
     public int getItemCount() {
         return mReunions.size();
-    }
-
-    public void sortByRoom() {
-        List<Reunion> currentList = new ArrayList<>(getItemCount()); // 1
-        Collections.sort(currentList,
-                (o1, o2) -> o1.getMeetingRoom().compareTo(o2.getMeetingRoom())); // 2
-    }
-
-
-    public void sortByDate() {
-        List<Reunion> currentList = new ArrayList<>(getItemCount());
-        Collections.sort(currentList,
-                (o1, o2) -> o2.getDateFormat().compareTo(o1.getDateFormat()));
     }
 }
 

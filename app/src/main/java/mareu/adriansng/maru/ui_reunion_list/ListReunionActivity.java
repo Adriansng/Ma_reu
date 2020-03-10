@@ -27,10 +27,6 @@ import mareu.adriansng.maru.service_api.ReunionApiService;
 
 public class ListReunionActivity extends AppCompatActivity {
 
-    //FOR FILTER TOOLBAR
-    private static final int FILTER_ROOM= 0;
-    private static final int FILTER_DATE= 1;
-    public int currentFilter= FILTER_DATE;
 
     // FOR DESIGN
     FloatingActionButton mAddButton;
@@ -52,14 +48,6 @@ public class ListReunionActivity extends AppCompatActivity {
         reunionApiService= DI.getReunionApiService();
         configureRecyclerView();
         FloatingActionButton mAddButton= findViewById(R.id.add_reunion_button);
-        Toolbar mToolBar= findViewById(R.id.my_toolbar);
-        mToolBar.setOnMenuItemClickListener(item -> {
-           if(item.getItemId()==R.id.action_filter){
-               onSortClicked();
-           }
-           return false;
-        });
-
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,25 +57,6 @@ public class ListReunionActivity extends AppCompatActivity {
             }
         });
  }
-
-    private void onSortClicked() {
-        String[] items={"Room","Date"};
-        new MaterialAlertDialogBuilder(this)
-                .setTitle("Sort order")
-                .setSingleChoiceItems(items,currentFilter,(dialog, which) ->{
-                   dialog.dismiss();
-                   currentFilter=which;
-                   sortData();
-                }).show();
-    }
-
-    private void sortData() {
-        if(currentFilter== FILTER_ROOM){
-            adapter.sortByRoom();
-        }else if(currentFilter==FILTER_DATE){
-            adapter.sortByDate();
-        }
-    }
 
     @Override
     protected void onResume() {
