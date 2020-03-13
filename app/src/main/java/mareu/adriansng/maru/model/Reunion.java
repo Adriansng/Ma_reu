@@ -1,6 +1,5 @@
 package mareu.adriansng.maru.model;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Reunion {
@@ -19,7 +18,7 @@ public class Reunion {
     private static String hourDate;
 
     /** Address mail participants */
-    private static List<Person> addressMailList;
+    private static String addressMailList;
 
     /**
      * @param id
@@ -29,7 +28,7 @@ public class Reunion {
      * @param addressMailList
      */
 
-    public Reunion (Integer id, int idMeetingRoom, String nameOrganizer, String hourDate, List<Person> addressMailList){
+    public Reunion (Integer id, int idMeetingRoom, String nameOrganizer, String hourDate, String addressMailList){
         this.id = id;
         Reunion.idMeetingRoom = idMeetingRoom;
         Reunion.nameOrganizer = nameOrganizer;
@@ -37,7 +36,7 @@ public class Reunion {
         Reunion.addressMailList = addressMailList;
     }
 
-    public static Reunion addNewReunion(int id, int idMeetingRoom, String nameOrganizer, String hourDate, List<Person> addressMailList) {
+    public static Reunion addNewReunion(int id, int idMeetingRoom, String nameOrganizer, String hourDate, String addressMailList) {
         return new Reunion(id,idMeetingRoom,nameOrganizer,hourDate,addressMailList);
     }
 
@@ -64,11 +63,11 @@ public class Reunion {
 
     public void setHourDate(String hourDate) { Reunion.hourDate = hourDate; }
 
-    public List<Person> getAddressMailList() {
+    public String getAddressMailList() {
         return addressMailList;
     }
 
-    public void setAddressMailList(List<Person> addressMailList) {
+    public void setAddressMailList(String addressMailList) {
         Reunion.addressMailList = addressMailList;
     }
 

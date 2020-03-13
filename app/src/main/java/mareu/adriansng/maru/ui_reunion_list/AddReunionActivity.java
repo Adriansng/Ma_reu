@@ -20,12 +20,10 @@ import androidx.fragment.app.DialogFragment;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.di.DI;
 import mareu.adriansng.maru.model.MeetingRoom;
-import mareu.adriansng.maru.model.Person;
 import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.DummyReunionList;
 import mareu.adriansng.maru.service_api.ReunionApiService;
@@ -50,7 +48,6 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
     private String nameOrganizer;
     private String date;
     private String hour;
-    private List<Person> personList;
 
 
     @Override
@@ -108,7 +105,7 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mApiService.addReunion(Reunion.addNewReunion(idReunion+1,idMeetingRoom,nameOrganizer,hour,personList));
+                mApiService.addReunion(Reunion.addNewReunion(idReunion+1,idMeetingRoom,nameOrganizer,hour,mApiService.getAddressMailList()));
                 finish();
             }
         });
