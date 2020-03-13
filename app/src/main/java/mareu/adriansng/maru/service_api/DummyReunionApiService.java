@@ -26,9 +26,9 @@ public class DummyReunionApiService implements ReunionApiService {
 
     @Override
     public String getAddressMailList() {
-        String person1 = personList.get(1).getAddressMail();
-        String person2 = personList.get(2).getAddressMail();
-        String person3 = personList.get(3).getAddressMail();
+        String person1 = personList.get(0).getAddressMail();
+        String person2 = personList.get(1).getAddressMail();
+        String person3 = personList.get(2).getAddressMail();
         addressMailList=person1+"-"+person2+"-"+person3;
         return addressMailList;
     }
