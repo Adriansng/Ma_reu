@@ -102,9 +102,8 @@
                 android:id="@+id/roomReunion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center"
-                android:layout_marginStart="45dp"
-                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 app:layout_anchor="@+id/roomReunion"
                 app:layout_anchorGravity="start|center"
                 tools:ignore="RtlSymmetry" />

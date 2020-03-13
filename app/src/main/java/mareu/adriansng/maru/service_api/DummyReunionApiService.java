@@ -31,7 +31,7 @@ public class DummyReunionApiService implements ReunionApiService {
 
     @Override
     public Reunion getReunion(int id) {
-        return null;
+        return reunions.get(id);
     }
 
     @Override

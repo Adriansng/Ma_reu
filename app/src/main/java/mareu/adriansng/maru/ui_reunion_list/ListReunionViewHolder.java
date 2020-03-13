@@ -32,7 +32,7 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
     public void bind(Reunion mReunion) {
         //this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome()+ " - "+ mReunion.getHourDate()+" - "+mReunion.getNameOrganizer());
         //this.mReunionListMail.setText(mReunion.getAddressMailList().toString());
-        this.mDeleteButton.setOnClickListener(v ->
+        mDeleteButton.setOnClickListener(v ->
                 EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
     }
 }

@@ -56,6 +56,7 @@ public class ListReunionActivity extends AppCompatActivity {
                 context.startActivity(intent);
             }
         });
+        initList();
     }
 
 
@@ -76,11 +77,17 @@ public class ListReunionActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    private void initList() {
+        List<Reunion> mReunions= reunionApiService.getReunions();
+        ListReunionAdapter mAdapter= new ListReunionAdapter(mReunions);
+        recyclerView.setAdapter(mAdapter);
+    }
+
     // Actions
     @Subscribe
     public void onDeleteNeighbour(DeleteReunionEvent event) {
         reunionApiService.deleteReunion(event.reunion);
-        configureRecyclerView();
+        initList();
     }
 
     @Override
