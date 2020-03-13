@@ -47,7 +47,6 @@ public class ListReunionActivity extends AppCompatActivity {
         reunionApiService= DI.getReunionApiService();
         configureRecyclerView();
         FloatingActionButton mAddButton= findViewById(R.id.add_reunion_button);
-        initList();
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +55,7 @@ public class ListReunionActivity extends AppCompatActivity {
                 context.startActivity(intent);
             }
         });
+        initList();
     }
 
     // Configuration

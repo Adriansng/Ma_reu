@@ -11,6 +11,8 @@ public interface ReunionApiService {
 
     String getNameMeetingRome();
 
+    List<Person> getAddressMail();
+
     String getAddressMailList();
 
     List<MeetingRoom> getMeetingRoom();
