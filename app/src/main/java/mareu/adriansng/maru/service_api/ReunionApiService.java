@@ -7,8 +7,7 @@ import mareu.adriansng.maru.model.Reunion;
 
 public interface ReunionApiService {
 
-
-    String getNameMeetingRome(Reunion reunion);
+    String getNameMeetingRome();
 
     List<MeetingRoom> getMeetingRoom();
 

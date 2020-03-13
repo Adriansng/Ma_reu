@@ -9,12 +9,11 @@ public class DummyReunionApiService implements ReunionApiService {
 
     private List<Reunion> reunions= DummyReunionList.generateReunion();
     private List<MeetingRoom> meetingRoom= DummyReunionList.DUMMY_MEETING_ROOM;
+    private Reunion reunion;
 
     @Override
-    public String getNameMeetingRome(Reunion reunion) {
-        String nameMeetingRoom;
-        nameMeetingRoom = meetingRoom.get(reunion.getIdMeetingRoom()).getNameRoom();
-        return nameMeetingRoom;
+    public String getNameMeetingRome() {
+        return meetingRoom.get(reunion.getIdMeetingRoom()).getNameRoom();
     }
 
     @Override

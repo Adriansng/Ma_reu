@@ -30,7 +30,7 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
 
     @SuppressLint("SetTextI18n")
     public void bind(Reunion mReunion) {
-        this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion)+ " - "+ mReunion.getHourDate()+" - "+mReunion.getNameOrganizer());
+        this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome()+ " - "+ mReunion.getHourDate()+" - "+mReunion.getNameOrganizer());
         this.mReunionListMail.setText(mReunion.getAddressMailList().toString());
         this.mDeleteButton.setOnClickListener(v ->
                 EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
