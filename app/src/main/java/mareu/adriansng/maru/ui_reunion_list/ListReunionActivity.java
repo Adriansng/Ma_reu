@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
@@ -24,9 +25,7 @@ import mareu.adriansng.maru.event.DeleteReunionEvent;
 import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 
-
 public class ListReunionActivity extends AppCompatActivity {
-
 
     // FOR DESIGN
     FloatingActionButton mAddButton;
@@ -48,6 +47,7 @@ public class ListReunionActivity extends AppCompatActivity {
         reunionApiService= DI.getReunionApiService();
         configureRecyclerView();
         FloatingActionButton mAddButton= findViewById(R.id.add_reunion_button);
+        initList();
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,19 +56,9 @@ public class ListReunionActivity extends AppCompatActivity {
                 context.startActivity(intent);
             }
         });
-        initList();
-    }
-
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        adapter.notifyDataSetChanged();
     }
 
     // Configuration
-
     private void configureRecyclerView() {
         recyclerView=findViewById(R.id.list_reunions);
         mReunions= reunionApiService.getReunions();
@@ -102,7 +92,23 @@ public class ListReunionActivity extends AppCompatActivity {
 
         if (id == R.id.action_filter) {
           }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
     }
