@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-import mareu.adriansng.maru.service_api.DummyReunionList;
-
 public class Reunion {
 
     private static final SimpleDateFormat dateFormat=
@@ -46,7 +44,6 @@ public class Reunion {
     }
 
     public static Reunion addReunion() {
-        return DummyReunionList.DUMMY_REUNION.get(new Random().nextInt(DummyReunionList.DUMMY_REUNION.size()));
     }
 
     public Integer getId() { return id; }
