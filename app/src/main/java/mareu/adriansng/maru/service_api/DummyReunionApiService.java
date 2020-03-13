@@ -36,6 +36,5 @@ public class DummyReunionApiService implements ReunionApiService {
 
     @Override
     public void addReunion(Reunion addNewReunion) {
-
     }
 }

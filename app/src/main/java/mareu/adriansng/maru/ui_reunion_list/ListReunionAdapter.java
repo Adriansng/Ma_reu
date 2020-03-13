@@ -6,18 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.model.Reunion;
-import mareu.adriansng.maru.service_api.ReunionApiService;
 
 public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHolder> {
 
@@ -47,5 +43,13 @@ public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHold
     public int getItemCount() {
         return mReunions.size();
     }
+
+    public void updateList(List<Reunion> newList){
+        mReunions=new ArrayList<>();
+        mReunions.addAll(newList);
+        notifyDataSetChanged();
+    }
+
+
 }
 

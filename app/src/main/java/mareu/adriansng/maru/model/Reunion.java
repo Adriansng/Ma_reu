@@ -1,16 +1,10 @@
 package mareu.adriansng.maru.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 
 public class Reunion {
 
-    private static final SimpleDateFormat dateFormat=
-            new SimpleDateFormat("MM dd yyyy, h");
 
     /** Identifier */
     private Integer id;
@@ -43,8 +37,7 @@ public class Reunion {
         Reunion.addressMailList = addressMailList;
     }
 
-    public static Reunion addReunion() {
-    }
+
 
     public Integer getId() { return id; }
 
@@ -75,16 +68,6 @@ public class Reunion {
 
     public void setAddressMailList(List<Person> addressMailList) {
         Reunion.addressMailList = addressMailList;
-    }
-
-    public  Long getDateFormat() {
-        try{
-            Date date= dateFormat.parse(getHourDate());
-            return date != null ? date.getTime() : null;
-        }catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     @Override

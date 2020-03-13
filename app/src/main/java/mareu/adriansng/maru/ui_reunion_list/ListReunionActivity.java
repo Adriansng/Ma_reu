@@ -3,14 +3,14 @@ package mareu.adriansng.maru.ui_reunion_list;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -56,7 +56,9 @@ public class ListReunionActivity extends AppCompatActivity {
                 context.startActivity(intent);
             }
         });
- }
+    }
+
+
 
     @Override
     protected void onResume() {
@@ -81,22 +83,19 @@ public class ListReunionActivity extends AppCompatActivity {
         configureRecyclerView();
     }
 
-    //@Override
-    //public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_main, menu);
-      //  return true;
-    //}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
 
-   // @Override
-    //public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        //int id = item.getItemId();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
 
-       // if (id == R.id.action_filter) {
-          //}
+        if (id == R.id.action_filter) {
+          }
 
-      //  return super.onOptionsItemSelected(item);
-    //}
+        return super.onOptionsItemSelected(item);
+    }
     }
