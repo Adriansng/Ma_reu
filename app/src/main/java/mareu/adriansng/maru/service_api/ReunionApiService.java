@@ -3,6 +3,7 @@ package mareu.adriansng.maru.service_api;
 import java.util.List;
 
 import mareu.adriansng.maru.model.MeetingRoom;
+import mareu.adriansng.maru.model.Person;
 import mareu.adriansng.maru.model.Reunion;
 
 public interface ReunionApiService {
@@ -34,4 +35,6 @@ public interface ReunionApiService {
     //Generate Reunion
 
     void addReunion(Reunion addNewReunion);
+
+    List<Person> getPersonList();
 }

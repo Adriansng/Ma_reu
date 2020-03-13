@@ -20,10 +20,13 @@ import androidx.fragment.app.DialogFragment;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.di.DI;
 import mareu.adriansng.maru.model.MeetingRoom;
+import mareu.adriansng.maru.model.Person;
+import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.DummyReunionList;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 import mareu.adriansng.maru.ui_reunion_list.utils.DatePickerFragment;
@@ -42,10 +45,12 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
     private SpinnerMeetingRoomAdapter mAdapter;
     private Button finishButton;
     //Parameter Reunion
-    private EditText editNameOrganizer;
-    private DialogFragment datePicker;
-    private DialogFragment hourPicker;
-    private MeetingRoom selectionRoom;
+    private int idReunion;
+    private int idMeetingRoom;
+    private String nameOrganizer;
+    private String date;
+    private String hour;
+    private List<Person> personList;
 
 
     @Override
@@ -56,6 +61,7 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
         mDummyReunionList = new DummyReunionList();
         //Name Organizer
         EditText editNameOrganizer= findViewById(R.id.name_organizer);
+        String nameOrganizer= editNameOrganizer.getText().toString();
 
         // Date
         Button buttonDate=  findViewById(R.id.date);
@@ -77,6 +83,7 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
             }
         });
 
+
         // Room Reunion
         initList();
         mRoomReunion = findViewById(R.id.roomReunion);
@@ -87,6 +94,7 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 MeetingRoom selectionRoom= mApiService.getMeetingRoom().get(position);
+                int idMeetingRoom= selectionRoom.getId();
             }
 
             @Override
@@ -100,10 +108,9 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mApiService.addReunion(Reunion.addNewReunion(idReunion+1,idMeetingRoom,nameOrganizer,hour,personList));
                 finish();
             }
-
-
         });
 
     }
@@ -118,12 +125,14 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
 
         TextView textViewDate=findViewById(R.id.view_hour_date);
         textViewDate.setText(currentDateString);
+        String date= textViewDate.getText().toString();
 
     }
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         TextView textViewTimes=findViewById(R.id.view_hour);
         textViewTimes.setText(hourOfDay+"H"+minute);
+        String hour=textViewTimes.getText().toString();
     }
 
     private void initList() {

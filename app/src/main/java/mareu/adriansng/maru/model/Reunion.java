@@ -37,7 +37,9 @@ public class Reunion {
         Reunion.addressMailList = addressMailList;
     }
 
-
+    public static Reunion addNewReunion(int id, int idMeetingRoom, String nameOrganizer, String hourDate, List<Person> addressMailList) {
+        return new Reunion(id,idMeetingRoom,nameOrganizer,hourDate,addressMailList);
+    }
 
     public Integer getId() { return id; }
 

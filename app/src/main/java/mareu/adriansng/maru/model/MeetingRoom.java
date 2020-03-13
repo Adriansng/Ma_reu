@@ -19,13 +19,13 @@ public class MeetingRoom {
      * @param availability
       */
 
-    public MeetingRoom (Integer id,String nameRoom,Boolean availability){
+    public MeetingRoom (int id,String nameRoom,Boolean availability){
         this.id= id;
         this.nameRoom = nameRoom;
         this.availability = availability;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
