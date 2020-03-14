@@ -101,7 +101,7 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Reunion reunion= new Reunion(idReunion + 1, idMeetingRoom, nameOrganizer, hour, mApiService.getAddressMailList());
+                Reunion reunion= new Reunion(mApiService.getReunionSize()+1, idMeetingRoom, nameOrganizer, hour, mApiService.getAddressMailList());
                 mApiService.addReunion(reunion);
                 finish();
             }

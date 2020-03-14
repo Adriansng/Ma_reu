@@ -21,11 +21,33 @@ public class DummyReunionApiService implements ReunionApiService {
     private String hourDate;
     private int index;
 
+    //Reunion List
+    @Override
+    public List<Reunion> getReunions() { return reunions; }
+
+    //ID Reunion
+    @Override
+    public int getReunionSize(){
+        index=reunions.size()-1;
+        return index;
+    }
+
+    @Override
+    public Reunion getReunion(int id) { return reunions.get(id);}
+
+    //Meeting Room
     @Override
     public String getNameMeetingRome(int idMeetingRoom) {
         nameMeetingRoom= meetingRoom.get(idMeetingRoom).getNameRoom();
         return nameMeetingRoom;
     }
+
+    @Override
+    public List<MeetingRoom> getMeetingRoom(){return meetingRoom;}
+
+    //Address mail List
+    @Override
+    public List<Person> getPersonList(){return personList;}
 
     @Override
     public List<Person> getAddressMail(){return personList;
@@ -38,29 +60,13 @@ public class DummyReunionApiService implements ReunionApiService {
         return addressMailList;
     }
 
-    @Override
-    public List<MeetingRoom> getMeetingRoom(){return meetingRoom;}
-
-    @Override
-    public List<Reunion> getReunions() {
-        index=reunions.size()-1;
-        return reunions;
-    }
-
-    @Override
-    public void deleteReunion(Reunion reunion) {
-        reunions.remove(reunion);
-    }
-
-    @Override
-    public Reunion getReunion(int id) {
-        return reunions.get(id);
-    }
-
+    //Action
     @Override
     public void addReunion(Reunion newReunion) {
         reunions.add(newReunion);
     }
     @Override
-    public List<Person> getPersonList(){return personList;}
+    public void deleteReunion(Reunion reunion) {
+        reunions.remove(reunion);
+    }
 }

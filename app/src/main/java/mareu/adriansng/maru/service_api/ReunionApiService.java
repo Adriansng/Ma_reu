@@ -9,20 +9,43 @@ import mareu.adriansng.maru.model.Reunion;
 public interface ReunionApiService {
 
 
-
-    String getNameMeetingRome(int idMeetingRoom);
-
-    List<Person> getAddressMail();
-
-    String getAddressMailList();
-
-    List<MeetingRoom> getMeetingRoom();
+    //Reunion List
 
     /**
      * Get all reunion
      * @return {@link List}
      */
     List<Reunion> getReunions();
+
+    //Id Reunion
+
+    int getReunionSize();
+
+    /**
+     * get a single reunion by id
+     *@param id
+     */
+    Reunion getReunion(int id);
+
+    //Meeting Room
+
+    /**
+     * get a name meeting room by id
+     *@param idMeetingRoom
+     */
+    String getNameMeetingRome(int idMeetingRoom);
+
+    List<MeetingRoom> getMeetingRoom();
+
+    //Address Mail
+
+    List<Person> getAddressMail();
+
+    String getAddressMailList();
+
+    List<Person> getPersonList();
+
+    //Action
 
     /**
      * Deletes a reunion
@@ -31,15 +54,9 @@ public interface ReunionApiService {
     void deleteReunion(Reunion reunion);
 
     /**
-     * get a single neighbour by id
-     *@param id
+     * Add a reunion
+     * @param newReunion
      */
-    Reunion getReunion(int id);
+    void addReunion(Reunion newReunion);
 
-
-    //Generate Reunion
-
-    void addReunion(Reunion addNewReunion);
-
-    List<Person> getPersonList();
 }
