@@ -19,10 +19,11 @@ public class DummyReunionApiService implements ReunionApiService {
     private String addressMail;
     private String nameOrganizer;
     private String hourDate;
+    private int index;
 
     @Override
-    public String getNameMeetingRome() {
-        nameMeetingRoom= meetingRoom.get(reunion.getIdMeetingRoom()).getNameRoom();
+    public String getNameMeetingRome(int idMeetingRoom) {
+        nameMeetingRoom= meetingRoom.get(idMeetingRoom).getNameRoom();
         return nameMeetingRoom;
     }
 
@@ -42,6 +43,7 @@ public class DummyReunionApiService implements ReunionApiService {
 
     @Override
     public List<Reunion> getReunions() {
+        index=reunions.size()-1;
         return reunions;
     }
 
@@ -56,8 +58,8 @@ public class DummyReunionApiService implements ReunionApiService {
     }
 
     @Override
-    public void addReunion(Reunion addNewReunion) {
-        reunions.add(Reunion.addNewReunion(reunions.lastIndexOf(+1),idMeetingRoom,nameOrganizer,hourDate,addressMailList));
+    public void addReunion(Reunion newReunion) {
+        reunions.add(newReunion);
     }
     @Override
     public List<Person> getPersonList(){return personList;}

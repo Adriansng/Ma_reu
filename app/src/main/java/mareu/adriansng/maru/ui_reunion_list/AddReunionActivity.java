@@ -25,7 +25,6 @@ import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.di.DI;
 import mareu.adriansng.maru.model.MeetingRoom;
 import mareu.adriansng.maru.model.Reunion;
-import mareu.adriansng.maru.service_api.DummyReunionList;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 import mareu.adriansng.maru.ui_reunion_list.utils.DatePickerFragment;
 import mareu.adriansng.maru.ui_reunion_list.utils.SpinnerMeetingRoomAdapter;
@@ -35,15 +34,13 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
 
     //Data
     private ReunionApiService mApiService;
-    private DummyReunionList mDummyReunionList;
-
     private ArrayList<MeetingRoom> mMeetingRoom;
     //Design
     private Spinner mRoomReunion;
     private SpinnerMeetingRoomAdapter mAdapter;
     private Button finishButton;
     //Parameter Reunion
-    private int idReunion;
+    private int idReunion ;
     private int idMeetingRoom;
     private String nameOrganizer;
     private String date;
@@ -55,7 +52,6 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_reunion_activity);
         mApiService = DI.getReunionApiService();
-        mDummyReunionList = new DummyReunionList();
         //Name Organizer
         EditText editNameOrganizer= findViewById(R.id.name_organizer);
         String nameOrganizer= editNameOrganizer.getText().toString();
@@ -105,7 +101,8 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mApiService.addReunion(Reunion.addNewReunion(idReunion+1,idMeetingRoom,nameOrganizer,hour,mApiService.getAddressMailList()));
+                Reunion reunion= new Reunion(idReunion + 1, idMeetingRoom, nameOrganizer, hour, mApiService.getAddressMailList());
+                mApiService.addReunion(reunion);
                 finish();
             }
         });
