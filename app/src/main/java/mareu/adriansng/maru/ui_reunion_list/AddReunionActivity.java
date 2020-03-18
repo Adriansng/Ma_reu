@@ -41,7 +41,7 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
     private Button finishButton;
     //Parameter Reunion
     private int idReunion ;
-    private int idMeetingRoom;
+    private MeetingRoom selectionRoom;
     private String nameOrganizer;
     private String date;
     private String hour;
@@ -54,7 +54,7 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
         mApiService = DI.getReunionApiService();
         //Name Organizer
         EditText editNameOrganizer= findViewById(R.id.name_organizer);
-        String nameOrganizer= editNameOrganizer.getText().toString();
+        nameOrganizer= editNameOrganizer.getText().toString();
 
         // Date
         Button buttonDate=  findViewById(R.id.date);
@@ -86,8 +86,7 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                MeetingRoom selectionRoom= mApiService.getMeetingRoom().get(position);
-                int idMeetingRoom= selectionRoom.getId();
+                selectionRoom= mApiService.getMeetingRoom().get(position);
             }
 
             @Override
@@ -101,7 +100,7 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Reunion reunion= new Reunion(mApiService.getReunionSize()+1, idMeetingRoom, nameOrganizer, hour, mApiService.getAddressMailList());
+                Reunion reunion= new Reunion(mApiService.getReunionSize()+1,selectionRoom.getId(), nameOrganizer, date+hour, mApiService.getAddressMailList());
                 mApiService.addReunion(reunion);
                 finish();
             }

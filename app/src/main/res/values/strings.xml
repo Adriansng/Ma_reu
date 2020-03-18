@@ -11,4 +11,6 @@
     <string name="validate">Validate</string>
     <string name="date_type">Wednesday 1 January 2020</string>
     <string name="hour_type">10H00</string>
+    <string name="filter_room">filter room</string>
+    <string name="filter_date">filter date</string>
 </resources>

@@ -6,7 +6,7 @@ public class Reunion {
 
 
     /** Identifier */
-    private Integer id;
+    private int id;
 
     /** Meeting room */
     private static int idMeetingRoom;
@@ -28,7 +28,7 @@ public class Reunion {
      * @param addressMailList
      */
 
-    public Reunion (Integer id, int idMeetingRoom, String nameOrganizer, String hourDate, String addressMailList){
+    public Reunion (int id, int idMeetingRoom, String nameOrganizer, String hourDate, String addressMailList){
         this.id = id;
         Reunion.idMeetingRoom = idMeetingRoom;
         Reunion.nameOrganizer = nameOrganizer;
@@ -36,13 +36,13 @@ public class Reunion {
         Reunion.addressMailList = addressMailList;
     }
 
-    public static Reunion addNewReunion(int id, int idMeetingRoom, String nameOrganizer, String hourDate, String addressMailList) {
+    public static Reunion newReunion(int id, int idMeetingRoom, String nameOrganizer, String hourDate, String addressMailList) {
         return new Reunion(id,idMeetingRoom,nameOrganizer,hourDate,addressMailList);
     }
 
-    public Integer getId() { return id; }
+    public int getId() { return id; }
 
-    public void setId(Integer id) { this.id = id; }
+    public void setId(int id) { this.id = id; }
 
     public int getIdMeetingRoom() {
         return idMeetingRoom;}

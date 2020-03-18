@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,6 +31,7 @@ public class ListReunionActivity extends AppCompatActivity {
     // FOR DESIGN
     FloatingActionButton mAddButton;
     private RecyclerView recyclerView;
+    private ListReunionActivity activity;
 
     // FOR DATA
     private ListReunionAdapter adapter;
@@ -44,6 +46,7 @@ public class ListReunionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        this.activity=this;
         reunionApiService= DI.getReunionApiService();
         configureRecyclerView();
         FloatingActionButton mAddButton= findViewById(R.id.add_reunion_button);
@@ -88,11 +91,19 @@ public class ListReunionActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_filter) {
-          }
-        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()){
+            case R.id.filter_room:
+                AlertDialog.Builder popupRoom = new AlertDialog.Builder(activity);
+                popupRoom.setTitle("Filter Room");
+                popupRoom.show();
+                return true;
+            case R.id.filter_date:
+                AlertDialog.Builder popupDate = new AlertDialog.Builder(activity);
+                popupDate.setTitle("Filter Date");
+                popupDate.show();
+                return true;
+            default: return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
