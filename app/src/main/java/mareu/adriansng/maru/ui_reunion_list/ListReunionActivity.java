@@ -7,8 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +25,8 @@ import mareu.adriansng.maru.di.DI;
 import mareu.adriansng.maru.event.DeleteReunionEvent;
 import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
+import mareu.adriansng.maru.ui_reunion_list.utils.PopupFilterDate;
+import mareu.adriansng.maru.ui_reunion_list.utils.PopupFilterRoom;
 
 public class ListReunionActivity extends AppCompatActivity {
 
@@ -93,15 +95,17 @@ public class ListReunionActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.filter_room:
-                AlertDialog.Builder popupRoom = new AlertDialog.Builder(activity);
-                popupRoom.setTitle("Filter Room");
-                popupRoom.show();
+                final PopupFilterRoom popupFilterRoom= new PopupFilterRoom(activity);
+                popupFilterRoom.build();
+                int selectRoom = popupFilterRoom.getSelectionRoom();
                 return true;
             case R.id.filter_date:
-                AlertDialog.Builder popupDate = new AlertDialog.Builder(activity);
-                popupDate.setTitle("Filter Date");
-                popupDate.show();
-                return true;
+               final PopupFilterDate popupFilterDate = new PopupFilterDate(activity);
+               DialogFragment datePicker=popupFilterDate.getDatePicker();
+               datePicker.show(getSupportFragmentManager(),"Date picker");
+               popupFilterDate.build();
+               String selectDate= popupFilterDate.getDateSelection();
+               return true;
             default: return super.onOptionsItemSelected(item);
         }
     }
@@ -110,16 +114,21 @@ public class ListReunionActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         adapter.notifyDataSetChanged();
+        initList();
     }
     @Override
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
+        adapter.notifyDataSetChanged();
+        initList();
     }
 
     @Override
     public void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
+        adapter.notifyDataSetChanged();
+        initList();
     }
     }

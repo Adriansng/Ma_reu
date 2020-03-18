@@ -30,7 +30,7 @@ import mareu.adriansng.maru.ui_reunion_list.utils.DatePickerFragment;
 import mareu.adriansng.maru.ui_reunion_list.utils.SpinnerMeetingRoomAdapter;
 import mareu.adriansng.maru.ui_reunion_list.utils.TimerPickerFragment;
 
-public class AddReunionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+public class AddReunionActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     //Data
     private ReunionApiService mApiService;
@@ -132,13 +132,4 @@ public class AddReunionActivity extends AppCompatActivity implements AdapterView
         mMeetingRoom = new ArrayList<>();
         mMeetingRoom.addAll(mApiService.getMeetingRoom());
     }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-    }
-
 }

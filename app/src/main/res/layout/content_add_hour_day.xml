@@ -99,14 +99,14 @@
             tools:ignore="PrivateResource">
 
             <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/roomReunion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                app:layout_anchor="@+id/roomReunion"
-                app:layout_anchorGravity="start|center"
-                tools:ignore="RtlSymmetry" />
+            android:id="@+id/roomReunion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            app:layout_anchor="@+id/roomReunion"
+            app:layout_anchorGravity="start|center"
+            tools:ignore="RtlSymmetry" />
 
             <TextView
                 android:id="@+id/textView3"
