@@ -106,8 +106,10 @@ public class ListReunionActivity extends AppCompatActivity {
                popupFilterDate.build();
                String selectDate= popupFilterDate.getDateSelection();
                return true;
-            default: return super.onOptionsItemSelected(item);
         }
+
+        return super.onOptionsItemSelected(item);
+
     }
 
     @Override
