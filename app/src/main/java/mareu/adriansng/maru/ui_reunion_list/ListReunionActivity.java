@@ -98,18 +98,16 @@ public class ListReunionActivity extends AppCompatActivity {
                 final PopupFilterRoom popupFilterRoom= new PopupFilterRoom(activity);
                 popupFilterRoom.build();
                 int selectRoom = popupFilterRoom.getSelectionRoom();
-                return true;
+                return (true);
             case R.id.filter_date:
                final PopupFilterDate popupFilterDate = new PopupFilterDate(activity);
                DialogFragment datePicker=popupFilterDate.getDatePicker();
                datePicker.show(getSupportFragmentManager(),"Date picker");
                popupFilterDate.build();
                String selectDate= popupFilterDate.getDateSelection();
-               return true;
+               return (true);
         }
-
         return super.onOptionsItemSelected(item);
-
     }
 
     @Override

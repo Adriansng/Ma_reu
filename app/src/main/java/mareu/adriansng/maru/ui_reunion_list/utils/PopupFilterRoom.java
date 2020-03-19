@@ -6,6 +6,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -21,14 +22,20 @@ public class PopupFilterRoom extends Dialog {
     private ArrayList<MeetingRoom> mMeetingRoom;
     private SpinnerMeetingRoomAdapter mAdapter;
     private MeetingRoom selectionRoom;
+    private String title;
+    private TextView titleView;
     private int meetingRoom;
 
     public PopupFilterRoom(Activity activity) {
         super(activity, R.style.Theme_AppCompat_Dialog);
         setContentView(R.layout.popup_filter_room);
+        this.meetingRoom=1;
         this.spinnerRoom= findViewById(R.id.spinner_room_reunion);
+        this.titleView= findViewById(R.id.popup_filter_room_title);
         initList();
+
         Context context= getContext();
+        spinnerRoom= new Spinner(context,Spinner.MODE_DIALOG);
         mAdapter = new SpinnerMeetingRoomAdapter(context, mMeetingRoom);
         spinnerRoom.setAdapter(mAdapter);
         spinnerRoom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -59,5 +66,8 @@ public class PopupFilterRoom extends Dialog {
 
     public void build(){
         show();
+        titleView.setText(title);
+
+
     }
 }
