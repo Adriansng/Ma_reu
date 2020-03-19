@@ -1,6 +1,5 @@
 package mareu.adriansng.maru.ui_reunion_list.utils;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
@@ -26,15 +25,13 @@ public class PopupFilterRoom extends Dialog {
     private TextView titleView;
     private int meetingRoom;
 
-    public PopupFilterRoom(Activity activity) {
-        super(activity, R.style.Theme_AppCompat_Dialog);
+    public PopupFilterRoom(Context context) {
+        super(context, R.style.Theme_AppCompat_Dialog);
         setContentView(R.layout.popup_filter_room);
         this.meetingRoom=1;
         this.spinnerRoom= findViewById(R.id.spinner_room_reunion);
         this.titleView= findViewById(R.id.popup_filter_room_title);
         initList();
-
-        Context context= getContext();
         spinnerRoom= new Spinner(context,Spinner.MODE_DIALOG);
         mAdapter = new SpinnerMeetingRoomAdapter(context, mMeetingRoom);
         spinnerRoom.setAdapter(mAdapter);
