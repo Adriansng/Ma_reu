@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,6 +32,7 @@ import mareu.adriansng.maru.event.DeleteReunionEvent;
 import mareu.adriansng.maru.model.MeetingRoom;
 import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
+import mareu.adriansng.maru.ui_reunion_list.utils.PopupFilterDate;
 import mareu.adriansng.maru.ui_reunion_list.utils.SpinnerMeetingRoomAdapter;
 
 public class ListReunionActivity extends AppCompatActivity {
@@ -109,7 +111,7 @@ public class ListReunionActivity extends AppCompatActivity {
                 AlertDialog.Builder mBuilder= new AlertDialog.Builder(ListReunionActivity.this);
                 View mView= getLayoutInflater().inflate(R.layout.country_spinner_row,null);
                 mBuilder.setTitle("Filter meeting room");
-                Spinner mSpinner= mView.findViewById(R.id.spinner_room_reunion);
+                final Spinner mSpinner= mView.findViewById(R.id.spinner_room_reunion);
                 initListSpinner();
                 mAdapterSpinner= new SpinnerMeetingRoomAdapter(this,mMeetingRoom);
                 mSpinner.setAdapter(mAdapterSpinner);
@@ -141,16 +143,19 @@ public class ListReunionActivity extends AppCompatActivity {
                 mBuilder.setView(mView);
                 AlertDialog dialog=mBuilder.create();
                 dialog.show();
-                return (true);
+                return true;
             case R.id.filter_date:
-               //final PopupFilterDate popupFilterDate = new PopupFilterDate(activity);
-               //DialogFragment datePicker=popupFilterDate.getDatePicker();
-               //datePicker.show(getSupportFragmentManager(),"Date picker");
-               //popupFilterDate.build();
-               //String selectDate= popupFilterDate.getDateSelection();
-               return (true);
+               final PopupFilterDate popupFilterDate = new PopupFilterDate(activity);
+               DialogFragment datePicker=popupFilterDate.getDatePicker();
+               datePicker.show(getSupportFragmentManager(),"Date picker");
+               popupFilterDate.build();
+               String selectDate= popupFilterDate.getDateSelection();
+               return true;
+
+            default: return super.onOptionsItemSelected(item);
+
         }
-        return super.onOptionsItemSelected(item);
+
     }
     private void initListSpinner() {
         mMeetingRoom = new ArrayList<>();
