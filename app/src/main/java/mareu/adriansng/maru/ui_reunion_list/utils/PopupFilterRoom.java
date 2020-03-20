@@ -65,6 +65,5 @@ public class PopupFilterRoom extends Dialog {
         show();
         titleView.setText(title);
 
-
     }
 }
