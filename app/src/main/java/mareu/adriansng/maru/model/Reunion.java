@@ -50,38 +50,38 @@ public class Reunion {
 
     public void setId(int id) { this.id = id; }
 
-    public static int getIdMeetingRoom() {
+    public  int getIdMeetingRoom() {
         return idMeetingRoom;}
 
     public void setIdMeetingRoom(int meetingRoom) {
         Reunion.idMeetingRoom = idMeetingRoom;
     }
 
-    public static String getNameOrganizer() {
+    public  String getNameOrganizer() {
         return nameOrganizer;
     }
 
-    public static void setNameOrganizer(String nameOrganizer) {
+    public  void setNameOrganizer(String nameOrganizer) {
         Reunion.nameOrganizer = nameOrganizer;
     }
 
-    public static String getHour() { return hour; }
+    public  String getHour() { return hour; }
 
-    public static void setHour(String hourDate) { Reunion.hour = hourDate; }
+    public  void setHour(String hourDate) { Reunion.hour = hourDate; }
 
-    public static String getDate() {
+    public  String getDate() {
         return date;
     }
 
-    public static void setDate(String date) {
+    public  void setDate(String date) {
         Reunion.date = date;
     }
 
-    public static List<String> getAddressMailList() {
+    public  List<String> getAddressMailList() {
         return addressMailList;
     }
 
-    public static void setAddressMailList(List<String> addressMailList) {
+    public  void setAddressMailList(List<String> addressMailList) {
         Reunion.addressMailList = addressMailList;
     }
 

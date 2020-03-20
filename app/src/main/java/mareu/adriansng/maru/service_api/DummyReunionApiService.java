@@ -95,7 +95,7 @@ public class DummyReunionApiService implements ReunionApiService {
 
     @Override
     public List<String> getAddressMailListReunion(){
-        addressMailList=Reunion.getAddressMailList();
+        addressMailList=reunion.getAddressMailList();
         return addressMailList;
     }
 
