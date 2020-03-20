@@ -186,10 +186,9 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                 AlertDialog dialogDate= mBuilderDate.create();
                 dialogDate.show();
                return true;
-               default: return super.onOptionsItemSelected(item);
 
         }
-
+        return super.onOptionsItemSelected(item);
     }
     public DialogFragment getDatePicker() {return datePicker;}
 
