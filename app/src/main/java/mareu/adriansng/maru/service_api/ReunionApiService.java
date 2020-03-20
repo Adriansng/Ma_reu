@@ -61,6 +61,8 @@ public interface ReunionApiService {
 
     List<String> getAddressMailList(int idPerson1, int idPerson2, int idPerson3);
 
+    List<String> getAddressMailListReunion();
+
     /**
      * Add a reunion
      * @param newReunion

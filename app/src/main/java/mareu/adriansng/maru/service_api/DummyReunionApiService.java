@@ -90,7 +90,13 @@ public class DummyReunionApiService implements ReunionApiService {
     @Override
     public List<String> getAddressMailList(int idPerson1, int idPerson2, int idPerson3){
         addressMailList= new ArrayList<>();
-        return addressMailList= Collections.singletonList(String.valueOf(getAddressMail(idPerson1) + getAddressMail(idPerson2) + getAddressMail(idPerson3)));
+        return addressMailList= Collections.singletonList(getAddressMail(idPerson1) + getAddressMail(idPerson2) + getAddressMail(idPerson3));
+    }
+
+    @Override
+    public List<String> getAddressMailListReunion(){
+        addressMailList=Reunion.getAddressMailList();
+        return addressMailList;
     }
 
     //Action
