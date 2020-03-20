@@ -35,6 +35,10 @@ public interface ReunionApiService {
      */
     String getNameMeetingRome(int idMeetingRoom);
 
+    int getSelectionFilterMeetingRoom(int idMeetingRoom);
+
+    List<Reunion> getFilterMeetingRoom();
+
     List<MeetingRoom> getMeetingRoom();
 
     //Address Mail
@@ -42,6 +46,12 @@ public interface ReunionApiService {
     List<Person> getAddressMail();
 
     String getAddressMailList();
+
+    //Date
+    String getSelectionFilterDate(String dateReunion);
+
+    //Date
+    List<Reunion> getFilterDate();
 
     List<Person> getPersonList();
 

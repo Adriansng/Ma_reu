@@ -14,11 +14,12 @@ public class DummyReunionApiService implements ReunionApiService {
     private List<Person> personList=DummyReunionList.DUMMY_PERSON;
     private Reunion reunion;
     private int idMeetingRoom;
+    private int idMeetingRoomFilter;
     private String nameMeetingRoom;
     private String addressMailList;
     private String addressMail;
     private String nameOrganizer;
-    private String hourDate;
+    private String dateReunion;
     private int index;
 
     //Reunion List
@@ -43,7 +44,40 @@ public class DummyReunionApiService implements ReunionApiService {
     }
 
     @Override
+    public int getSelectionFilterMeetingRoom(int idMeetingRoomFilter){
+        return idMeetingRoomFilter;
+    }
+
+    @Override
+    public List<Reunion> getFilterMeetingRoom(){
+        reunions.clear();
+        for(Reunion n: reunions ){
+            if(n.getIdMeetingRoom() == idMeetingRoomFilter){
+                reunions.add(n);
+            }
+        }
+        return reunions;
+    }
+
+    @Override
     public List<MeetingRoom> getMeetingRoom(){return meetingRoom;}
+
+    //Date
+    @Override
+    public String getSelectionFilterDate(String dateReunion){
+        return dateReunion;
+    }
+
+    @Override
+    public List<Reunion> getFilterDate(){
+        reunions.clear();
+        for(Reunion n: reunions){
+            if(n.getDate()== dateReunion){
+                reunions.add(n);
+            }
+        }
+        return reunions;
+    }
 
     //Address mail List
     @Override
@@ -69,4 +103,5 @@ public class DummyReunionApiService implements ReunionApiService {
     public void deleteReunion(Reunion reunion) {
         reunions.remove(reunion);
     }
+
 }

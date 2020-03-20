@@ -14,8 +14,11 @@ public class Reunion {
     /** Name organizer */
     private static String nameOrganizer;
 
-    /** Hour and Date */
-    private static String hourDate;
+    /** Hour */
+    private static String hour;
+
+    /** Date */
+    private static String date;
 
     /** Address mail participants */
     private static String addressMailList;
@@ -24,50 +27,60 @@ public class Reunion {
      * @param id
      * @param idMeetingRoom
      * @param nameOrganizer
-     * @param hourDate
+     * @param hour
+     * @param date
      * @param addressMailList
      */
 
-    public Reunion (int id, int idMeetingRoom, String nameOrganizer, String hourDate, String addressMailList){
+    public Reunion (int id, int idMeetingRoom, String nameOrganizer, String hour, String date, String addressMailList){
         this.id = id;
         Reunion.idMeetingRoom = idMeetingRoom;
         Reunion.nameOrganizer = nameOrganizer;
-        Reunion.hourDate = hourDate;
+        Reunion.hour = hour;
+        Reunion.date= date;
         Reunion.addressMailList = addressMailList;
     }
 
-    public static Reunion newReunion(int id, int idMeetingRoom, String nameOrganizer, String hourDate, String addressMailList) {
-        return new Reunion(id,idMeetingRoom,nameOrganizer,hourDate,addressMailList);
+    public static Reunion newReunion(int id, int idMeetingRoom, String nameOrganizer, String hour, String date, String addressMailList) {
+        return new Reunion(id,idMeetingRoom,nameOrganizer,hour, date,addressMailList);
     }
 
     public int getId() { return id; }
 
     public void setId(int id) { this.id = id; }
 
-    public int getIdMeetingRoom() {
+    public static int getIdMeetingRoom() {
         return idMeetingRoom;}
 
     public void setIdMeetingRoom(int meetingRoom) {
         Reunion.idMeetingRoom = idMeetingRoom;
     }
 
-    public String getNameOrganizer() {
+    public static String getNameOrganizer() {
         return nameOrganizer;
     }
 
-    public void setNameOrganizer(String nameOrganizer) {
+    public static void setNameOrganizer(String nameOrganizer) {
         Reunion.nameOrganizer = nameOrganizer;
     }
 
-    public String getHourDate() { return hourDate; }
+    public static String getHour() { return hour; }
 
-    public void setHourDate(String hourDate) { Reunion.hourDate = hourDate; }
+    public static void setHour(String hourDate) { Reunion.hour = hourDate; }
 
-    public String getAddressMailList() {
+    public static String getDate() {
+        return date;
+    }
+
+    public static void setDate(String date) {
+        Reunion.date = date;
+    }
+
+    public static String getAddressMailList() {
         return addressMailList;
     }
 
-    public void setAddressMailList(String addressMailList) {
+    public static void setAddressMailList(String addressMailList) {
         Reunion.addressMailList = addressMailList;
     }
 
