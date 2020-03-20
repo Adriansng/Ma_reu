@@ -22,6 +22,7 @@ public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHold
 
     // CONSTRUCTOR
     public ListReunionAdapter(List<Reunion> mReunions){
+
         this.mReunions = mReunions;
     }
 

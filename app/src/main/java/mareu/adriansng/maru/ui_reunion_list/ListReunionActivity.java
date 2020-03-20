@@ -141,8 +141,8 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                     public void onClick(DialogInterface dialog, int which) {
                         if(mSpinner.getSelectedItem().toString().equalsIgnoreCase("")){
                             Toast.makeText(ListReunionActivity.this,mSpinner.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
-                            reunionApiService.getSelectionFilterMeetingRoom(selectionRoom.getId());
-                            reunionApiService.getFilterMeetingRoom();
+
+                            reunionApiService.getFilterMeetingRoom(selectionRoom.getId());
                             initList();
                         }
                     }
@@ -179,7 +179,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                 mBuilderDate.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();;
+                        dialog.dismiss();
                     }
                 });
                 mBuilderDate.setView(mViewDate);

@@ -34,9 +34,8 @@ public interface ReunionApiService {
      */
     String getNameMeetingRome(int idMeetingRoom);
 
-    int getSelectionFilterMeetingRoom(int idMeetingRoom);
 
-    List<Reunion> getFilterMeetingRoom();
+    List<Reunion> getFilterMeetingRoom(int idMeetingRoomFilter);
 
     List<MeetingRoom> getMeetingRoom();
 

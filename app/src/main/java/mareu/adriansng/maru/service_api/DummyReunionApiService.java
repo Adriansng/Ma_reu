@@ -13,7 +13,6 @@ public class DummyReunionApiService implements ReunionApiService {
     private List<Reunion> reunions= DummyReunionList.generateReunion();
     private List<MeetingRoom> meetingRoom= DummyReunionList.DUMMY_MEETING_ROOM;
     private List<Person> personList=DummyReunionList.DUMMY_PERSON;
-    private Reunion reunion;
     private int idMeetingRoom;
     private int idPerson;
     private int idMeetingRoomFilter;
@@ -26,7 +25,8 @@ public class DummyReunionApiService implements ReunionApiService {
 
     //Reunion List
     @Override
-    public List<Reunion> getReunions() { return reunions; }
+    public List<Reunion> getReunions() {
+        return reunions; }
 
     //ID Reunion
     @Override
@@ -45,13 +45,10 @@ public class DummyReunionApiService implements ReunionApiService {
         return nameMeetingRoom;
     }
 
-    @Override
-    public int getSelectionFilterMeetingRoom(int idMeetingRoomFilter){
-        return idMeetingRoomFilter;
-    }
+
 
     @Override
-    public List<Reunion> getFilterMeetingRoom(){
+    public List<Reunion> getFilterMeetingRoom(int idMeetingRoomFilter){
         reunions.clear();
         for(Reunion n: reunions ){
             if(n.getIdMeetingRoom() == idMeetingRoomFilter){
@@ -95,7 +92,7 @@ public class DummyReunionApiService implements ReunionApiService {
 
     @Override
     public List<String> getAddressMailListReunion(){
-        addressMailList=reunion.getAddressMailList();
+      //addressMailList=Reunion.getAddressMailList();
         return addressMailList;
     }
 
