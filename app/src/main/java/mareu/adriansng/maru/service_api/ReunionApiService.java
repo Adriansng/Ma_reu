@@ -57,7 +57,7 @@ public interface ReunionApiService {
     void deleteReunion(Reunion reunion);
 
     //List Person
-    List<Person> getPersonParticipant(int idReunion);
+    List<Person> getPersonParticipant();
 
     /**
      * Add a reunion

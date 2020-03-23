@@ -79,7 +79,7 @@ public class DummyReunionApiService implements ReunionApiService {
 
     //List Person
     @Override
-    public List<Person> getPersonParticipant(int idReunion){
+    public List<Person> getPersonParticipant(){
         return personList;
     }
 

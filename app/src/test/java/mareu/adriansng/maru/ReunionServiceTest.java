@@ -37,7 +37,7 @@ public class ReunionServiceTest {
     @Test
     public void addReunionList(){
                 service.getReunions().clear();
-                service.addReunion(Reunion.newReunion(service.getReunionSize()+1,1,"Arnaud","15h00","05/02/2020",service.getPersonParticipant(service.getReunionSize()+1)));
+                service.addReunion(Reunion.newReunion(service.getReunionSize()+1,1,"Arnaud","15h00","05/02/2020",service.getPersonParticipant()));
                 Reunion newReunion = service.getReunions().get(0);
                 assertEquals(1,service.getReunions().size());
                 assertTrue(DummyReunionList.DUMMY_REUNION.stream().map(Reunion::getIdMeetingRoom).collect(Collectors.toList()).contains(newReunion.getIdMeetingRoom()));
