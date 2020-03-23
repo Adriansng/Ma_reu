@@ -12,6 +12,7 @@ import org.greenrobot.eventbus.EventBus;
 import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.di.DI;
 import mareu.adriansng.maru.event.DeleteReunionEvent;
+import mareu.adriansng.maru.model.Person;
 import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 
@@ -33,7 +34,11 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
     public void bind(Reunion mReunion) {
         apiService= DI.getReunionApiService();
         this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom())+ " - "+ mReunion.getHour()+" - "+ mReunion.getNameOrganizer());
-        //this.mReunionListMail.setText(String.valueOf(apiService.getAddressMailListReunion()));
+        for(Person person: mReunion.getPersonParticipant()) {
+        String address="- ";
+        address += person.getAddressMail();
+        this.mReunionListMail.setText(address);
+        }
         this.mDeleteButton.setOnClickListener(v ->
                 EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
     }

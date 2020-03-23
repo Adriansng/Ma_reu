@@ -1,7 +1,5 @@
 package mareu.adriansng.maru.service_api;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import mareu.adriansng.maru.model.MeetingRoom;
@@ -13,6 +11,7 @@ public class DummyReunionApiService implements ReunionApiService {
     private List<Reunion> reunions= DummyReunionList.generateReunion();
     private List<MeetingRoom> meetingRoom= DummyReunionList.DUMMY_MEETING_ROOM;
     private List<Person> personList=DummyReunionList.DUMMY_PERSON;
+    private List<Person> personParticipant;
     private int idMeetingRoom;
     private int idPerson;
     private int idMeetingRoomFilter;
@@ -78,23 +77,13 @@ public class DummyReunionApiService implements ReunionApiService {
         return reunions;
     }
 
+    //List Person
+    @Override
+    public List<Person> getPersonParticipant(int idReunion){
+        return personList;
+    }
+
     //Address mail List
-    @Override
-    public String getAddressMail(int idPerson){
-        return personList.get(idPerson).getAddressMail();
-    }
-
-    @Override
-    public List<String> getAddressMailList(int idPerson1, int idPerson2, int idPerson3){
-        addressMailList= new ArrayList<>();
-        return addressMailList= Collections.singletonList(getAddressMail(idPerson1) + getAddressMail(idPerson2) + getAddressMail(idPerson3));
-    }
-
-    @Override
-    public List<String> getAddressMailListReunion(){
-      //addressMailList=Reunion.getAddressMailList();
-        return addressMailList;
-    }
 
     //Action
     @Override

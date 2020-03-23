@@ -8,7 +8,9 @@ import mareu.adriansng.maru.model.MeetingRoom;
 import mareu.adriansng.maru.model.Person;
 import mareu.adriansng.maru.model.Reunion;
 
-public class DummyReunionList {
+public abstract class DummyReunionList {
+
+
 
     //Generate MeetingRoom
     public static List<MeetingRoom> DUMMY_MEETING_ROOM = Arrays.asList(
@@ -31,9 +33,9 @@ public class DummyReunionList {
     );
 
     public static List<Reunion> DUMMY_REUNION = Arrays.asList(
-            new Reunion(0,2, "Henri", "10H00","05/19/2020",Arrays.asList("pierre@maReu.com","manuel@maReu.com","bran@maReu.com")),
-            new Reunion(1, 5, "Bernard", "10H30", "09/02/2020",Arrays.asList("pierre@maReu.com","manuel@maReu.com","bran@maReu.com")),
-            new Reunion(2,8, "Arnaud", "15H00", "01/01/2021",Arrays.asList("pierre@maReu.com","manuel@maReu.com","bran@maReu.com"))
+            new Reunion(0,2, "Henri", "10H00","05/19/2020",Arrays.asList(DUMMY_PERSON.get(0),DUMMY_PERSON.get(1),DUMMY_PERSON.get(2))),
+            new Reunion(1, 5, "Bernard", "10H30", "09/02/2020",Arrays.asList(DUMMY_PERSON.get(0),DUMMY_PERSON.get(1),DUMMY_PERSON.get(2))),
+            new Reunion(2,8, "Arnaud", "15H00", "01/01/2021",Arrays.asList(DUMMY_PERSON.get(0),DUMMY_PERSON.get(1),DUMMY_PERSON.get(2)))
      );
 
     static List<Reunion> generateReunion() {

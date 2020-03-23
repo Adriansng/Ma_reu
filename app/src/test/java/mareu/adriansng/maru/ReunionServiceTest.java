@@ -37,13 +37,14 @@ public class ReunionServiceTest {
     @Test
     public void addReunionList(){
                 service.getReunions().clear();
-                service.addReunion(Reunion.addReunion());
+                service.addReunion(Reunion.newReunion(service.getReunionSize()+1,1,"Arnaud","15h00","05/02/2020",service.getPersonParticipant(service.getReunionSize()+1)));
                 Reunion newReunion = service.getReunions().get(0);
                 assertEquals(1,service.getReunions().size());
                 assertTrue(DummyReunionList.DUMMY_REUNION.stream().map(Reunion::getIdMeetingRoom).collect(Collectors.toList()).contains(newReunion.getIdMeetingRoom()));
-                assertTrue(DummyReunionList.DUMMY_REUNION.stream().map(Reunion::getHourDate).collect(Collectors.toList()).contains(newReunion.getHourDate()));
+                assertTrue(DummyReunionList.DUMMY_REUNION.stream().map(Reunion::getHour).collect(Collectors.toList()).contains(newReunion.getHour()));
+                assertTrue(DummyReunionList.DUMMY_REUNION.stream().map(Reunion::getDate).collect(Collectors.toList()).contains(newReunion.getDate()));
                 assertTrue(DummyReunionList.DUMMY_REUNION.stream().map(Reunion::getNameOrganizer).collect(Collectors.toList()).contains(newReunion.getNameOrganizer()));
-                assertTrue(DummyReunionList.DUMMY_REUNION.stream().map(Reunion::getAddressMailList).collect(Collectors.toList()).contains(newReunion.getAddressMailList()));
+                assertTrue(DummyReunionList.DUMMY_REUNION.stream().map(Reunion::getPersonParticipant).collect(Collectors.toList()).contains(newReunion.getPersonParticipant()));
     }
 
     @Test

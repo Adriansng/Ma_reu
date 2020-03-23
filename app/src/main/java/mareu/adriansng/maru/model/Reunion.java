@@ -22,7 +22,7 @@ public class Reunion {
     private static String date;
 
     /** Address mail participants */
-    private static List<String> addressMailList;
+    private static List<Person> personParticipant;
 
     /**
      * @param id
@@ -30,20 +30,20 @@ public class Reunion {
      * @param nameOrganizer
      * @param hour
      * @param date
-     * @param addressMailList
+     * @param personParticipant
      */
 
-    public Reunion (int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<String> addressMailList){
+    public Reunion (int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<Person> personParticipant){
         this.id = id;
         Reunion.idMeetingRoom = idMeetingRoom;
         Reunion.nameOrganizer = nameOrganizer;
         Reunion.hour = hour;
         Reunion.date= date;
-        Reunion.addressMailList = addressMailList;
+        Reunion.personParticipant = personParticipant;
     }
 
-    public static Reunion newReunion(int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<String> addressMailList) {
-        return new Reunion(id,idMeetingRoom,nameOrganizer,hour, date,addressMailList);
+    public static Reunion newReunion(int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<Person> personParticipant) {
+        return new Reunion(id,idMeetingRoom,nameOrganizer,hour, date,personParticipant);
     }
 
     public int getId() { return id; }
@@ -77,12 +77,12 @@ public class Reunion {
         Reunion.date = date;
     }
 
-    public  List<String> getAddressMailList() {
-        return addressMailList;
+    public  List<Person> getPersonParticipant() {
+        return personParticipant;
     }
 
-    public  void setAddressMailList(List<String> addressMailList) {
-        Reunion.addressMailList = addressMailList;
+    public  void setPersonParticipant(List<Person> addressMailList) {
+        Reunion.personParticipant = personParticipant;
     }
 
     @Override
