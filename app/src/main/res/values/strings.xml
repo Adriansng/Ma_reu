@@ -12,7 +12,7 @@
     <string name="date_type">Wednesday 1 January 2020</string>
     <string name="hour_type">10H00</string>
     <string name="filter_room">Filter room</string>
-    <string name="filter_date">Filter date</string>
-    <string name="filter_meeting_room">Filter meeting room</string>
+    <string name="filter_date">Filter date:</string>
+    <string name="filter_meeting_room">Filter meeting room:</string>
     <string name="salle_de_reunion_a"> - Salle de reunion A</string>
 </resources>
