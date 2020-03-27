@@ -15,4 +15,6 @@
     <string name="filter_date">Filter date:</string>
     <string name="filter_meeting_room">Filter meeting room:</string>
     <string name="salle_de_reunion_a"> - Salle de reunion A</string>
+    <string name="button_cancel_filter">button cancel filter</string>
+    <string name="button_validate_filter">button validate filter</string>
 </resources>

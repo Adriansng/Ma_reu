@@ -49,8 +49,8 @@
         android:id="@+id/spinner_room_reunion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:layout_marginStart="175dp"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="200dp"/>
 
     <ImageButton
         android:id="@+id/validate_btn_popup"
@@ -58,7 +58,8 @@
         android:layout_height="75dp"
         android:layout_gravity="center"
         android:layout_marginStart="100dp"
-        android:background="@drawable/ic_check_circle_black_24dp"/>
+        android:background="@drawable/ic_check_circle_black_24dp"
+        android:contentDescription="@string/button_validate_filter" />
 
     <ImageButton
         android:id="@+id/cancel_btn_popup"
@@ -66,6 +67,7 @@
         android:layout_height="75dp"
         android:layout_gravity="center"
         android:layout_marginEnd="100dp"
-        android:background="@drawable/ic_cancel_black_24dp" />
+        android:background="@drawable/ic_cancel_black_24dp"
+        android:contentDescription="@string/button_cancel_filter" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
