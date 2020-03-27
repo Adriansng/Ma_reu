@@ -6,9 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ActionMenuView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -18,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.ActionMenuItemView;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -87,10 +86,11 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         initList();
 
         //POPUP FILTER
-        ActionMenuView filterPopup= findViewById(R.id.action_filter);
-        filterPopup.setOnMenuItemClickListener(new ActionMenuView.OnMenuItemClickListener() {
+        ActionMenuItemView filterPopup= findViewById(R.id.action_filter);
+        filterPopup.setClickable(true);
+        filterPopup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
+            public void onClick(View v) {
                 Dialog dialog = new Dialog(ListReunionActivity.this);
                 dialog.setContentView(R.layout.popup_filter_room);
                 dialog.setTitle("Fitler");
@@ -150,10 +150,8 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                     }
                 });
                 dialog.show();
-                return false;
             }
         });
-
     }
 
     // Configuration
