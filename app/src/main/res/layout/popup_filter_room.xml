@@ -2,17 +2,15 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_gravity="center">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/popup_filter_date_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/filter_date"
-        android:layout_gravity="center|start"
+        android:layout_gravity="start"
         android:layout_marginStart="25dp"
-        android:layout_marginBottom="150dp"
         android:textSize="25sp"
         android:textStyle="bold"/>
 
@@ -20,10 +18,9 @@
         android:id="@+id/date"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="50dp"
         android:layout_marginStart="25dp"
-        android:layout_marginBottom="150dp"
-        android:layout_gravity="center|start"
+        android:layout_gravity="start"
         android:background="@drawable/ic_date_range_black_24dp"
         android:ems="10" />
 
@@ -41,10 +38,9 @@
         android:id="@+id/popup_filter_room_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|start"
+        android:layout_gravity="start"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginTop="150dp"
         android:text="@string/filter_meeting_room"
         android:textSize="25sp"
         android:textStyle="bold"/>
@@ -53,17 +49,14 @@
         android:id="@+id/spinner_room_reunion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="350dp"
-        android:layout_marginBottom="150dp"/>
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="175dp"/>
 
     <ImageButton
         android:id="@+id/validate_btn_popup"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
-        android:layout_marginTop="475dp"
-        android:layout_marginBottom="150dp"
         android:layout_marginStart="100dp"
         android:background="@drawable/ic_check_circle_black_24dp"/>
 
@@ -73,8 +66,6 @@
         android:layout_height="75dp"
         android:layout_gravity="center"
         android:layout_marginEnd="100dp"
-        android:layout_marginTop="475dp"
-        android:layout_marginBottom="150dp"
         android:background="@drawable/ic_cancel_black_24dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
