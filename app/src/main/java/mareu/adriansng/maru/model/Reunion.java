@@ -10,19 +10,19 @@ public class Reunion {
     private int id;
 
     /** Meeting room */
-    private static int idMeetingRoom;
+    private  int idMeetingRoom;
 
     /** Name organizer */
-    private static String nameOrganizer;
+    private  String nameOrganizer;
 
     /** Hour */
-    private static String hour;
+    private  String hour;
 
     /** Date */
-    private static String date;
+    private  String date;
 
     /** Address mail participants */
-    private static List<Person> personParticipant;
+    private List<Person> personParticipant;
 
     /**
      * @param id
@@ -35,11 +35,11 @@ public class Reunion {
 
     public Reunion (int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<Person> personParticipant){
         this.id = id;
-        Reunion.idMeetingRoom = idMeetingRoom;
-        Reunion.nameOrganizer = nameOrganizer;
-        Reunion.hour = hour;
-        Reunion.date= date;
-        Reunion.personParticipant = personParticipant;
+        this.idMeetingRoom = idMeetingRoom;
+        this.nameOrganizer = nameOrganizer;
+        this.hour = hour;
+        this.date= date;
+        this.personParticipant = personParticipant;
     }
 
     public static Reunion newReunion(int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<Person> personParticipant) {
@@ -54,7 +54,7 @@ public class Reunion {
         return idMeetingRoom;}
 
     public void setIdMeetingRoom(int meetingRoom) {
-        Reunion.idMeetingRoom = idMeetingRoom;
+        this.idMeetingRoom = idMeetingRoom;
     }
 
     public  String getNameOrganizer() {
@@ -62,19 +62,19 @@ public class Reunion {
     }
 
     public  void setNameOrganizer(String nameOrganizer) {
-        Reunion.nameOrganizer = nameOrganizer;
+        this.nameOrganizer = nameOrganizer;
     }
 
     public  String getHour() { return hour; }
 
-    public  void setHour(String hourDate) { Reunion.hour = hourDate; }
+    public  void setHour(String hourDate) { this.hour = hourDate; }
 
     public  String getDate() {
         return date;
     }
 
     public  void setDate(String date) {
-        Reunion.date = date;
+        this.date = date;
     }
 
     public  List<Person> getPersonParticipant() {
@@ -82,7 +82,7 @@ public class Reunion {
     }
 
     public  void setPersonParticipant(List<Person> addressMailList) {
-        Reunion.personParticipant = personParticipant;
+        this.personParticipant = personParticipant;
     }
 
     @Override
