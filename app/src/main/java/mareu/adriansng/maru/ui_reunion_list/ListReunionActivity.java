@@ -130,11 +130,13 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                         if (mSpinner.getSelectedItem().toString().equalsIgnoreCase("")) {
                             Toast.makeText(ListReunionActivity.this, mSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                             reunionApiService.getFilterMeetingRoom(selectionRoom.getId());
+                            initList();
                         }
                         if (textViewDate.toString().equalsIgnoreCase("")) {
                             Toast.makeText(ListReunionActivity.this, textViewDate.toString(), Toast.LENGTH_SHORT).show();
                             reunionApiService.getSelectionFilterDate(date);
                             reunionApiService.getFilterDate();
+                            initList();
                         }
                         dialog.dismiss();
                     }
