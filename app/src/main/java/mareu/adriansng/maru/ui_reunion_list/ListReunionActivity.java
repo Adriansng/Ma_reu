@@ -6,7 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ActionMenuView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -85,10 +87,10 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         initList();
 
         //POPUP FILTER
-        ImageButton filterPopup= findViewById(R.id.action_filter);
-        filterPopup.setOnClickListener(new View.OnClickListener() {
+        ActionMenuView filterPopup= findViewById(R.id.action_filter);
+        filterPopup.setOnMenuItemClickListener(new ActionMenuView.OnMenuItemClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onMenuItemClick(MenuItem item) {
                 Dialog dialog = new Dialog(ListReunionActivity.this);
                 dialog.setContentView(R.layout.popup_filter_room);
                 dialog.setTitle("Fitler");
@@ -148,6 +150,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                     }
                 });
                 dialog.show();
+                return false;
             }
         });
 
