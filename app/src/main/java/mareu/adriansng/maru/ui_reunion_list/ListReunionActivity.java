@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -84,6 +83,74 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
             }
         });
         initList();
+
+        //POPUP FILTER
+        ImageButton filterPopup= findViewById(R.id.action_filter);
+        filterPopup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(ListReunionActivity.this);
+                dialog.setContentView(R.layout.popup_filter_room);
+                dialog.setTitle("Fitler");
+
+                //Filter Date
+                Button mButtonDate = dialog.findViewById(R.id.date);
+                TextView textViewDate = dialog.findViewById(R.id.view_hour_date_filter);
+                mButtonDate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogFragment datePicker = new DatePickerFragment();
+                        datePicker.show(getSupportFragmentManager(), "date picker");
+                    }
+                });
+
+                //Filter Room
+                Spinner mSpinner = dialog.findViewById(R.id.spinner_room_reunion);
+                initListSpinner();
+                mAdapterSpinner = new SpinnerMeetingRoomAdapter(ListReunionActivity.this, mMeetingRoom);
+                mSpinner.setAdapter(mAdapterSpinner);
+                mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        selectionRoom = reunionApiService.getMeetingRoom().get(position);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+                //Validate
+                ImageButton buttonValidate = dialog.findViewById(R.id.validate_btn_popup);
+                buttonValidate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (mSpinner.getSelectedItem().toString().equalsIgnoreCase("")) {
+                            Toast.makeText(ListReunionActivity.this, mSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                            reunionApiService.getFilterMeetingRoom(selectionRoom.getId());
+                            initList();
+                        }
+                        if (textViewDate.toString().equalsIgnoreCase("")) {
+                            Toast.makeText(ListReunionActivity.this, textViewDate.toString(), Toast.LENGTH_SHORT).show();
+                            reunionApiService.getSelectionFilterDate(date);
+                            reunionApiService.getFilterDate();
+                            initList();
+                        }
+                        dialog.dismiss();
+                    }
+                });
+                //Cancel
+                ImageButton buttonCancel = dialog.findViewById(R.id.cancel_btn_popup);
+                buttonCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
+
     }
 
     // Configuration
@@ -114,78 +181,6 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_filter) {
-            item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    Dialog dialog = new Dialog(ListReunionActivity.this);
-                    dialog.setContentView(R.layout.popup_filter_room);
-                    dialog.setTitle("Fitler");
-
-                    //Filter Date
-                    Button mButtonDate = dialog.findViewById(R.id.date);
-                    TextView textViewDate = dialog.findViewById(R.id.view_hour_date_filter);
-                    mButtonDate.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            DialogFragment datePicker = new DatePickerFragment();
-                            datePicker.show(getSupportFragmentManager(), "date picker");
-                        }
-                    });
-
-                    //Filter Room
-                    Spinner mSpinner = dialog.findViewById(R.id.spinner_room_reunion);
-                    initListSpinner();
-                    mAdapterSpinner = new SpinnerMeetingRoomAdapter(ListReunionActivity.this, mMeetingRoom);
-                    mSpinner.setAdapter(mAdapterSpinner);
-                    mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            selectionRoom = reunionApiService.getMeetingRoom().get(position);
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
-
-                    //Validate
-                    ImageButton buttonValidate = dialog.findViewById(R.id.validate_btn_popup);
-                    buttonValidate.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (mSpinner.getSelectedItem().toString().equalsIgnoreCase("")) {
-                                Toast.makeText(ListReunionActivity.this, mSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                                reunionApiService.getFilterMeetingRoom(selectionRoom.getId());
-                                initList();
-                            }
-                            if (textViewDate.toString().equalsIgnoreCase("")) {
-                                Toast.makeText(ListReunionActivity.this, textViewDate.toString(), Toast.LENGTH_SHORT).show();
-                                reunionApiService.getSelectionFilterDate(date);
-                                reunionApiService.getFilterDate();
-                                initList();
-                            }
-                            dialog.dismiss();
-                        }
-                    });
-                    //Cancel
-                    ImageButton buttonCancel = dialog.findViewById(R.id.cancel_btn_popup);
-                    buttonCancel.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
-                        }
-                    });
-                    dialog.show();
-                    return true;
-                }
-            });
-
-    } return super.onOptionsItemSelected(item);
-    }
     public DialogFragment getDatePicker() {return datePicker;}
 
     @Override
