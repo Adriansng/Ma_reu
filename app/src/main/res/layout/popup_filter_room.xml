@@ -56,8 +56,9 @@
         android:id="@+id/validate_btn_popup"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:layout_marginStart="100dp"
+        android:layout_marginTop="250dp"
         android:background="@drawable/ic_check_circle_black_24dp"
         android:contentDescription="@string/button_validate_filter" />
 
@@ -65,8 +66,9 @@
         android:id="@+id/cancel_btn_popup"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:layout_marginEnd="100dp"
+        android:layout_marginTop="250dp"
         android:background="@drawable/ic_cancel_black_24dp"
         android:contentDescription="@string/button_cancel_filter" />
 
