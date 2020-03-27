@@ -194,7 +194,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
 
         TextView textViewDate=findViewById(R.id.view_hour_date_filter);
         textViewDate.setText(currentDateString);
-        String date= textViewDate.getText().toString();
+        date= textViewDate.getText().toString();
 
     }
 
