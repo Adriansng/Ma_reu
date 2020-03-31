@@ -32,10 +32,11 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
 
     public void bind(Reunion mReunion) {
         apiService= DI.getReunionApiService();
-        String address="- ";
+        String address = null;
         this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom())+ " - "+ mReunion.getHour()+" - "+ mReunion.getNameOrganizer());
         for(Person person: mReunion.getPersonParticipant()) {
             address += person.getAddressMail();
+            address += " -";
         }
         this.mReunionListMail.setText(address);
         this.mDeleteButton.setOnClickListener(v ->
