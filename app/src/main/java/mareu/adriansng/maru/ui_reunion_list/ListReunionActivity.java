@@ -58,6 +58,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
     private SpinnerMeetingRoomAdapter mAdapterSpinner;
     private ListReunionAdapter adapter;
     private ArrayList<MeetingRoom> mMeetingRoom;
+    private ArrayList<Reunion> mReunionsFilter;
     private MeetingRoom selectionRoom;
     private String dateFilter;
     private String date;
@@ -128,16 +129,15 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                     @Override
                     public void onClick(View v) {
                         if (!mSpinner.getSelectedItem().toString().equalsIgnoreCase("")) {
-                            Toast.makeText(ListReunionActivity.this, mSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ListReunionActivity.this, "You have filter with "+selectionRoom.getNameRoom(), Toast.LENGTH_SHORT).show();
                             reunionApiService.getFilterMeetingRoom(selectionRoom.getId());
-                            initList();
                         }
                         if (!textViewDate.toString().equalsIgnoreCase("")) {
-                            Toast.makeText(ListReunionActivity.this, textViewDate.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ListReunionActivity.this, "You have filter with "+date, Toast.LENGTH_SHORT).show();
                             reunionApiService.getSelectionFilterDate(date);
                             reunionApiService.getFilterDate();
-                            initList();
                         }
+                        initNewList();
                         dialog.dismiss();
                     }
                 });
@@ -169,9 +169,16 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         recyclerView.setAdapter(mAdapter);
     }
 
+    private void initNewList(){
+        mReunionsFilter= new ArrayList<>();
+        mReunions.addAll(reunionApiService.getReunions());
+        ListReunionAdapter mAdapter=new ListReunionAdapter(mReunions);
+        recyclerView.setAdapter(mAdapter);
+    }
+
     // Actions
     @Subscribe
-    public void onDeleteNeighbour(DeleteReunionEvent event) {
+    public void onDeleteReunion(DeleteReunionEvent event) {
         reunionApiService.deleteReunion(event.reunion);
         initList();
     }

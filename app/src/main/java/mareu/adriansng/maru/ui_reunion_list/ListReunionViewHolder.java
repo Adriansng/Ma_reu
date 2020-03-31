@@ -40,9 +40,9 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
         this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom())+ " - "+ mReunion.getHour()+" - "+ mReunion.getNameOrganizer());
         for(Person person: mReunion.getPersonParticipant()) {
             address += person.getAddressMail();
-
+            address += " - ";
         }
-        address += " - ";
+
         this.mReunionListMail.setText(address);
         this.mDeleteButton.setOnClickListener(v ->
                 EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
