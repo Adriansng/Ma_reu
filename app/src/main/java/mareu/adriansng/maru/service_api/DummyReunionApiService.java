@@ -70,7 +70,7 @@ public class DummyReunionApiService implements ReunionApiService {
     public List<Reunion> getFilterDate(){
         reunions.clear();
         for(Reunion n: reunions){
-            if(n.getDate()== dateReunion){
+            if(n.getDate().equals(dateReunion)){
                 reunions.add(n);
             }
         }

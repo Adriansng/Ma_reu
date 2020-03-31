@@ -74,7 +74,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         this.activity=this;
         reunionApiService= DI.getReunionApiService();
         configureRecyclerView();
-        FloatingActionButton mAddButton= findViewById(R.id.add_reunion_button);
+        mAddButton= findViewById(R.id.add_reunion_button);
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,12 +127,12 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                 buttonValidate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (mSpinner.getSelectedItem().toString().equalsIgnoreCase("")) {
+                        if (!mSpinner.getSelectedItem().toString().equalsIgnoreCase("")) {
                             Toast.makeText(ListReunionActivity.this, mSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                             reunionApiService.getFilterMeetingRoom(selectionRoom.getId());
                             initList();
                         }
-                        if (textViewDate.toString().equalsIgnoreCase("")) {
+                        if (!textViewDate.toString().equalsIgnoreCase("")) {
                             Toast.makeText(ListReunionActivity.this, textViewDate.toString(), Toast.LENGTH_SHORT).show();
                             reunionApiService.getSelectionFilterDate(date);
                             reunionApiService.getFilterDate();
@@ -194,7 +194,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
 
         TextView textViewDate=findViewById(R.id.view_hour_date_filter);
         textViewDate.setText(currentDateString);
-        date= textViewDate.getText().toString();
+        date=currentDateString;
 
     }
 
