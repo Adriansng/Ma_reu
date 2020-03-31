@@ -97,6 +97,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
         //Validate reunion
         ImageButton finishButton= findViewById(R.id.validate_btn);
+        finishButton.setEnabled(editNameOrganizer.toString().length() !=0);
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
