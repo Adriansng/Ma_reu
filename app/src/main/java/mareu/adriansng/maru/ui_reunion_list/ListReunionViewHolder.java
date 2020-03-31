@@ -1,6 +1,5 @@
 package mareu.adriansng.maru.ui_reunion_list;
 
-import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -30,15 +29,15 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
         mDeleteButton=itemView.findViewById(R.id.item_list_user_delete_button);
     }
 
-    @SuppressLint("SetTextI18n")
+
     public void bind(Reunion mReunion) {
         apiService= DI.getReunionApiService();
+        String address="- ";
         this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom())+ " - "+ mReunion.getHour()+" - "+ mReunion.getNameOrganizer());
         for(Person person: mReunion.getPersonParticipant()) {
-        String address="- ";
-        address += person.getAddressMail();
-        this.mReunionListMail.setText(address);
+            address += person.getAddressMail();
         }
+        this.mReunionListMail.setText(address);
         this.mDeleteButton.setOnClickListener(v ->
                 EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
     }
