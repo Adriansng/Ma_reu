@@ -9,13 +9,12 @@
 
     <ImageView
         android:id="@+id/item_list_reunion_avatar"
-        android:layout_width="40dp"
+        android:layout_width="50dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        tools:srcCompat="@tools:sample/date/ddmmyy"
-        android:contentDescription="@string/avatar_reu_description" />
+        app:srcCompat="@drawable/ic_lens_black_24dp" />
 
     <TextView
         android:id="@+id/item_list_reunion_number"
@@ -23,20 +22,30 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="83dp"
         android:layout_marginTop="13dp"
+        android:autoLink="all"
+        android:scrollHorizontally="false"
+        android:singleLine="true"
         android:text="@string/reunion_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/colorNameReunion"
         android:textSize="17sp"
         android:textStyle="bold"
-        android:textColor="@color/colorNameReunion"/>
+        app:autoSizeTextType="none" />
 
     <TextView
         android:id="@+id/item_list_reunion_mail"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="83dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="65dp"
-        android:text="@string/address_mails"/>
+        android:singleLine="true"
+        android:text="@string/address_mails"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textIsSelectable="false"
+        android:typeface="normal" />
 
     <ImageButton
         android:id="@+id/item_list_user_delete_button"
