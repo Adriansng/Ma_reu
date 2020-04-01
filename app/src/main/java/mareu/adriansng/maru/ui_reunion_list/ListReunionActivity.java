@@ -105,13 +105,13 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                     public void onClick(View v) {
                         DialogFragment datePicker = new DatePickerFragment();
                         datePicker.show(getSupportFragmentManager(), "date picker");
-
                     }
                 });
 
                 //Filter Room
                 Spinner mSpinner = dialog.findViewById(R.id.spinner_room_reunion);
                 initListSpinner();
+                mSpinner.setPrompt("Select a Room");
                 mAdapterSpinner = new SpinnerMeetingRoomAdapter(ListReunionActivity.this, mMeetingRoom);
                 mSpinner.setAdapter(mAdapterSpinner);
                 mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -130,17 +130,18 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                 buttonValidate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (!mSpinner.getSelectedItem().toString().equalsIgnoreCase("")) {
+                        if (!mSpinner.getSelectedItem().toString().equals("Select a Room")) {
                             Toast.makeText(ListReunionActivity.this, "You have filter with "+selectionRoom.getNameRoom(), Toast.LENGTH_SHORT).show();
                             reunionApiService.getFilterMeetingRoom(selectionRoom.getId());
-                            initNewList();
+                            initList();
                         }
-                        if (!textViewDate.toString().equalsIgnoreCase("")) {
+                        if (!textViewDate.toString().equals("Select a meeting date")) {
                             Toast.makeText(ListReunionActivity.this, "and on the date "+date, Toast.LENGTH_SHORT).show();
                             reunionApiService.getSelectionFilterDate(date);
                             reunionApiService.getFilterDate();
 
                         }
+                        initList();
 
                         dialog.dismiss();
                     }
