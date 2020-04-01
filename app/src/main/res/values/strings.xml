@@ -9,12 +9,13 @@
     <string name="date_et_heure">Date and Hour:</string>
     <string name="choix_de_la_salle">Choose a room:</string>
     <string name="validate">Validate</string>
-    <string name="date_type">Wednesday 1 January 2020</string>
-    <string name="hour_type">10H00</string>
+    <string name="date_type">Select your meeting date</string>
+    <string name="hour_type">Select your meeting time (duration 20 min)</string>
     <string name="filter_room">Filter room</string>
     <string name="filter_date">Filter date:</string>
     <string name="filter_meeting_room">Filter meeting room:</string>
-    <string name="salle_de_reunion_a"> - Salle de reunion A</string>
+    <string name="salle_de_reunion_a">-   Salle de reunion A</string>
     <string name="button_cancel_filter">button cancel filter</string>
     <string name="button_validate_filter">button validate filter</string>
+    <string name="select_a_meeting_date">Select a meeting date</string>
 </resources>

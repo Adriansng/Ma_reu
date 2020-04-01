@@ -48,11 +48,6 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../MagicGithub/app/src/main/java/com/openclassrooms/magicgithub/ui/user_list/UserListAdapter.java">
-          <value>
-            <set />
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/app/build.gradle">
           <value>
             <set />
@@ -178,12 +173,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/utils/DateUtils.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/utils/PopupFilterRoom.java">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/utils/UserDiffCallBack.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout-land/content_add_hour_day.xml">
           <value>
             <set />
           </value>
@@ -233,6 +238,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/popup_filter_room.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
           <value>
             <set />
@@ -254,6 +264,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/test/java/mareu/adriansng/maru/ReunionServiceTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../MagicGithub/app/src/main/java/com/openclassrooms/magicgithub/ui/user_list/UserListAdapter.java">
           <value>
             <set />
           </value>

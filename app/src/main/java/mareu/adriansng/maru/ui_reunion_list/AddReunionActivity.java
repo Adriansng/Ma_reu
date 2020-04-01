@@ -35,16 +35,12 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     //Data
     private ReunionApiService mApiService;
     private ArrayList<MeetingRoom> mMeetingRoom;
-    //Design
-    private Spinner mRoomReunion;
-    private SpinnerMeetingRoomAdapter mAdapter;
     private Button finishButton;
     //Parameter Reunion
-    private int idReunion ;
     private MeetingRoom selectionRoom;
-    private String nameOrganizer;
     private String date;
     private String hour;
+    private int idReunion;
 
 
     @Override
@@ -54,10 +50,10 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         mApiService = DI.getReunionApiService();
         //Name Organizer
         EditText editNameOrganizer= findViewById(R.id.name_organizer);
-        nameOrganizer= editNameOrganizer.getText().toString();
+        String nameOrganizer= editNameOrganizer.getText().toString();
 
         // Date
-        Button buttonDate=  findViewById(R.id.date);
+        Button buttonDate=  findViewById(R.id.date_add);
         buttonDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +63,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         });
 
         // Hour
-        Button buttonHour= findViewById(R.id.hour);
+        Button buttonHour= findViewById(R.id.hour_add);
         buttonHour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,8 +75,9 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
         // Room Reunion
         initList();
-        mRoomReunion = findViewById(R.id.roomReunion);
-        mAdapter = new SpinnerMeetingRoomAdapter(this, mMeetingRoom);
+        //Design
+        Spinner mRoomReunion = findViewById(R.id.roomReunion);
+        SpinnerMeetingRoomAdapter mAdapter = new SpinnerMeetingRoomAdapter(this, mMeetingRoom);
         mRoomReunion.setAdapter(mAdapter);
         mRoomReunion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -117,14 +114,14 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         String currentDateString= DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
 
-        TextView textViewDate=findViewById(R.id.view_hour_date);
+        TextView textViewDate=findViewById(R.id.view_date_add);
         textViewDate.setText(currentDateString);
         date= textViewDate.getText().toString();
 
     }
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        TextView textViewTimes=findViewById(R.id.view_hour);
+        TextView textViewTimes=findViewById(R.id.view_hour_add);
         textViewTimes.setText(hourOfDay+"H"+minute);
         hour=textViewTimes.getText().toString();
     }

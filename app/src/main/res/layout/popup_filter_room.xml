@@ -11,14 +11,14 @@
         android:text="@string/filter_date"
         android:layout_gravity="start"
         android:layout_marginStart="25dp"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold"/>
 
     <Button
         android:id="@+id/date"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="25dp"
         android:layout_gravity="start"
         android:background="@drawable/ic_date_range_black_24dp"
@@ -28,11 +28,11 @@
         android:id="@+id/view_hour_date_filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="110dp"
         app:layout_anchor="@+id/date"
         app:layout_anchorGravity="center"
-        android:text="@string/date_type"
-        android:textSize="25sp" />
+        android:text="@string/select_a_meeting_date"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/popup_filter_room_title"
@@ -40,9 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:text="@string/filter_meeting_room"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold"/>
 
     <androidx.appcompat.widget.AppCompatSpinner
@@ -50,25 +50,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="200dp"/>
+        android:layout_marginTop="160dp"/>
 
     <ImageButton
         android:id="@+id/validate_btn_popup"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="200dp"
         android:background="@drawable/ic_check_circle_black_24dp"
         android:contentDescription="@string/button_validate_filter" />
 
     <ImageButton
         android:id="@+id/cancel_btn_popup"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginEnd="100dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="200dp"
         android:background="@drawable/ic_cancel_black_24dp"
         android:contentDescription="@string/button_cancel_filter" />
 
