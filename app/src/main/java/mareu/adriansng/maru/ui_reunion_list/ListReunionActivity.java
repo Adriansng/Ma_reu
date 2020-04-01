@@ -111,7 +111,6 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                 //Filter Room
                 Spinner mSpinner = dialog.findViewById(R.id.spinner_room_reunion);
                 initListSpinner();
-                mSpinner.setPrompt("Select a Room");
                 mAdapterSpinner = new SpinnerMeetingRoomAdapter(ListReunionActivity.this, mMeetingRoom);
                 mSpinner.setAdapter(mAdapterSpinner);
                 mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

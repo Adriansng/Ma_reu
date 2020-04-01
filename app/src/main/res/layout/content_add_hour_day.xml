@@ -96,7 +96,8 @@
                 android:layout_marginTop="20dp"
                 app:layout_anchor="@+id/roomReunion"
                 app:layout_anchorGravity="start|center"
-                tools:ignore="RtlSymmetry" />
+                android:prompt="Select a room"
+                tools:ignore="HardcodedText,RtlSymmetry" />
 
             <TextView
                 android:id="@+id/textView3"
