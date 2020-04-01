@@ -69,7 +69,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
     // OVERRIDE
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -100,12 +100,14 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                 //Filter Date
                 Button mButtonDate = dialog.findViewById(R.id.date);
                 TextView textViewDate = dialog.findViewById(R.id.view_date_filter);
-                textViewDate.setText(currentDateString);
                 mButtonDate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         DialogFragment datePicker = new DatePickerFragment();
                         datePicker.show(getSupportFragmentManager(), "date picker");
+                        if(isFinishing()){
+                            textViewDate.setText(currentDateString);
+                        }
                     }
                 });
 
