@@ -117,7 +117,6 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         TextView textViewDate=findViewById(R.id.view_date_add);
         textViewDate.setText(currentDateString);
         date= textViewDate.getText().toString();
-
     }
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {

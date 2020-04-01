@@ -14,6 +14,8 @@ public class DateUtils {
      public static final String DATE_FORMAT_1="hh'H'mm";
      public static final String DATE_FORMAT_2="dd-MMMM-yyyy";
      public static final String DATE_FORMAT_3="hh'H'mm a dd MMMM yyyy";
+     public static final String DATE_FORMAT_4="hh,mm";
+     public static final String DATE_FORMAT_5="dd";
 
      public static String getCurrentDate() {
          SimpleDateFormat dateFormat= new SimpleDateFormat(DATE_FORMAT_1);
@@ -63,6 +65,5 @@ public class DateUtils {
          mOutputDateString= mOutputDateFormat.format(mParsedDate);
          return  mOutputDateString;
          }
-
 
 }
