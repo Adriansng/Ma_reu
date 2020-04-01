@@ -22,7 +22,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView_add"
             android:layout_width="match_parent"
-            android:layout_height="235dp"
+            android:layout_height="210dp"
             android:layout_gravity="center"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
@@ -35,7 +35,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/ic_date_range_black_24dp"
                 android:ems="10"
                 tools:ignore="RtlSymmetry" />
@@ -44,7 +44,7 @@
                 android:id="@+id/view_date_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="48dp"
                 android:layout_marginStart="100dp"
                 android:text="@string/date_type"
                 android:textSize="20sp"
@@ -55,7 +55,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="130dp"
+                android:layout_marginTop="120dp"
                 android:gravity="start"
                 android:background="@drawable/ic_access_time_black_24dp"
                 android:ems="10"
@@ -65,7 +65,7 @@
                 android:id="@+id/view_hour_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="135dp"
+                android:layout_marginTop="130dp"
                 android:layout_marginStart="100dp"
                 android:text="@string/hour_type"
                 android:textSize="20sp"
@@ -76,7 +76,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView2_add"
             android:layout_width="match_parent"
-            android:layout_height="99dp"
+            android:layout_height="125dp"
             android:layout_gravity="center"
             android:layout_marginStart="2dp"
             android:layout_marginTop="20dp"
@@ -87,20 +87,21 @@
             tools:ignore="PrivateResource">
 
             <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/roomReunion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            app:layout_anchor="@+id/roomReunion"
-            app:layout_anchorGravity="start|center"
-            tools:ignore="RtlSymmetry" />
+                android:id="@+id/roomReunion"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                app:layout_anchor="@+id/roomReunion"
+                app:layout_anchorGravity="start|center"
+                tools:ignore="RtlSymmetry" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center|top"
                 android:text="@string/choix_de_la_salle"
                 android:textSize="25sp"
                 android:textStyle="bold"
