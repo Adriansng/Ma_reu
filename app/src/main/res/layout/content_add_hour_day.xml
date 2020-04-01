@@ -32,10 +32,10 @@
 
             <Button
                 android:id="@+id/date_add"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/ic_date_range_black_24dp"
                 android:ems="10"
                 tools:ignore="RtlSymmetry" />
@@ -44,7 +44,7 @@
                 android:id="@+id/view_date_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginStart="100dp"
                 android:text="@string/date_type"
                 android:textSize="20sp"
@@ -52,10 +52,11 @@
 
             <Button
                 android:id="@+id/hour_add"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="145dp"
+                android:layout_marginTop="130dp"
+                android:gravity="start"
                 android:background="@drawable/ic_access_time_black_24dp"
                 android:ems="10"
                 tools:ignore="RtlSymmetry" />
@@ -64,9 +65,8 @@
                 android:id="@+id/view_hour_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="135dp"
                 android:layout_marginStart="100dp"
-                app:layout_anchor="@+id/hour_add"
-                app:layout_anchorGravity="center"
                 android:text="@string/hour_type"
                 android:textSize="20sp"
                 android:textStyle="bold" />
