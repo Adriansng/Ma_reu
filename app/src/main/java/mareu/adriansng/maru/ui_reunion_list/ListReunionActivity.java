@@ -62,6 +62,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
     private MeetingRoom selectionRoom;
     private String dateFilter;
     private String date;
+    private String currentDateString;
     private Button mButtonDate;
     private DialogFragment datePicker;
 
@@ -98,7 +99,8 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
 
                 //Filter Date
                 Button mButtonDate = dialog.findViewById(R.id.date);
-                TextView textViewDate = dialog.findViewById(R.id.view_hour_date_filter);
+                TextView textViewDate = dialog.findViewById(R.id.view_date_filter);
+                textViewDate.setText(currentDateString);
                 mButtonDate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -198,12 +200,9 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         c.set(Calendar.YEAR,year);
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        String currentDateString= DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        currentDateString= DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
 
-        TextView textViewDate=findViewById(R.id.view_hour_date_filter);
-        textViewDate.setText(currentDateString);
-        date=textViewDate.getText().toString();
-
+        date = currentDateString;
     }
 
     private void initListSpinner() {

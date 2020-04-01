@@ -30,38 +30,26 @@
             app:cardMaxElevation="@dimen/cardview_default_elevation"
             tools:ignore="PrivateResource">
 
-            <TextView
-                android:id="@+id/view_date_add"
-                android:layout_width="wrap_content"
-                android:layout_height="54dp"
-                android:layout_marginStart="100dp"
-                android:layout_marginTop="65dp"
-                android:layout_marginEnd="20dp"
-                android:text="@string/date_type"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:ignore="RtlSymmetry" />
-
-            <TextView
-                android:id="@+id/view_hour_add"
-                android:layout_width="196dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
-                android:layout_marginTop="155dp"
-                android:text="@string/hour_type"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:ignore="RtlSymmetry" />
-
-
             <Button
                 android:id="@+id/date_add"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="65dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/ic_date_range_black_24dp"
                 android:ems="10"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/view_date_add"
+                android:layout_width="wrap_content"
+                android:layout_height="54dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/date_type"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 tools:ignore="RtlSymmetry" />
 
             <Button
@@ -69,9 +57,20 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="145dp"
+                android:layout_marginTop="135dp"
                 android:background="@drawable/ic_access_time_black_24dp"
                 android:ems="10"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/view_hour_add"
+                android:layout_width="196dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="135dp"
+                android:text="@string/hour_type"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 tools:ignore="RtlSymmetry" />
 
         </androidx.cardview.widget.CardView>

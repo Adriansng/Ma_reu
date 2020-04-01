@@ -11,7 +11,6 @@ import mareu.adriansng.maru.model.Reunion;
 public abstract class DummyReunionList {
 
 
-
     //Generate MeetingRoom
     public static List<MeetingRoom> DUMMY_MEETING_ROOM = Arrays.asList(
             new MeetingRoom(0,"Meeting Room A", true),
