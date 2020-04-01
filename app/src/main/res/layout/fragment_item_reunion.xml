@@ -26,9 +26,10 @@
         android:scrollHorizontally="false"
         android:singleLine="true"
         android:text="@string/reunion_name"
+        android:padding="5dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorNameReunion"
-        android:textSize="17sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:autoSizeTextType="none" />
 
@@ -40,9 +41,11 @@
         android:layout_marginStart="83dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="65dp"
+        android:padding="5dp"
         android:singleLine="true"
         android:text="@string/address_mails"
         android:textAllCaps="false"
+        android:textSize="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textIsSelectable="false"
         android:typeface="normal" />
@@ -53,6 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_gravity="center|end"
+        android:padding="10dp"
         android:background="@null"
         app:srcCompat="@drawable/ic_delete_black_24dp"
         android:contentDescription="@string/button_delete_reu_description" />
