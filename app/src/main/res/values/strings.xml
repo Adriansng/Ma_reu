@@ -18,4 +18,5 @@
     <string name="button_cancel_filter">button cancel filter</string>
     <string name="button_validate_filter">button validate filter</string>
     <string name="select_a_meeting_date">Select a meeting date</string>
+    <string name="select_a_meeting_room">Select a room</string>
 </resources>

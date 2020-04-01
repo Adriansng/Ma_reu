@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:prompt="Select a room"
+        android:prompt="@string/select_a_meeting_room"
         android:layout_marginTop="200dp"
         tools:ignore="HardcodedText" />
 
