@@ -105,7 +105,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                     public void onClick(View v) {
                         DialogFragment datePicker = new DatePickerFragment();
                         datePicker.show(getSupportFragmentManager(), "date picker");
-                        if(isFinishing()){
+                        if(currentDateString!=null){
                             textViewDate.setText(currentDateString);
                         }
                     }
