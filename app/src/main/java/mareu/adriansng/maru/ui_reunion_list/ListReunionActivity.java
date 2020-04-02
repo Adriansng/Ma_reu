@@ -132,22 +132,25 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                     @Override
                     public void onClick(View v) {
                         if (!selectionRoom.getNameRoom().equals("Select a Room") && date != null) {
-                            Toast.makeText(ListReunionActivity.this, "You have filter with "+selectionRoom.getNameRoom()+" and on the date "+date, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ListReunionActivity.this, "You have filter with "+selectionRoom.getNameRoom()+" and on the date "+date, Toast.LENGTH_LONG).show();
                             reunionApiService.getFilterMeetingAndDate(selectionRoom.getId(),date);
+                            initNewList();
                         }
                         if (date != null && selectionRoom.getNameRoom().equals("Select a Room")) {
-                            Toast.makeText(ListReunionActivity.this, "You have filter on the date "+date, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ListReunionActivity.this, "You have filter on the date "+date, Toast.LENGTH_LONG).show();
                             reunionApiService.getFilterDate(date);
+                            initNewList();
                         }
                         if (!selectionRoom.getNameRoom().equals("Select a Room") && date == null) {
-                            Toast.makeText(ListReunionActivity.this, "You have filter with "+selectionRoom.getNameRoom(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ListReunionActivity.this, "You have filter with "+selectionRoom.getNameRoom(), Toast.LENGTH_LONG).show();
                             reunionApiService.getFilterMeetingRoom(selectionRoom.getId());
+                            initNewList();
                         }
                         if (selectionRoom.getNameRoom().equals("Select a Room")  && date == null){
-                            Toast.makeText(ListReunionActivity.this, "All meetings are posted", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ListReunionActivity.this, "All meetings are posted", Toast.LENGTH_LONG).show();
                             initList();
                         }
-                        initNewList();
+                        date=null;
                         dialog.dismiss();
                     }
                 });
