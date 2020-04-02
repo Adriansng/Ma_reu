@@ -1,5 +1,6 @@
 package mareu.adriansng.maru.service_api;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import mareu.adriansng.maru.model.MeetingRoom;
@@ -9,6 +10,7 @@ import mareu.adriansng.maru.model.Reunion;
 public class DummyReunionApiService implements ReunionApiService {
 
     private List<Reunion> reunions= DummyReunionList.generateReunion();
+    private List<Reunion> filterReunions = new ArrayList<>();
     private List<MeetingRoom> meetingRoom= DummyReunionList.DUMMY_MEETING_ROOM;
     private List<Person> personList=DummyReunionList.DUMMY_PERSON;
     private List<Person> personParticipant;
@@ -26,6 +28,7 @@ public class DummyReunionApiService implements ReunionApiService {
     @Override
     public List<Reunion> getReunions() {
         return reunions; }
+
 
     //ID Reunion
     @Override
@@ -59,35 +62,40 @@ public class DummyReunionApiService implements ReunionApiService {
     //Filter
     @Override
     public List<Reunion> getFilterMeetingRoom(int idMeetingRoomFilter){
-        reunions.clear();
+        filterReunions.clear();
         for(Reunion n: reunions ){
             if(n.getIdMeetingRoom() == idMeetingRoomFilter){
-                reunions.add(n);
+                filterReunions.add(n);
             }
         }
-        return reunions;
+        return filterReunions;
     }
 
     @Override
     public List<Reunion> getFilterDate(String dateReunion){
-        reunions.clear();
+        filterReunions.clear();
         for(Reunion n: reunions){
             if(n.getDate().equals(dateReunion)){
-                reunions.add(n);
+                filterReunions.add(n);
             }
         }
-        return reunions;
+        return filterReunions;
     }
 
     @Override
     public List<Reunion> getFilterMeetingAndDate(int idMeetingRoomFilter, String dateReunion){
-        reunions.clear();
+        filterReunions.clear();
         for(Reunion n:reunions){
             if(n.getIdMeetingRoom()==idMeetingRoomFilter && n.getDate().equals(dateReunion)){
-                reunions.add(n);
+                filterReunions.add(n);
             }
         }
-        return reunions;
+        return filterReunions;
+    }
+
+    @Override
+    public List<Reunion> getFilterReunions(){
+        return filterReunions;
     }
 
     //Action

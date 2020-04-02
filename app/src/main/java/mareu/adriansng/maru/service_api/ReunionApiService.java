@@ -19,6 +19,8 @@ public interface ReunionApiService {
 
     //Id Reunion
 
+    List<Reunion> getFilterReunions();
+
     int getReunionSize();
 
     /**
