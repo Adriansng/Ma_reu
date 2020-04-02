@@ -77,11 +77,9 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
             }
         });
 
-        //Design Spinner
-        Spinner mRoomReunion = findViewById(R.id.roomReunion);
-        //Configuration Spinner
-        if(textViewDate.getText().toString().equals(date) && textViewTimes.getText().toString().equals(hour)){
-            mApiService.getAvailabilityMeetingRoom(date,hour);
+        //Spinner
+        if(!textViewDate.getText().toString().equals(date) && !textViewTimes.getText().toString().equals(hour)){
+            Spinner mRoomReunion = findViewById(R.id.roomReunion);
             initList();
             mRoomReunion.setVisibility(View.VISIBLE);
             SpinnerMeetingRoomAdapter mAdapter = new SpinnerMeetingRoomAdapter(this, mMeetingRoom);
@@ -124,7 +122,6 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     }
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-
         if(minute<10){
             minuteString="0"+minute;
         }else{
@@ -136,6 +133,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
     private void initList() {
         mMeetingRoom = new ArrayList<>();
+        mApiService.getAvailabilityMeetingRoom(date,hour);
         mMeetingRoom.addAll(mApiService.getInitListSpinnerRoomAvailability());
     }
 }
