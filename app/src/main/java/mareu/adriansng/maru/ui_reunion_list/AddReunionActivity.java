@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -35,7 +36,6 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     //Data
     private ReunionApiService mApiService;
     private ArrayList<MeetingRoom> mMeetingRoom;
-    private Button finishButton;
     //Parameter Reunion
     private MeetingRoom selectionRoom;
     private String date;
@@ -101,7 +101,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
             });
         }
         //Validate reunion
-        finishButton= findViewById(R.id.validate_btn);
+        ImageButton finishButton= findViewById(R.id.validate_btn);
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
