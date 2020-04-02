@@ -42,6 +42,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     private String hour;
     private TextView textViewDate;
     private TextView textViewTimes;
+    private String minuteString;
 
 
     @SuppressLint("WrongViewCast")
@@ -83,23 +84,22 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
             mApiService.getAvailabilityMeetingRoom(date,hour);
             initList();
             mRoomReunion.setVisibility(View.VISIBLE);
+            SpinnerMeetingRoomAdapter mAdapter = new SpinnerMeetingRoomAdapter(this, mMeetingRoom);
+            mRoomReunion.setPrompt("Select a room");
+            mRoomReunion.setAdapter(mAdapter);
+            mRoomReunion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    selectionRoom= mApiService.getMeetingRoom().get(position);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
         }
-        SpinnerMeetingRoomAdapter mAdapter = new SpinnerMeetingRoomAdapter(this, mMeetingRoom);
-        mRoomReunion.setPrompt("Select a room");
-        mRoomReunion.setAdapter(mAdapter);
-        mRoomReunion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectionRoom= mApiService.getMeetingRoom().get(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
         //Validate reunion
         finishButton= findViewById(R.id.validate_btn);
         finishButton.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +124,13 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     }
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        textViewTimes.setText(hourOfDay+"H"+minute);
+
+        if(minute<10){
+            minuteString="0"+minute;
+        }else{
+           minuteString= String.valueOf(minute);
+        }
+        textViewTimes.setText(hourOfDay+"H"+minuteString);
         hour=textViewTimes.getText().toString();
     }
 
