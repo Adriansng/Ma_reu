@@ -36,17 +36,16 @@ public interface ReunionApiService {
     String getNameMeetingRome(int idMeetingRoom);
 
 
-    List<Reunion> getFilterMeetingRoom(int idMeetingRoomFilter);
+
 
     List<MeetingRoom> getMeetingRoom();
 
     //Address Mail
 
-    //Date
-    String getSelectionFilterDate(String dateReunion);
-
-    //Date
-    List<Reunion> getFilterDate();
+    //Filter
+    List<Reunion> getFilterMeetingRoom(int idMeetingRoomFilter);
+    List<Reunion> getFilterDate(String dateReunion);
+    List<Reunion> getFilterMeetingAndDate(int idMeetingRoomFilter, String dateReunion);
 
     //Action
 
@@ -58,6 +57,8 @@ public interface ReunionApiService {
 
     //List Person
     List<Person> getPersonParticipant();
+
+
 
     /**
      * Add a reunion
