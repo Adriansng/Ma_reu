@@ -130,17 +130,17 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                 buttonValidate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (!selectionRoom.getNameRoom().equals("Select a Room") && !date.equals("Select a meeting date")) {
+                        if (!selectionRoom.getNameRoom().equals("Select a Room") && date != null) {
                             Toast.makeText(ListReunionActivity.this, "You have filter with "+selectionRoom.getNameRoom()+" and on the date "+date, Toast.LENGTH_SHORT).show();
                             reunionApiService.getFilterMeetingAndDate(selectionRoom.getId(),date);
                             initList();
                         }
-                        if (!date.toString().equals("Select a meeting date") && selectionRoom.getNameRoom().equals("Select a Room")) {
+                        if (date != null && selectionRoom.getNameRoom().equals("Select a Room")) {
                             Toast.makeText(ListReunionActivity.this, "You have filter on the date "+date, Toast.LENGTH_SHORT).show();
                             reunionApiService.getFilterDate(date);
                             initList();
                         }
-                        if (!selectionRoom.getNameRoom().equals("Select a Room") && date.toString().equals("Select a meeting date")) {
+                        if (!selectionRoom.getNameRoom().equals("Select a Room") && date == null) {
                             Toast.makeText(ListReunionActivity.this, "You have filter with "+selectionRoom.getNameRoom(), Toast.LENGTH_SHORT).show();
                             reunionApiService.getFilterMeetingRoom(selectionRoom.getId());
                             initList();
