@@ -79,6 +79,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         Spinner mRoomReunion = findViewById(R.id.roomReunion);
         SpinnerMeetingRoomAdapter mAdapter = new SpinnerMeetingRoomAdapter(this, mMeetingRoom);
         mRoomReunion.setAdapter(mAdapter);
+        mRoomReunion.setPrompt("Select a room");
         mRoomReunion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override

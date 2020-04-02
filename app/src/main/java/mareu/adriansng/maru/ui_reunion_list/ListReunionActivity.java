@@ -113,6 +113,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                 initListSpinner();
                 mAdapterSpinner = new SpinnerMeetingRoomAdapter(ListReunionActivity.this, mMeetingRoom);
                 mSpinner.setAdapter(mAdapterSpinner);
+                mSpinner.setPrompt("Select a room");
                 mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -179,6 +180,11 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         mAdapter.notifyDataSetChanged();
     }
 
+    private void initListSpinner() {
+        mMeetingRoom = new ArrayList<>();
+        mMeetingRoom.addAll(reunionApiService.getMeetingRoom());
+    }
+
     // Actions
     @Subscribe
     public void onDeleteReunion(DeleteReunionEvent event) {
@@ -202,11 +208,6 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         date = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         textViewDate.setText(date);
-    }
-
-    private void initListSpinner() {
-        mMeetingRoom = new ArrayList<>();
-        mMeetingRoom.addAll(reunionApiService.getMeetingRoom());
     }
 
     @Override
