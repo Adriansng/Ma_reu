@@ -43,6 +43,8 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     private TextView textViewDate;
     private TextView textViewTimes;
     private String minuteString;
+    private Spinner mRoomReunion;
+    private int intHour;
 
 
     @SuppressLint("WrongViewCast")
@@ -61,6 +63,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         buttonDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                resetList();
                 DialogFragment datePicker = new DatePickerFragment();
                 datePicker.show(getSupportFragmentManager(),"date picker");
             }
@@ -72,32 +75,26 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         buttonHour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                resetList();
                 DialogFragment hourPicker= new TimerPickerFragment();
                 hourPicker.show(getSupportFragmentManager(),"time picker");
             }
         });
 
         //Spinner
-        if(!textViewDate.getText().toString().equals(date) && !textViewTimes.getText().toString().equals(hour)){
-            Spinner mRoomReunion = findViewById(R.id.roomReunion);
-            initList();
-            mRoomReunion.setVisibility(View.VISIBLE);
-            SpinnerMeetingRoomAdapter mAdapter = new SpinnerMeetingRoomAdapter(this, mMeetingRoom);
-            mRoomReunion.setPrompt("Select a room");
-            mRoomReunion.setAdapter(mAdapter);
-            mRoomReunion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mRoomReunion = findViewById(R.id.roomReunion);
+        mRoomReunion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    selectionRoom= mApiService.getMeetingRoom().get(position);
-                }
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectionRoom = mApiService.getMeetingRoom().get(position);
+            }
 
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-                }
-            });
-        }
+            }
+        });
         //Validate reunion
         ImageButton finishButton= findViewById(R.id.validate_btn);
         finishButton.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +116,8 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         date= DateFormat.getDateInstance(DateFormat.MEDIUM).format(c.getTime());
         textViewDate.setText(date);
+        configSpinner();
+
     }
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -126,14 +125,50 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
             minuteString="0"+minute;
         }else{
            minuteString= String.valueOf(minute);
+
         }
+        intHour = hourOfDay;
         textViewTimes.setText(hourOfDay+"H"+minuteString);
         hour=textViewTimes.getText().toString();
+        configSpinner();
+    }
+
+    private void configSpinner(){
+        if (textViewDate.getText().toString().equals(date) && textViewTimes.getText().toString().equals(hour)) {
+            mRoomReunion.setVisibility(View.VISIBLE);
+            initList();
+            SpinnerMeetingRoomAdapter mAdapter = new SpinnerMeetingRoomAdapter(this, mMeetingRoom);
+            mRoomReunion.setAdapter(mAdapter);
+        } else {
+            mRoomReunion.setVisibility(View.GONE);
+        }
     }
 
     private void initList() {
         mMeetingRoom = new ArrayList<>();
+        for(int minute = Integer.parseInt(minuteString), hourOfDay=intHour; minute>=20;minute++){
+            if (minute >= 60 && hourOfDay!=23) {
+                hourOfDay = intHour++;
+                minute=0;
+            }
+            hour=hourOfDay+"H"+minute;
+            mApiService.getAvailabilityMeetingRoom(date,hour);
+        }
+        for(int minute = Integer.parseInt(minuteString), hourOfDay= intHour; minute>=20; minute--){
+            if (minute < 0 && hourOfDay !=0) {
+                hourOfDay = intHour--;
+                minute=59;
+            }
+            hour = hourOfDay + "H" + minute;
+            mApiService.getAvailabilityMeetingRoom(date, hour);
+        }
         mApiService.getAvailabilityMeetingRoom(date,hour);
+        mMeetingRoom.addAll(mApiService.getInitListSpinnerRoomAvailability());
+    }
+
+    private void resetList(){
+        mMeetingRoom= new ArrayList<>();
+        mApiService.getResetAvailabilityMeetingRoom();
         mMeetingRoom.addAll(mApiService.getInitListSpinnerRoomAvailability());
     }
 }

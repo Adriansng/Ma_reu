@@ -65,6 +65,8 @@ public interface ReunionApiService {
      */
     void deleteReunion(Reunion reunion);
 
+    List<MeetingRoom> getResetAvailabilityMeetingRoom();
+
     /**
      * Add a reunion
      * @param newReunion

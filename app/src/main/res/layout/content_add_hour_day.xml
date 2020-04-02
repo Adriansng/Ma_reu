@@ -94,6 +94,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:prompt="@string/select_a_meeting_room"
                 app:layout_anchor="@+id/roomReunion"
                 android:visibility="gone"
                 app:layout_anchorGravity="start|center"

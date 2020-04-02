@@ -116,10 +116,18 @@ public class DummyReunionApiService implements ReunionApiService {
     public List<MeetingRoom> getAvailabilityMeetingRoom(String date, String hour) {
         for (Reunion reunion : reunions) {
             if (reunion.getDate().equals(date) && reunion.getHour().equals(hour)) {
-                for (MeetingRoom meetingRoom : meetingRoom) {
-                    meetingRoom.setAvailability(false);
-                }
+                idMeetingRoom=reunion.getIdMeetingRoom();
+                meetingRoom.get(idMeetingRoom).setAvailability(false);
             }
+        }
+        return meetingRoom;
+    }
+
+    @Override
+    public List<MeetingRoom> getResetAvailabilityMeetingRoom(){
+        for(Reunion reunion:reunions){
+            idMeetingRoom=reunion.getIdMeetingRoom();
+            meetingRoom.get(idMeetingRoom).setAvailability(true);
         }
         return meetingRoom;
     }
