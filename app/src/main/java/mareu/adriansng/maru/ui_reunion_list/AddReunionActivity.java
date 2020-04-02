@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -27,6 +28,7 @@ import mareu.adriansng.maru.model.MeetingRoom;
 import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 import mareu.adriansng.maru.ui_reunion_list.utils.DatePickerFragment;
+import mareu.adriansng.maru.ui_reunion_list.utils.DateUtils;
 import mareu.adriansng.maru.ui_reunion_list.utils.SpinnerMeetingRoomAdapter;
 import mareu.adriansng.maru.ui_reunion_list.utils.TimerPickerFragment;
 
@@ -113,11 +115,11 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         c.set(Calendar.YEAR,year);
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        String currentDateString= DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        String currentDateString= DateFormat.getDateInstance(DateFormat.MEDIUM).format(c.getTime());
 
         TextView textViewDate=findViewById(R.id.view_date_add);
         textViewDate.setText(currentDateString);
-        date= textViewDate.getText().toString();
+        date= currentDateString;
     }
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {

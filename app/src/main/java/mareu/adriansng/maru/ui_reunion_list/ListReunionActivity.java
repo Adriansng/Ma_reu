@@ -63,7 +63,6 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
     private MeetingRoom selectionRoom;
     private String dateFilter;
     private String date;
-    String dateFormat=null;
     private TextView textViewDate;
     private Button mButtonDate;
     private DialogFragment datePicker;
@@ -134,11 +133,11 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                     public void onClick(View v) {
                         if (!selectionRoom.getNameRoom().equals("Select a Room") && date != null) {
                             Toast.makeText(ListReunionActivity.this, "You have filter with "+selectionRoom.getNameRoom()+" and on the date "+date, Toast.LENGTH_SHORT).show();
-                            reunionApiService.getFilterMeetingAndDate(selectionRoom.getId(),dateFormat);
+                            reunionApiService.getFilterMeetingAndDate(selectionRoom.getId(),date);
                         }
                         if (date != null && selectionRoom.getNameRoom().equals("Select a Room")) {
                             Toast.makeText(ListReunionActivity.this, "You have filter on the date "+date, Toast.LENGTH_SHORT).show();
-                            reunionApiService.getFilterDate(dateFormat);
+                            reunionApiService.getFilterDate(date);
                         }
                         if (!selectionRoom.getNameRoom().equals("Select a Room") && date == null) {
                             Toast.makeText(ListReunionActivity.this, "You have filter with "+selectionRoom.getNameRoom(), Toast.LENGTH_SHORT).show();
@@ -213,14 +212,8 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         c.set(Calendar.YEAR,year);
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        date = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        date = DateFormat.getDateInstance(DateFormat.SHORT).format(c.getTime());
         textViewDate.setText(date);
-        final String DATE_OUTPUT_FORMAT="yyyy-MM-dd";
-        try{
-            dateFormat= DateUtils.formatDateFromDateString(DATE_OUTPUT_FORMAT, String.valueOf(DateFormat.FULL),date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
