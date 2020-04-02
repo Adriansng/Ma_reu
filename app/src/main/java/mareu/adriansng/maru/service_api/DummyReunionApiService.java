@@ -12,6 +12,7 @@ public class DummyReunionApiService implements ReunionApiService {
     private List<Reunion> reunions= DummyReunionList.generateReunion();
     private List<Reunion> filterReunions = new ArrayList<>();
     private List<MeetingRoom> meetingRoom= DummyReunionList.DUMMY_MEETING_ROOM;
+    private List<MeetingRoom> availabilityMeetingRoom= new ArrayList<>();
     private List<Person> personList=DummyReunionList.DUMMY_PERSON;
     private List<Person> personParticipant;
     private int idMeetingRoom;
@@ -96,6 +97,31 @@ public class DummyReunionApiService implements ReunionApiService {
     @Override
     public List<Reunion> getFilterReunions(){
         return filterReunions;
+    }
+
+
+    //Availability
+    @Override
+    public List<MeetingRoom> getInitListSpinnerRoomAvailability(){
+        availabilityMeetingRoom.clear();
+        for( MeetingRoom meetingRoom: meetingRoom){
+            if(meetingRoom.getAvailability()){
+                availabilityMeetingRoom.add(meetingRoom);
+            }
+        }
+        return availabilityMeetingRoom;
+    }
+
+    @Override
+    public List<MeetingRoom> getAvailabilityMeetingRoom(String date, String hour) {
+        for (Reunion reunion : reunions) {
+            if (reunion.getDate().equals(date) && reunion.getHour().equals(hour)) {
+                for (MeetingRoom meetingRoom : meetingRoom) {
+                    meetingRoom.setAvailability(false);
+                }
+            }
+        }
+        return meetingRoom;
     }
 
     //Action

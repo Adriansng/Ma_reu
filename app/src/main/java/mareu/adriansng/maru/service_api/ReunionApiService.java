@@ -49,6 +49,14 @@ public interface ReunionApiService {
     List<Reunion> getFilterDate(String dateReunion);
     List<Reunion> getFilterMeetingAndDate(int idMeetingRoomFilter, String dateReunion);
 
+    //List Person
+    List<Person> getPersonParticipant();
+
+
+    //Availability
+    List<MeetingRoom> getInitListSpinnerRoomAvailability();
+    List<MeetingRoom> getAvailabilityMeetingRoom(String date, String hour);
+
     //Action
 
     /**
@@ -57,15 +65,11 @@ public interface ReunionApiService {
      */
     void deleteReunion(Reunion reunion);
 
-    //List Person
-    List<Person> getPersonParticipant();
-
-
-
     /**
      * Add a reunion
      * @param newReunion
      */
     void addReunion(Reunion newReunion);
+
 
 }

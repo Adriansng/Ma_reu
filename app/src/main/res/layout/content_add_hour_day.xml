@@ -95,8 +95,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 app:layout_anchor="@+id/roomReunion"
+                android:visibility="gone"
                 app:layout_anchorGravity="start|center"
-                android:prompt="@string/select_a_meeting_room"
                 tools:ignore="HardcodedText,RtlSymmetry" />
 
             <TextView
