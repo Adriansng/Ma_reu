@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -28,7 +27,6 @@ import mareu.adriansng.maru.model.MeetingRoom;
 import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 import mareu.adriansng.maru.ui_reunion_list.utils.DatePickerFragment;
-import mareu.adriansng.maru.ui_reunion_list.utils.DateUtils;
 import mareu.adriansng.maru.ui_reunion_list.utils.SpinnerMeetingRoomAdapter;
 import mareu.adriansng.maru.ui_reunion_list.utils.TimerPickerFragment;
 
@@ -80,8 +78,11 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         //Design
         Spinner mRoomReunion = findViewById(R.id.roomReunion);
         SpinnerMeetingRoomAdapter mAdapter = new SpinnerMeetingRoomAdapter(this, mMeetingRoom);
-        mRoomReunion.setAdapter(mAdapter);
         mRoomReunion.setPrompt("Select a room");
+        mRoomReunion.setAdapter(mAdapter);
+        if(date==null&&hour==null){
+            mRoomReunion.setEnabled(false);
+        }
         mRoomReunion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -97,7 +98,6 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
         //Validate reunion
         ImageButton finishButton= findViewById(R.id.validate_btn);
-        finishButton.setEnabled(editNameOrganizer.toString().length() !=0);
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,8 +128,22 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         hour=textViewTimes.getText().toString();
     }
 
+    private void availabilityRoom(){
+        for(Reunion reunion: mApiService.getReunions()){
+            if(reunion.getDate().equals(date)&& reunion.getHour().equals(hour)){
+                for(MeetingRoom meetingRoom: mApiService.getMeetingRoom()){
+                    meetingRoom.setAvailability(false);
+                }
+            }
+        }
+    }
+
     private void initList() {
         mMeetingRoom = new ArrayList<>();
-        mMeetingRoom.addAll(mApiService.getMeetingRoom());
+        for( MeetingRoom meetingRoom: mApiService.getMeetingRoom()){
+            if(meetingRoom.getAvailability()){
+                mMeetingRoom.add(meetingRoom);
+            }
+        }
     }
 }
