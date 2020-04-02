@@ -1,6 +1,5 @@
 package mareu.adriansng.maru.service_api;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import mareu.adriansng.maru.model.MeetingRoom;
@@ -10,7 +9,6 @@ import mareu.adriansng.maru.model.Reunion;
 public class DummyReunionApiService implements ReunionApiService {
 
     private List<Reunion> reunions= DummyReunionList.generateReunion();
-    private List<Reunion> filterReunions = new ArrayList<>();
     private List<MeetingRoom> meetingRoom= DummyReunionList.DUMMY_MEETING_ROOM;
     private List<Person> personList=DummyReunionList.DUMMY_PERSON;
     private List<Person> personParticipant;
@@ -61,35 +59,35 @@ public class DummyReunionApiService implements ReunionApiService {
     //Filter
     @Override
     public List<Reunion> getFilterMeetingRoom(int idMeetingRoomFilter){
-        filterReunions.clear();
+        reunions.clear();
         for(Reunion n: reunions ){
             if(n.getIdMeetingRoom() == idMeetingRoomFilter){
-                filterReunions.add(n);
+                reunions.add(n);
             }
         }
-        return filterReunions;
+        return reunions;
     }
 
     @Override
     public List<Reunion> getFilterDate(String dateReunion){
-        filterReunions.clear();
+        reunions.clear();
         for(Reunion n: reunions){
             if(n.getDate().equals(dateReunion)){
-                filterReunions.add(n);
+                reunions.add(n);
             }
         }
-        return filterReunions;
+        return reunions;
     }
 
     @Override
     public List<Reunion> getFilterMeetingAndDate(int idMeetingRoomFilter, String dateReunion){
-        filterReunions.clear();
+        reunions.clear();
         for(Reunion n:reunions){
             if(n.getIdMeetingRoom()==idMeetingRoomFilter && n.getDate().equals(dateReunion)){
-                filterReunions.add(n);
+                reunions.add(n);
             }
         }
-        return filterReunions;
+        return reunions;
     }
 
     //Action
