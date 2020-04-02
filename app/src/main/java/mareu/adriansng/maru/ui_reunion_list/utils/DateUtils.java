@@ -4,7 +4,6 @@ import android.text.format.DateFormat;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -16,22 +15,6 @@ public class DateUtils {
      public static final String DATE_FORMAT_3="hh'H'mm a dd MMMM yyyy";
      public static final String DATE_FORMAT_4="hh,mm";
      public static final String DATE_FORMAT_5="dd";
-
-     public static String getCurrentDate() {
-         SimpleDateFormat dateFormat= new SimpleDateFormat(DATE_FORMAT_1);
-
-         dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-         Date today= Calendar.getInstance().getTime();
-         return dateFormat.format(today);
-     }
-
-     public static  String getCurrentTime() {
-         SimpleDateFormat dateFormat= new SimpleDateFormat(DATE_FORMAT_1);
-
-         dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-         Date today= Calendar.getInstance().getTime();
-         return dateFormat.format(today);
-     }
 
      public static String getDateTimeFromTimeStamp(Long time, String mDateFormat) {
          SimpleDateFormat dateFormat= new SimpleDateFormat(mDateFormat);

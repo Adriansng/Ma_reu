@@ -27,6 +27,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -39,6 +40,7 @@ import mareu.adriansng.maru.model.MeetingRoom;
 import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 import mareu.adriansng.maru.ui_reunion_list.utils.DatePickerFragment;
+import mareu.adriansng.maru.ui_reunion_list.utils.DateUtils;
 import mareu.adriansng.maru.ui_reunion_list.utils.SpinnerMeetingRoomAdapter;
 
 public class ListReunionActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
@@ -61,6 +63,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
     private MeetingRoom selectionRoom;
     private String dateFilter;
     private String date;
+    String dateFormat=null;
     private TextView textViewDate;
     private Button mButtonDate;
     private DialogFragment datePicker;
@@ -131,15 +134,19 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                     public void onClick(View v) {
                         if (!selectionRoom.getNameRoom().equals("Select a Room") && date != null) {
                             Toast.makeText(ListReunionActivity.this, "You have filter with "+selectionRoom.getNameRoom()+" and on the date "+date, Toast.LENGTH_SHORT).show();
-                            reunionApiService.getFilterMeetingAndDate(selectionRoom.getId(),date);
+                            reunionApiService.getFilterMeetingAndDate(selectionRoom.getId(),dateFormat);
                         }
                         if (date != null && selectionRoom.getNameRoom().equals("Select a Room")) {
                             Toast.makeText(ListReunionActivity.this, "You have filter on the date "+date, Toast.LENGTH_SHORT).show();
-                            reunionApiService.getFilterDate(date);
+                            reunionApiService.getFilterDate(dateFormat);
                         }
                         if (!selectionRoom.getNameRoom().equals("Select a Room") && date == null) {
                             Toast.makeText(ListReunionActivity.this, "You have filter with "+selectionRoom.getNameRoom(), Toast.LENGTH_SHORT).show();
                             reunionApiService.getFilterMeetingRoom(selectionRoom.getId());
+                        }
+                        if (selectionRoom.getNameRoom().equals("Select a Room")  && date == null){
+                            Toast.makeText(ListReunionActivity.this, "All meetings are posted", Toast.LENGTH_SHORT).show();
+                            initList();
                         }
                         initNewList();
                         dialog.dismiss();
@@ -208,6 +215,12 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         date = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         textViewDate.setText(date);
+        final String DATE_OUTPUT_FORMAT="yyyy-MM-dd";
+        try{
+            dateFormat= DateUtils.formatDateFromDateString(DATE_OUTPUT_FORMAT, String.valueOf(DateFormat.FULL),date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
