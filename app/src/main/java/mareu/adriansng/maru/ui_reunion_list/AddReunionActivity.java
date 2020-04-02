@@ -80,7 +80,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         //Design Spinner
         Spinner mRoomReunion = findViewById(R.id.roomReunion);
         //Configuration Spinner
-        if(!textViewDate.getText().toString().equals(date) && !textViewTimes.getText().toString().equals(hour)){
+        if(textViewDate.getText().toString().equals(date) && textViewTimes.getText().toString().equals(hour)){
             mApiService.getAvailabilityMeetingRoom(date,hour);
             initList();
             mRoomReunion.setVisibility(View.VISIBLE);
