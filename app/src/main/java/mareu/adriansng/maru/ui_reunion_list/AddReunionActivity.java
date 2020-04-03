@@ -45,6 +45,8 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     private String minuteString;
     private Spinner mRoomReunion;
     private int intHour;
+    private int hourDay;
+    private int busyMinute;
 
 
     @SuppressLint("WrongViewCast")
@@ -120,14 +122,13 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
     }
     @Override
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+    public void onTimeSet(TimePicker view,int hourOfDay, int minute) {
         if(minute<10){
             minuteString="0"+minute;
         }else{
            minuteString= String.valueOf(minute);
-
         }
-        intHour = hourOfDay;
+        intHour = hourDay;
         textViewTimes.setText(hourOfDay+"H"+minuteString);
         hour=textViewTimes.getText().toString();
         configSpinner();
@@ -146,20 +147,20 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
     private void initList() {
         mMeetingRoom = new ArrayList<>();
-        for(int minute = Integer.parseInt(minuteString), hourOfDay=intHour; minute>=+45;minute++){
-            if (minute == 60 && hourOfDay!=23) {
-                hourOfDay = intHour++;
-                minute=0;
+        for(busyMinute = Integer.parseInt(minuteString); busyMinute>=+45;busyMinute++){
+            if (busyMinute == 60 && hourDay!=23) {
+                hourDay = intHour++;
+                minuteString="0"+busyMinute;
             }
-            hour=hourOfDay+"H"+minute;
+            hour=hourDay+"H"+minuteString;
             mApiService.getAvailabilityMeetingRoom(date,hour);
         }
-        for(int minute = Integer.parseInt(minuteString), hourOfDay= intHour; minute>=+45; minute--){
-            if (minute < 0 && hourOfDay !=0) {
-                hourOfDay = intHour--;
-                minute=59;
+        for(busyMinute = Integer.parseInt(minuteString); busyMinute>=+45; busyMinute--){
+            if (busyMinute < 0 && hourDay !=0) {
+                hourDay = intHour--;
+                busyMinute=59;
             }
-            hour = hourOfDay + "H" + minute;
+            hour = hourDay + "H" + busyMinute;
             mApiService.getAvailabilityMeetingRoom(date, hour);
         }
         mApiService.getAvailabilityMeetingRoom(date,hour);
