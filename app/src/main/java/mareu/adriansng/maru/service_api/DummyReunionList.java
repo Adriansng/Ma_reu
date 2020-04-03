@@ -21,7 +21,8 @@ public abstract class DummyReunionList {
             new MeetingRoom(5, "Meeting Room F", true),
             new MeetingRoom(6, "Meeting Room G", true),
             new MeetingRoom(7, "Meeting Room H", true),
-            new MeetingRoom(8, "Meeting Room I", true)
+            new MeetingRoom(8, "Meeting Room I", true),
+            new MeetingRoom(9, "Meeting Room F", true)
     );
 
     //Generate Person
