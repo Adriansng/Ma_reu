@@ -146,7 +146,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
     private void initList() {
         mMeetingRoom = new ArrayList<>();
-        for(int minute = Integer.parseInt(minuteString), hourOfDay=intHour; minute>=20;minute++){
+        for(int minute = Integer.parseInt(minuteString), hourOfDay=intHour; minute>=45;minute++){
             if (minute >= 60 && hourOfDay!=23) {
                 hourOfDay = intHour++;
                 minute=0;
@@ -154,7 +154,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
             hour=hourOfDay+"H"+minute;
             mApiService.getAvailabilityMeetingRoom(date,hour);
         }
-        for(int minute = Integer.parseInt(minuteString), hourOfDay= intHour; minute>=20; minute--){
+        for(int minute = Integer.parseInt(minuteString), hourOfDay= intHour; minute>=45; minute--){
             if (minute < 0 && hourOfDay !=0) {
                 hourOfDay = intHour--;
                 minute=59;
