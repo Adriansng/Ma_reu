@@ -42,7 +42,6 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
             address += person.getAddressMail();
             address += " - ";
         }
-
         this.mReunionListMail.setText(address);
         this.mDeleteButton.setOnClickListener(v ->
                 EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));

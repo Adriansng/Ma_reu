@@ -147,8 +147,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
     private void initList() {
         mMeetingRoom = new ArrayList<>();
-        for(busyMinute = Integer.parseInt(minuteString); busyMinute>=+45;busyMinute++){
-            busyMinute++;
+        for(busyMinute = Integer.parseInt(minuteString); busyMinute>=busyMinute+45;busyMinute++){
             if (busyMinute == 60 && hourDay!=23) {
                 hourDay = intHour++;
                 minuteString="0"+busyMinute;

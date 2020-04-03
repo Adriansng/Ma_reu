@@ -27,7 +27,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -40,7 +39,6 @@ import mareu.adriansng.maru.model.MeetingRoom;
 import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 import mareu.adriansng.maru.ui_reunion_list.utils.DatePickerFragment;
-import mareu.adriansng.maru.ui_reunion_list.utils.DateUtils;
 import mareu.adriansng.maru.ui_reunion_list.utils.SpinnerMeetingRoomAdapter;
 
 public class ListReunionActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
