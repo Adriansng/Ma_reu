@@ -4,4 +4,16 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#DE1C1C</color>
     <color name="colorNameReunion">#2D2E2E</color>
+    <color name="colorItem">#DEDEDE</color>
+    <color name="colorSelectRoom">#000000</color>
+    <color name="colorMeetingRoomA">#D71412</color>
+    <color name="colorMeetingRoomB">#D75412</color>
+    <color name="colorMeetingRoomC">#D7B612</color>
+    <color name="colorMeetingRoomD">#71D712</color>
+    <color name="colorMeetingRoomE">#12D770</color>
+    <color name="colorMeetingRoomF">#12B3D7</color>
+    <color name="colorMeetingRoomG">#1257D7</color>
+    <color name="colorMeetingRoomH">#2C12D7</color>
+    <color name="colorMeetingRoomI">#7C12D7</color>
+    <color name="colorMeetingRoomJ">#D712C5</color>
 </resources>

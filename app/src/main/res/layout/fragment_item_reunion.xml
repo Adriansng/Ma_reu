@@ -14,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        app:srcCompat="@drawable/ic_lens_black_24dp" />
+        app:srcCompat="@drawable/ic_avatar_meeting_room_24dp" />
 
     <TextView
         android:id="@+id/item_list_reunion_number"
@@ -58,7 +58,7 @@
         android:layout_gravity="center|end"
         android:padding="10dp"
         android:background="@null"
-        app:srcCompat="@drawable/ic_delete_black_24dp"
+        app:srcCompat="@drawable/ic_delete_gray_24dp"
         android:contentDescription="@string/button_delete_reu_description" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

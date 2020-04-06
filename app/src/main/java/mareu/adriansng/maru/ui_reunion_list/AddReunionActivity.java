@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +38,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     private ReunionApiService mApiService;
     private ArrayList<MeetingRoom> mMeetingRoom;
     //Parameter Reunion
+    private String nameOrganizer;
     private MeetingRoom selectionRoom;
     private String date;
     private String hour;
@@ -57,7 +59,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         mApiService = DI.getReunionApiService();
         //Name Organizer
         EditText editNameOrganizer= findViewById(R.id.name_organizer);
-        String nameOrganizer= editNameOrganizer.getText().toString();
+        nameOrganizer= editNameOrganizer.getText().toString();
 
         // Date
         Button buttonDate=  findViewById(R.id.date_add);
@@ -102,9 +104,13 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!selectionRoom.getNameRoom().equals("Select a Room")){
                 Reunion reunion= new Reunion(mApiService.getReunionSize()+1,selectionRoom.getId(), nameOrganizer, hour, date , mApiService.getPersonParticipant());
                 mApiService.addReunion(reunion);
                 finish();
+                }else{
+                    Toast.makeText(AddReunionActivity.this, "Select a Room please for validate " , Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -147,23 +153,6 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
     private void initList() {
         mMeetingRoom = new ArrayList<>();
-        for(busyMinute = Integer.parseInt(minuteString); busyMinute>=busyMinute+45;busyMinute++){
-            if (busyMinute == 60 && hourDay!=23) {
-                hourDay = intHour++;
-                minuteString="0"+busyMinute;
-            }
-            hour=hourDay+"H"+minuteString;
-            mApiService.getAvailabilityMeetingRoom(date,hour);
-        }
-        for(busyMinute = Integer.parseInt(minuteString); busyMinute>=-45; busyMinute--){
-            busyMinute--;
-            if (busyMinute < 0 && hourDay !=0) {
-                hourDay = intHour--;
-                busyMinute=59;
-            }
-            hour = hourDay + "H" + busyMinute;
-            mApiService.getAvailabilityMeetingRoom(date, hour);
-        }
         mApiService.getAvailabilityMeetingRoom(date,hour);
         mMeetingRoom.addAll(mApiService.getInitListSpinnerRoomAvailability());
     }

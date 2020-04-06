@@ -19,6 +19,7 @@ public class DummyReunionApiService implements ReunionApiService {
     private int idPerson;
     private int idMeetingRoomFilter;
     private String nameMeetingRoom;
+    private int colorAvatarMeetingRoom;
     private List<String> addressMailList;
     private String addressMail;
     private String nameOrganizer;
@@ -44,8 +45,12 @@ public class DummyReunionApiService implements ReunionApiService {
     //Meeting Room
     @Override
     public String getNameMeetingRome(int idMeetingRoom) {
-        nameMeetingRoom= meetingRoom.get(idMeetingRoom).getNameRoom();
-        return nameMeetingRoom;
+        return nameMeetingRoom= meetingRoom.get(idMeetingRoom).getNameRoom();
+    }
+
+    @Override
+    public int getColorAvatarMeetingRoom(){
+        return colorAvatarMeetingRoom= meetingRoom.get(idMeetingRoom).getColorAvatar();
     }
 
     @Override

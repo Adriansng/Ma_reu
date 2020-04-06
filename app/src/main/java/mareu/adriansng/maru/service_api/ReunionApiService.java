@@ -38,7 +38,7 @@ public interface ReunionApiService {
     String getNameMeetingRome(int idMeetingRoom);
 
 
-
+    int getColorAvatarMeetingRoom();
 
     List<MeetingRoom> getMeetingRoom();
 
