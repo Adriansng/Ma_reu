@@ -45,7 +45,7 @@
         android:singleLine="true"
         android:text="@string/address_mails"
         android:textAllCaps="false"
-        android:textSize="10dp"
+        android:textSize="12sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textIsSelectable="false"
         android:typeface="normal" />
