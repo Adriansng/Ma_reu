@@ -1,6 +1,5 @@
 package mareu.adriansng.maru.ui_reunion_list;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
@@ -51,7 +50,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     private int busyMinute;
 
 
-    @SuppressLint("WrongViewCast")
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
