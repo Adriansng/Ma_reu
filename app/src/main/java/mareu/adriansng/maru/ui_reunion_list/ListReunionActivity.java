@@ -138,19 +138,18 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                             Toast.makeText(ListReunionActivity.this, "You have filter with " + selectionRoom.getNameRoom() + " and on the date " + date, Toast.LENGTH_LONG).show();
                             reunionApiService.getFilterMeetingAndDate(selectionRoom.getId(), date);
                             initNewList();
-                            date = null;
                         }
                         if (date != null && selectionRoom.getNameRoom().equals(" Select a room")) {
                             Toast.makeText(ListReunionActivity.this, "You have filter on the date " + date, Toast.LENGTH_LONG).show();
                             reunionApiService.getFilterDate(date);
                             initNewList();
-                            date = null;
                         }
                         if (!selectionRoom.getNameRoom().equals(" Select a room") && date == null) {
                             Toast.makeText(ListReunionActivity.this, "You have filter with " + selectionRoom.getNameRoom(), Toast.LENGTH_LONG).show();
                             reunionApiService.getFilterMeetingRoom(selectionRoom.getId());
                             initNewList();
                         }
+                        date =null;
                         dialog.dismiss();
                     }
                 });
