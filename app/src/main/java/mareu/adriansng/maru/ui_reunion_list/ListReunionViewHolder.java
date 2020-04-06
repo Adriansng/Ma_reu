@@ -1,11 +1,15 @@
 package mareu.adriansng.maru.ui_reunion_list;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -45,7 +49,7 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
             address += person.getAddressMail();
             address += " - ";
         }
-        this.mAvatar.setColorFilter(mContext.getResources().getColor(apiService.getColorAvatarMeetingRoom()));
+        //DrawableCompat.setTint(this.mAvatar.getDrawable(), ContextCompat.getColor(mContext,apiService.getColorAvatarMeetingRoom()));
         this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom())+ " - "+ mReunion.getHour()+" - "+ mReunion.getNameOrganizer());
         this.mReunionListMail.setText(address);
         this.mDeleteButton.setOnClickListener(v ->

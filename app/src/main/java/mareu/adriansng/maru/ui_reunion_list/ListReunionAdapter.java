@@ -2,11 +2,13 @@ package mareu.adriansng.maru.ui_reunion_list;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -35,12 +37,15 @@ public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHold
         return new ListReunionViewHolder(view);
     }
 
-    @SuppressLint("ResourceAsColor")
+
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(@NonNull ListReunionViewHolder holder, int position) {
         holder.bind(this.mReunions.get(position));
+        Context mContext= holder.itemView.getContext();
         if(position %2==0){
-            holder.itemView.setBackgroundColor(R.color.colorItem);
+            holder.itemView.setBackgroundColor(mContext.getResources().getColor(R.color.colorItem,null));
         }
 
     }
