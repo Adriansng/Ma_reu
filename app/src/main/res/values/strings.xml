@@ -10,7 +10,7 @@
     <string name="choix_de_la_salle">Choose a room</string>
     <string name="validate">Validate</string>
     <string name="date_type">Select your meeting date</string>
-    <string name="hour_type">Select your meeting time (duration 45 min)</string>
+    <string name="hour_type">Select your meeting time\n(duration 45 min)</string>
     <string name="filter_room">Filter room</string>
     <string name="filter_date">Filter date:</string>
     <string name="filter_meeting_room">Filter meeting room</string>

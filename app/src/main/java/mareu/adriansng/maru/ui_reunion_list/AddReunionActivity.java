@@ -103,7 +103,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!selectionRoom.getNameRoom().equals("Select a room")){
+                if(selectionRoom.getId()!=0){
                 Reunion reunion= new Reunion(mApiService.getReunionSize()+1,selectionRoom.getId(), nameOrganizer, hour, date , mApiService.getPersonParticipant());
                 mApiService.addReunion(reunion);
                 finish();
