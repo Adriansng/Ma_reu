@@ -39,10 +39,6 @@ public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHold
     @Override
     public void onBindViewHolder(@NonNull ListReunionViewHolder holder, int position) {
         holder.bind(this.mReunions.get(position));
-        if(position %2==0){
-            holder.itemView.setBackgroundColor(R.color.colorItem);
-        }
-
     }
 
 
