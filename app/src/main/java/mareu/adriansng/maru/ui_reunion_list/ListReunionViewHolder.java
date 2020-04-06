@@ -1,5 +1,6 @@
 package mareu.adriansng.maru.ui_reunion_list;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -37,13 +38,14 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
     public void bind(Reunion mReunion) {
         //data
         apiService= DI.getReunionApiService();
+        Context mContext = itemView.getContext();
         //List mail
         String address = "";
         for(Person person: mReunion.getPersonParticipant()) {
             address += person.getAddressMail();
             address += " - ";
         }
-        this.mAvatar.setColorFilter(apiService.getColorAvatarMeetingRoom());
+        this.mAvatar.setColorFilter(mContext.getResources().getColor(apiService.getColorAvatarMeetingRoom()));
         this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom())+ " - "+ mReunion.getHour()+" - "+ mReunion.getNameOrganizer());
         this.mReunionListMail.setText(address);
         this.mDeleteButton.setOnClickListener(v ->
