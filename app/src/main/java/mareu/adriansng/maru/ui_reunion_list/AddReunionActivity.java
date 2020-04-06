@@ -121,7 +121,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         c.set(Calendar.YEAR,year);
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        date= DateFormat.getDateInstance(DateFormat.MEDIUM).format(c.getTime());
+        date= DateFormat.getDateInstance(DateFormat.SHORT).format(c.getTime());
         textViewDate.setText(date);
         configSpinner();
 
