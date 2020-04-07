@@ -117,11 +117,11 @@ public class DummyReunionApiService implements ReunionApiService {
 
     @Override
     public List<MeetingRoom> getAvailabilityMeetingRoom(String date, String hour, int nbMinute) {
-        String time = DateUtils.formatDateLong(date, hour);
-        for (Reunion reunion : reunions) {
-            for (int i = 0; i < nbMinute; i++) {
-                String timeReunion = DateUtils.addMinute(DateUtils.formatDateLong(reunion.getDate(), reunion.getHour()), i);
-                if (timeReunion.equals(time)) {
+        for(int i=0; i<nbMinute;i++){
+            for(Reunion reunion:reunions){
+                String timeReunion = DateUtils.formatDateLong(reunion.getDate(), reunion.getHour());
+                String time = DateUtils.addMinute(DateUtils.formatDateLong(date, hour),i);
+                if(timeReunion.equals(time)){
                     idMeetingRoom = reunion.getIdMeetingRoom();
                     meetingRoom.get(idMeetingRoom).setAvailability(false);
                 }
