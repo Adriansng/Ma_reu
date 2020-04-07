@@ -117,7 +117,7 @@ public class DummyReunionApiService implements ReunionApiService {
 
     @Override
     public List<MeetingRoom> getAvailabilityMeetingRoom(String date, String hour, int nbMinute) {
-        for (int i = 1; i <= nbMinute; i++){
+        for (int i = 0; i <= nbMinute; i++){
             String time = DateUtils.addMinute(DateUtils.formatDateLong(date,hour),i);
             String dateAdd = DateUtils.formatDateAfterAdd(time);
             String hourAdd = DateUtils.formatTimeAfterAdd(time);

@@ -27,7 +27,7 @@ public class DateUtils {
         SimpleDateFormat formatter, FORMATTER;
         Date date= null;
         String myDateAndTime="";
-        formatter= new SimpleDateFormat("M/d/yy'T'h'H'mm");
+        formatter= new SimpleDateFormat("M/d/yy'T'HH'H'mm");
         try{
             date= formatter.parse(dateString+"T"+timeString);
             FORMATTER=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
@@ -78,7 +78,7 @@ public class DateUtils {
         formatter= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
         try{
             date= formatter.parse(timeString);
-            FORMATTER=new SimpleDateFormat("h'H'mm");
+            FORMATTER=new SimpleDateFormat("HH'H'mm");
             myTime= FORMATTER.format(date);
         } catch (ParseException e) {
             e.printStackTrace();

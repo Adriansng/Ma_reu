@@ -164,7 +164,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
     private void initList() {
         mMeetingRoom = new ArrayList<>();
-        mApiService.getAvailabilityMeetingRoom(date,hour,2);
+        mApiService.getAvailabilityMeetingRoom(date,hour,45);
         mMeetingRoom.addAll(mApiService.getInitListSpinnerRoomAvailability());
     }
 
