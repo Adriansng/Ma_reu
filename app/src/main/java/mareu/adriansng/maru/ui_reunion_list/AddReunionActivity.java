@@ -5,7 +5,6 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -94,7 +93,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectionRoom = mApiService.getMeetingRoom().get(position);
+                selectionRoom = mApiService.getListMeetingRoomAvailability().get(position);
             }
 
             @Override
@@ -165,12 +164,12 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     private void initList() {
         mMeetingRoom = new ArrayList<>();
         mApiService.getAvailabilityMeetingRoom(date,hour,45);
-        mMeetingRoom.addAll(mApiService.getInitListSpinnerRoomAvailability());
+        mMeetingRoom.addAll(mApiService.getListMeetingRoomAvailability());
     }
 
     private void resetList(){
         mMeetingRoom= new ArrayList<>();
         mApiService.getResetAvailabilityMeetingRoom();
-        mMeetingRoom.addAll(mApiService.getInitListSpinnerRoomAvailability());
+        mMeetingRoom.addAll(mApiService.getListMeetingRoomAvailability());
     }
 }

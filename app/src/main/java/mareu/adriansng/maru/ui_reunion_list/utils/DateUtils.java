@@ -52,7 +52,6 @@ public class DateUtils {
        } catch (ParseException e) {
            e.printStackTrace();
        }
-
        return myDate;
    }
 }

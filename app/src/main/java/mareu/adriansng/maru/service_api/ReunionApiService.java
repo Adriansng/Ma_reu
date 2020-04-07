@@ -40,7 +40,7 @@ public interface ReunionApiService {
     List<Reunion> getFilterMeetingAndDate(int idMeetingRoomFilter, String dateReunion);
 
     // AVAILABILITY
-    List<MeetingRoom> getInitListSpinnerRoomAvailability();
+    List<MeetingRoom> getListMeetingRoomAvailability();
     List<MeetingRoom> getAvailabilityMeetingRoom(String date, String hour, int nbMinute);
     List<MeetingRoom> getResetAvailabilityMeetingRoom();
 
