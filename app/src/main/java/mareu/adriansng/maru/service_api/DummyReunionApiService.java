@@ -1,11 +1,13 @@
 package mareu.adriansng.maru.service_api;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import mareu.adriansng.maru.model.MeetingRoom;
 import mareu.adriansng.maru.model.Person;
 import mareu.adriansng.maru.model.Reunion;
+import mareu.adriansng.maru.ui_reunion_list.utils.DateUtils;
 
 public class DummyReunionApiService implements ReunionApiService {
 
@@ -24,13 +26,13 @@ public class DummyReunionApiService implements ReunionApiService {
     private String dateReunion;
     private int index;
 
-    //Reunion List
+    // REUNION LIST
     @Override
     public List<Reunion> getReunions() {
         return reunions; }
 
 
-    //ID Reunion
+    // ID REUNION
     @Override
     public int getReunionSize(){
         index=reunions.size()-1;
@@ -40,7 +42,7 @@ public class DummyReunionApiService implements ReunionApiService {
     @Override
     public Reunion getReunion(int id) { return reunions.get(id);}
 
-    //Meeting Room
+    // MEETING ROOM
     @Override
     public String getNameMeetingRome(int idMeetingRoom) {
         return meetingRoom.get(idMeetingRoom).getNameRoom();
@@ -54,16 +56,14 @@ public class DummyReunionApiService implements ReunionApiService {
     @Override
     public List<MeetingRoom> getMeetingRoom(){return meetingRoom;}
 
-    //List Person
+    // LIST PERSON
     @Override
     public List<Person> getPersonParticipant(){
         return personList;
     }
 
-    //Address mail List
 
-
-    //Filter
+    // FILTER
     @Override
     public List<Reunion> getFilterMeetingRoom(int idMeetingRoomFilter){
         filterReunions.clear();
@@ -103,7 +103,7 @@ public class DummyReunionApiService implements ReunionApiService {
     }
 
 
-    //Availability
+    // AVAILABILITY
     @Override
     public List<MeetingRoom> getInitListSpinnerRoomAvailability(){
         availabilityMeetingRoom.clear();
@@ -116,14 +116,19 @@ public class DummyReunionApiService implements ReunionApiService {
     }
 
     @Override
-    public List<MeetingRoom> getAvailabilityMeetingRoom(String date, String hour) {
-        for (Reunion reunion : reunions) {
-            if (reunion.getDate().equals(date) && reunion.getHour().equals(hour)) {
-                idMeetingRoom=reunion.getIdMeetingRoom();
-                meetingRoom.get(idMeetingRoom).setAvailability(false);
+    public List<MeetingRoom> getAvailabilityMeetingRoom(String date, String hour, int nbMinute) {
+        for (int i = 1; i <= nbMinute; i++){
+            String time = DateUtils.addMinute(DateUtils.formatDateLong(date,hour),i);
+            String dateAdd = DateUtils.formatDateAfterAdd(time);
+            String hourAdd = DateUtils.formatTimeAfterAdd(time);
+            for (Reunion reunion : reunions) {
+                if (reunion.getDate().equals(dateAdd) && reunion.getHour().equals(hourAdd)) {
+                    idMeetingRoom = reunion.getIdMeetingRoom();
+                    meetingRoom.get(idMeetingRoom).setAvailability(false);
+                }
             }
         }
-        return meetingRoom;
+      return meetingRoom;
     }
 
     @Override
@@ -135,7 +140,8 @@ public class DummyReunionApiService implements ReunionApiService {
         return meetingRoom;
     }
 
-    //Action
+
+    // ACTIONS
     @Override
     public void addReunion(Reunion newReunion) {
         reunions.add(newReunion);

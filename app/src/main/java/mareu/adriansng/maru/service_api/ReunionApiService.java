@@ -8,65 +8,48 @@ import mareu.adriansng.maru.model.Reunion;
 
 public interface ReunionApiService {
 
-
-    //Reunion List
-
+    // REUNION LIST
+    List<Reunion> getFilterReunions();
+    int getReunionSize();
+    /**
+     * get a single reunion by id
+     *@param id
+     */
+    Reunion getReunion(int id);
     /**
      * Get all reunion
      * @return {@link List}
      */
     List<Reunion> getReunions();
 
-    //Id Reunion
-
-    List<Reunion> getFilterReunions();
-
-    int getReunionSize();
-
-    /**
-     * get a single reunion by id
-     *@param id
-     */
-    Reunion getReunion(int id);
-
-    //Meeting Room
-
+    // MEETING ROOM
     /**
      * get a name meeting room by id
      *@param idMeetingRoom
      */
     String getNameMeetingRome(int idMeetingRoom);
-
-
     int getColorAvatarMeetingRoom(int idMeetingRoom);
-
     List<MeetingRoom> getMeetingRoom();
 
-    //Address Mail
+    // LIST PERSON
+    List<Person> getPersonParticipant();
 
-    //Filter
+    // FILTER
     List<Reunion> getFilterMeetingRoom(int idMeetingRoomFilter);
     List<Reunion> getFilterDate(String dateReunion);
     List<Reunion> getFilterMeetingAndDate(int idMeetingRoomFilter, String dateReunion);
 
-    //List Person
-    List<Person> getPersonParticipant();
-
-
-    //Availability
+    // AVAILABILITY
     List<MeetingRoom> getInitListSpinnerRoomAvailability();
-    List<MeetingRoom> getAvailabilityMeetingRoom(String date, String hour);
+    List<MeetingRoom> getAvailabilityMeetingRoom(String date, String hour, int nbMinute);
+    List<MeetingRoom> getResetAvailabilityMeetingRoom();
 
-    //Action
-
+    // ACTIONS
     /**
      * Deletes a reunion
      * @param reunion
      */
     void deleteReunion(Reunion reunion);
-
-    List<MeetingRoom> getResetAvailabilityMeetingRoom();
-
     /**
      * Add a reunion
      * @param newReunion

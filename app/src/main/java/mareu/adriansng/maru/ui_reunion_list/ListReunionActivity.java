@@ -210,7 +210,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         date = DateFormat.getDateInstance(DateFormat.SHORT).format(c.getTime());
-        textViewDate.setText(DateUtils.formatDateDataFromDateLong(date));
+        textViewDate.setText(DateUtils.formatDateData(date));
     }
 
     // ACTIONS
