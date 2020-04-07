@@ -11,7 +11,7 @@ public class DateUtils {
          SimpleDateFormat formatter, FORMATTER;
          Date date= null;
          String myDate="";
-         formatter= new SimpleDateFormat("MM/dd/aaaa");
+         formatter= new SimpleDateFormat("M/d/aaaa");
          try{
              date= formatter.parse(dateString);
              FORMATTER=new SimpleDateFormat("dd MMMM aaaa");
