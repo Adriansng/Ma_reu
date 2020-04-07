@@ -11,10 +11,10 @@ public class DateUtils {
          SimpleDateFormat formatter, FORMATTER;
          Date date= null;
          String myDate="";
-         formatter= new SimpleDateFormat("M/d/aaaa");
+         formatter= new SimpleDateFormat("M/d/yy");
          try{
              date= formatter.parse(dateString);
-             FORMATTER=new SimpleDateFormat("dd MMMM aaaa");
+             FORMATTER=new SimpleDateFormat("dd MMMM yyyy");
              myDate= FORMATTER.format(date);
          } catch (ParseException e) {
              e.printStackTrace();

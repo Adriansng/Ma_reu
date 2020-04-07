@@ -105,7 +105,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(selectionRoom.getId()!=0 && dateUtils==null && hour==null){
+                if(selectionRoom.getId()!=0 && selectionRoom!=null && dateUtils!=null && hour!=null){
                     nameOrganizer= editNameOrganizer.getText().toString(); /*Get the name organizer of edit text */
                     // Send new reunion
                     Reunion reunion= new Reunion(mApiService.getReunionSize()+1,selectionRoom.getId(), nameOrganizer, hour, date , mApiService.getPersonParticipant());
@@ -150,7 +150,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
     private void configSpinner(){
         //Meeting available for this date and hour
-        if (dateUtils.equals(date) && textViewTimes.getText().toString().equals(hour)) {
+        if (dateUtils.equals(textViewDate.getText().toString()) && textViewTimes.getText().toString().equals(hour)) {
             mRoomReunion.setVisibility(View.VISIBLE);
             initList();
             SpinnerMeetingRoomAdapter mAdapter = new SpinnerMeetingRoomAdapter(this, mMeetingRoom);
