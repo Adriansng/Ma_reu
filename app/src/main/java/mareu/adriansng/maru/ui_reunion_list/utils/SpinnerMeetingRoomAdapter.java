@@ -47,11 +47,7 @@ public class SpinnerMeetingRoomAdapter extends ArrayAdapter<MeetingRoom> {
 
         MeetingRoom mMeetingRoom = getItem(position);
         if(mMeetingRoom != null) {
-            Context mContext= textViewName.getContext();
             textViewName.setText(mMeetingRoom.getNameRoom());
-            if(position %2==0){
-                textViewName.setBackgroundColor(mContext.getResources().getColor(R.color.colorItem));
-            }
         }
         return convertView;
     }
