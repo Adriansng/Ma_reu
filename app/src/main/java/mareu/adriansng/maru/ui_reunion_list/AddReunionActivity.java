@@ -50,7 +50,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     private String hour;
     private TextView textViewDate;
     private TextView textViewTimes;
-    private String minuteString;
+    private String dateUtils;
 
 
     @Override
@@ -105,7 +105,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(selectionRoom.getId()!=0){
+                if(selectionRoom.getId()!=0 && dateUtils==null && hour==null){
                     nameOrganizer= editNameOrganizer.getText().toString(); /*Get the name organizer of edit text */
                     // Send new reunion
                     Reunion reunion= new Reunion(mApiService.getReunionSize()+1,selectionRoom.getId(), nameOrganizer, hour, date , mApiService.getPersonParticipant());
@@ -113,7 +113,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
                     // Finish activity
                     finish();
                 }else{
-                    Toast.makeText(AddReunionActivity.this, "Select a Room please for validate " , Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddReunionActivity.this, "Select all information" , Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -129,17 +129,19 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         date= DateFormat.getDateInstance(DateFormat.SHORT).format(c.getTime());
-        textViewDate.setText(DateUtils.formatDateDataFromDateLong(date));
+        dateUtils = DateUtils.formatDateDataFromDateLong(date);
+        textViewDate.setText(dateUtils);
         configSpinner(); /*Meeting available for this date*/
     }
     @Override
     public void onTimeSet(TimePicker view,int hourOfDay, int minute) {
+        String minuteString;
         if(minute<10){
-            minuteString="0"+minute;
+            minuteString ="0"+minute;
         }else{
-           minuteString= String.valueOf(minute);
+           minuteString = String.valueOf(minute);
         }
-        textViewTimes.setText(hourOfDay+"H"+minuteString);
+        textViewTimes.setText(hourOfDay+"H"+ minuteString);
         hour=textViewTimes.getText().toString();
         configSpinner(); /*Meeting available for this hour*/
     }
@@ -148,7 +150,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
     private void configSpinner(){
         //Meeting available for this date and hour
-        if (textViewDate.getText().toString().equals(date) && textViewTimes.getText().toString().equals(hour)) {
+        if (dateUtils.equals(date) && textViewTimes.getText().toString().equals(hour)) {
             mRoomReunion.setVisibility(View.VISIBLE);
             initList();
             SpinnerMeetingRoomAdapter mAdapter = new SpinnerMeetingRoomAdapter(this, mMeetingRoom);
