@@ -55,37 +55,4 @@ public class DateUtils {
 
        return myDate;
    }
-
-    public static String formatDateAfterAdd(String dateString){
-        SimpleDateFormat formatter, FORMATTER;
-        Date date= null;
-        String myDate="";
-        formatter= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-        try{
-            date= formatter.parse(dateString);
-            FORMATTER=new SimpleDateFormat("M/d/yy");
-            myDate= FORMATTER.format(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return myDate;
-    }
-
-    public static String formatTimeAfterAdd( String timeString){
-        SimpleDateFormat formatter, FORMATTER;
-        Date date= null;
-        String myTime="";
-        formatter= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-        try{
-            date= formatter.parse(timeString);
-            FORMATTER=new SimpleDateFormat("HH'H'mm");
-            myTime= FORMATTER.format(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return myTime;
-    }
-
-
-
 }
