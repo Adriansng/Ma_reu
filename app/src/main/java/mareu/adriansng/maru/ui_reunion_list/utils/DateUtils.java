@@ -7,11 +7,11 @@ import java.util.Date;
 public class DateUtils {
      private static final String TAG= "DateUtils";
 
-     public static String formatDateLong(String dateString){
+     public static String formatDateDataFromDateLong(String dateString){
          SimpleDateFormat formatter, FORMATTER;
          Date date= null;
          String myDate="";
-         formatter= new SimpleDateFormat("MM/jj/aaaa");
+         formatter= new SimpleDateFormat("jj/MM/aaaa");
          try{
              date= formatter.parse(dateString);
              FORMATTER=new SimpleDateFormat("jj MMMM aaaa");
