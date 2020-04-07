@@ -30,6 +30,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.ButterKnife;
 import mareu.adriansng.maru.R;
@@ -209,7 +210,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         c.set(Calendar.YEAR,year);
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        date = DateFormat.getDateInstance(DateFormat.SHORT).format(c.getTime());
+        date = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ENGLISH).format(c.getTime());
         textViewDate.setText(DateUtils.formatDateData(date));
     }
 

@@ -23,7 +23,7 @@ public class DateUtils {
          return myDate;
      }
 
-    public static String formatDateLong(String dateString, String timeString){
+    public static String formatTimeLong(String dateString, String timeString){
         SimpleDateFormat formatter, FORMATTER;
         Date date= null;
         String myDateAndTime="";

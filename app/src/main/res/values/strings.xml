@@ -21,4 +21,13 @@
     <string name="select_a_meeting_room">Select a room</string>
     <string name="button_for_date_description">Button for date (description)</string>
     <string name="button_for_time_description">Button for time (description)</string>
+    <string name="detail_name_organizer">Jacques is organizing a meeting</string>
+    <string name="detail_date">March 19, 2020</string>
+    <string name="detail_hour">at 15H30</string>
+    <string name="detail_participant_1">With as participant:</string>
+    <string name="detail_participant_2">-Jacques (jacques@mareu.com)\n-Bernard (bernard@mareu.com)\n-Arnaud (arnaud@mareu.com)</string>
+    <string name="detail_meeting_room">in meeting room A</string>
+    <string name="detail_description_1">Description:</string>
+    <string name="detail_description_2">There will be a recovery meeting on the probability of having a meeting</string>
+    <string name="detail_description_button">button exit description detail</string>
 </resources>

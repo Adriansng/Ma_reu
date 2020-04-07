@@ -1,7 +1,6 @@
 package mareu.adriansng.maru.service_api;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import mareu.adriansng.maru.model.MeetingRoom;
@@ -117,10 +116,10 @@ public class DummyReunionApiService implements ReunionApiService {
 
     @Override
     public List<MeetingRoom> getAvailabilityMeetingRoom(String date, String hour, int nbMinute) {
-        for(int i=0; i<nbMinute;i++){
+        for(int i=-nbMinute; i<nbMinute*2;i++){
             for(Reunion reunion:reunions){
-                String timeReunion = DateUtils.formatDateLong(reunion.getDate(), reunion.getHour());
-                String time = DateUtils.addMinute(DateUtils.formatDateLong(date, hour),i);
+                String timeReunion = DateUtils.formatTimeLong(reunion.getDate(), reunion.getHour());
+                String time = DateUtils.addMinute(DateUtils.formatTimeLong(date, hour),i);
                 if(timeReunion.equals(time)){
                     idMeetingRoom = reunion.getIdMeetingRoom();
                     meetingRoom.get(idMeetingRoom).setAvailability(false);
