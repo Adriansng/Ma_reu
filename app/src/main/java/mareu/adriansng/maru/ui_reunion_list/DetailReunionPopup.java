@@ -1,12 +1,11 @@
 package mareu.adriansng.maru.ui_reunion_list;
 
-import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import mareu.adriansng.maru.R;
-import mareu.adriansng.maru.ui_reunion_list.utils.DateUtils;
 
 public class DetailReunionPopup extends Dialog {
 
@@ -20,7 +19,7 @@ public class DetailReunionPopup extends Dialog {
     private ImageButton buttonDetail;
 
     // CONSTRUCTOR
-    public DetailReunionPopup(Activity activity)
+    public DetailReunionPopup(Context activity)
     {
         super(activity, R.style.Theme_AppCompat_Dialog);
         setContentView(R.layout.popup_detail_reunion);

@@ -1,6 +1,7 @@
 package mareu.adriansng.maru.ui_reunion_list;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Build;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -31,13 +33,14 @@ public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHold
 
     // FOR DATA
     private List<Reunion> mReunions;
-    private ListReunionActivity activity;
     private ReunionApiService apiService;
+    private DetailReunionPopup detailReunionPopup;
 
     // CONSTRUCTOR
     public ListReunionAdapter(List<Reunion> mReunions){
 
         this.mReunions = mReunions;
+
     }
 
     @Override
@@ -61,7 +64,7 @@ public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHold
         }
         // POPUP DETAIL
         holder.itemView.setOnClickListener(v -> {
-            final DetailReunionPopup detailReunionPopup= new DetailReunionPopup(this.activity);
+            detailReunionPopup= new DetailReunionPopup(mContext);
             apiService= DI.getReunionApiService();
             Reunion reunion=this.mReunions.get(position);
             detailReunionPopup.setDetailNameOrganizer(reunion.getNameOrganizer() + "is organizing a meeting");
