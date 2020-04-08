@@ -21,14 +21,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mareu.adriansng.maru.R;
+import mareu.adriansng.maru.di.DI;
 import mareu.adriansng.maru.model.Person;
 import mareu.adriansng.maru.model.Reunion;
+import mareu.adriansng.maru.service_api.ReunionApiService;
 import mareu.adriansng.maru.ui_reunion_list.utils.DateUtils;
 
 public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHolder> {
 
     // FOR DATA
     private List<Reunion> mReunions;
+    private ListReunionActivity activity;
+    private ReunionApiService apiService;
 
     // CONSTRUCTOR
     public ListReunionAdapter(List<Reunion> mReunions){
@@ -57,35 +61,27 @@ public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHold
         }
         // POPUP DETAIL
         holder.itemView.setOnClickListener(v -> {
-            Context context= v.getContext();
-            Dialog dialog= new Dialog(context);
-            dialog.setContentView((R.layout.popup_filter_room));
-            Reunion reunion= this.mReunions.get(position);
-            //Name
-            TextView nameOrganizer=dialog.findViewById(R.id.detail_name_organizer_txt);
-            nameOrganizer.setText(reunion.getNameOrganizer() + "is organizing a meeting");
-            //Date
-            TextView date=dialog.findViewById(R.id.detail_date_txt);
-            date.setText(DateUtils.formatDateData(reunion.getDate()));
-            //Hour
-            TextView hour=dialog.findViewById(R.id.detail_hour_txt);
-            hour.setText(reunion.getHour());
-            //Person
-            TextView personList=dialog.findViewById(R.id.detail_participant_2_txt);
-            String namePerson="";
+            final DetailReunionPopup detailReunionPopup= new DetailReunionPopup(this.activity);
+            apiService= DI.getReunionApiService();
+            Reunion reunion=this.mReunions.get(position);
+            detailReunionPopup.setDetailNameOrganizer(reunion.getNameOrganizer() + "is organizing a meeting");
+            detailReunionPopup.setDetailMeetingRoom(apiService.getNameMeetingRome(reunion.getIdMeetingRoom()));
+            detailReunionPopup.setDetailDate(DateUtils.formatDateData(reunion.getDate()));
+            detailReunionPopup.setDetailHour(reunion.getHour());
+            StringBuilder personListDetail= new StringBuilder();
             for(Person person: reunion.getPersonParticipant()){
-                namePerson+="-";
-                namePerson+=person.getName();
-                namePerson+=" (";
-                namePerson+=person.getAddressMail();
-                namePerson+=")\n";
+                personListDetail.append("-");
+                personListDetail.append(person.getName());
+                personListDetail.append(" (");
+                personListDetail.append(person.getAddressMail());
+                personListDetail.append(")\n");
             }
-            personList.setText(namePerson);
+            detailReunionPopup.setDetailPersonList(personListDetail.toString());
             //Exit
-            ImageButton button=dialog.findViewById(R.id.detail_exit_btn);
-            button.setOnClickListener(v1 -> {
-                dialog.dismiss();
+            detailReunionPopup.getButtonDetail().setOnClickListener(v1 ->{
+            detailReunionPopup.dismiss();
             });
+            detailReunionPopup.build();
         });
 
     }

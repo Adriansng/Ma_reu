@@ -58,7 +58,7 @@
         android:id="@+id/detail_meeting_room"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal||bottom"
+        android:layout_gravity="center_horizontal|bottom"
         android:gravity="center"
         android:padding="25dp"
         android:layout_marginBottom="5dp"
@@ -149,7 +149,7 @@
         android:id="@+id/detail_exit_btn"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_gravity="bottom||center"
+        android:layout_gravity="bottom|center"
         android:layout_marginTop="15dp"
         android:background="@drawable/ic_check_validate_bleu_24dp"
         android:contentDescription="@string/detail_description_button" />

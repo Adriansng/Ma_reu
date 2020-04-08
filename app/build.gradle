@@ -10,6 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        apply plugin: "org.sonarqube"
     }
     buildTypes {
         release {
@@ -20,6 +21,18 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "MaReu"
+        property "sonar.projectKey", "mareu.adrianSng.mareu"
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.language", "java"
+        property "sonar.sources", "src/main/"
+        property "sonar.login", "AdrianSng"
+        property "sonar.password", "maReu"
     }
 }
 
