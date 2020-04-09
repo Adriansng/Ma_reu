@@ -4,7 +4,7 @@
     tools:context="mareu.adriansng.maru.ui_reunion_list.ListReunionActivity">
     <item
         android:id="@+id/action_filter"
-        android:title="@string/action_filtre"
+        android:title="@string/app_action_filter"
         android:icon="@drawable/ic_filter_list_black_24dp"
         app:showAsAction="ifRoom" >
     </item>

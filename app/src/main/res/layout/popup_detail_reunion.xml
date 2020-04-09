@@ -14,8 +14,6 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:background="#FFFFFF"
-        android:cardCornerRadius="5dp"
-        android:cardMaxElevation="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,8 +81,6 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:background="#FFFFFF"
-        android:cardCornerRadius="5dp"
-        android:cardMaxElevation="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/cardView"
@@ -125,8 +121,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="#FFFFFF"
-        android:cardCornerRadius="5dp"
-        android:cardMaxElevation="2dp"
         app:layout_constraintEnd_toEndOf="@+id/cardView2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/cardView2"
@@ -162,7 +156,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/detail_exit_btn"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="16dp"

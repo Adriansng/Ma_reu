@@ -19,7 +19,7 @@
         android:layout_gravity="top"
         android:layout_marginTop="15dp"
         android:layout_marginStart="155dp"
-        android:text="@string/nom_de_l_organisateur"
+        android:text="@string/add_name_organizer"
         android:textSize="20sp"
         android:textStyle="bold" />
 

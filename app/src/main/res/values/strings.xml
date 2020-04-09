@@ -1,26 +1,31 @@
 <resources>
+    // APP
     <string name="app_name">Ma réu</string>
-    <string name="action_filtre">Filter</string>
-    <string name="reunion_name">Reunion A - 0H00 - Name</string>
-    <string name="address_mails">address mail 1, address mail 2, address mail 3, address mail 4</string>
-    <string name="avatar_reu_description">avatar reu</string>
-    <string name="button_delete_reu_description">button delete reu</string>
-    <string name="nom_de_l_organisateur">Organizer name</string>
-    <string name="date_et_heure">Date and Hour:</string>
-    <string name="choix_de_la_salle">Choose a room</string>
+    <string name="app_action_filter">Filter</string>
+    // ITEM RECYCLER VIEW REUNION
+    <string name="item_reunion_name">Reunion A - 0H00 - Name</string>
+    <string name="item_address_mails">address mail 1, address mail 2, address mail 3, address mail 4</string>
+    <string name="item_avatar_reu_description">avatar reu</string>
+    <string name="item_button_delete_reu_description">button delete reu</string>
+    // PARAM REUNION ADD
+    <string name="add_name_organizer">Organizer name</string>
+    <string name="add_date_hour">Date and Hour:</string>
+    <string name="choose_meeting_room">Choose a room</string>
     <string name="validate">Validate</string>
     <string name="date_type">Select your meeting date</string>
     <string name="hour_type">Select your meeting time\n(duration 45 min)</string>
+    // FILTER
     <string name="filter_room">Filter room</string>
     <string name="filter_date">Filter date:</string>
     <string name="filter_meeting_room">Filter meeting room</string>
-    <string name="salle_de_reunion_a">- Salle de reunion A</string>
+    <string name="meeting_room_a">- Meeting room A</string>
     <string name="button_cancel_filter">button cancel filter</string>
     <string name="button_validate_filter">button validate filter</string>
     <string name="select_a_meeting_date">Select a meeting date</string>
     <string name="select_a_meeting_room">Select a room</string>
     <string name="button_for_date_description">Button for date (description)</string>
     <string name="button_for_time_description">Button for time (description)</string>
+    // DETAIL REUNION
     <string name="detail_name_organizer">Jacques is organizing a meeting</string>
     <string name="detail_date">March 19, 2020</string>
     <string name="detail_hour">at 15H30</string>
