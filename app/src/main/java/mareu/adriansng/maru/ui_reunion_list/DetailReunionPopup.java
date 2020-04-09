@@ -10,25 +10,26 @@ import mareu.adriansng.maru.R;
 class DetailReunionPopup extends Dialog {
 
     // DESIGN
-    private TextView nameOrganizerDetail;
-    private TextView dateDetail, hourDetail;
-    private TextView meetingRoomDetail, personListDetail;
+    private final TextView nameOrganizerDetail;
+    private final TextView dateDetail;
+    private final TextView hourDetail;
+    private final TextView meetingRoomDetail;
+    private final TextView personListDetail;
     private String detailNameOrganizer;
-    private String detailDate,detailHour;
-    private String detailMeetingRoom,detailPersonList;
-    private ImageButton buttonDetail;
+    private String detailDate, detailHour;
+    private String detailMeetingRoom, detailPersonList;
+    private final ImageButton buttonDetail;
 
     // CONSTRUCTOR
-    DetailReunionPopup(Context activity)
-    {
+    DetailReunionPopup(Context activity) {
         super(activity, R.style.Theme_AppCompat_Dialog);
         setContentView(R.layout.popup_detail_reunion);
-        this.nameOrganizerDetail =findViewById(R.id.detail_name_organizer_txt);
-        this.dateDetail =findViewById(R.id.detail_date_txt);
-        this.hourDetail =findViewById(R.id.detail_hour_txt);
-        this.meetingRoomDetail =findViewById(R.id.detail_meeting_room);
-        this.personListDetail =findViewById(R.id.detail_participant_2_txt);
-        this.buttonDetail =findViewById(R.id.detail_exit_btn);
+        this.nameOrganizerDetail = findViewById(R.id.detail_name_organizer_txt);
+        this.dateDetail = findViewById(R.id.detail_date_txt);
+        this.hourDetail = findViewById(R.id.detail_hour_txt);
+        this.meetingRoomDetail = findViewById(R.id.detail_meeting_room);
+        this.personListDetail = findViewById(R.id.detail_participant_2_txt);
+        this.buttonDetail = findViewById(R.id.detail_exit_btn);
     }
 
     void setDetailNameOrganizer(String detailNameOrganizer) {
@@ -51,9 +52,11 @@ class DetailReunionPopup extends Dialog {
         this.detailPersonList = detailPersonList;
     }
 
-    ImageButton getButtonDetail(){return buttonDetail;}
+    ImageButton getButtonDetail() {
+        return buttonDetail;
+    }
 
-    void build(){
+    void build() {
         show();
         nameOrganizerDetail.setText(detailNameOrganizer);
         dateDetail.setText(detailDate);

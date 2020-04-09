@@ -8,107 +8,32 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/di/DI.java">
+        <entry key="/fragment.java">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/event/DeleteReunionEvent.java">
+        <entry key="$PROJECT_DIR$/app/build.gradle">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/model/MeetingRoom.java">
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/mareu/adriansng/maru/ReunionListTest.java">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/model/Person.java">
+        <entry key="$PROJECT_DIR$/app/src/test/java/mareu/adriansng/maru/ReunionServiceTest.java">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/model/Reunion.java">
+        <entry key="$PROJECT_DIR$/app/src/test/java/mareu/adriansng/maru/service_api/ReunionApiServiceTest.java">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/service_api/DummyReunionApiService.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/service_api/DummyReunionList.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/service_api/ReunionApiService.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/AddReunionActivity.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/DetailReunionPopup.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/ListReunionActivity.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/ListReunionAdapter.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/ListReunionViewHolder.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/utils/DatePickerFragment.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/utils/DateUtils.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/utils/SpinnerMeetingRoomAdapter.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/utils/TimerPickerFragment.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/res/drawable/ic_avatar_meeting_room_24dp.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/res/layout-land/fragment_item_reunion.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/res/layout/fragment_item_reunion.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/test/java/com/cleanup/todoc/TaskUnitTest.java">
           <value>
             <set />
           </value>

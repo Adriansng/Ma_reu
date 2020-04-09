@@ -48,8 +48,8 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     private Spinner mRoomReunion;
     //Date and hour
     private String date;
-    private String hour="";
-    private String dateUtils="";
+    private String hour = "";
+    private String dateUtils = "";
     private TextView textViewDate;
     private TextView textViewTimes;
 
@@ -60,29 +60,29 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         mApiService = DI.getReunionApiService();
 
         // NAME ORGANIZER
-        editNameOrganizer= findViewById(R.id.name_organizer);
+        editNameOrganizer = findViewById(R.id.name_organizer);
 
         // DATE
-        ImageButton buttonDate=  findViewById(R.id.date_add);
-        textViewDate=findViewById(R.id.view_date_add);
+        ImageButton buttonDate = findViewById(R.id.date_add);
+        textViewDate = findViewById(R.id.view_date_add);
         buttonDate.setOnClickListener(v -> {
             resetList(); /*Reset the list spinner meeting room*/
             DialogFragment datePicker = new DatePickerFragment();
-            datePicker.show(getSupportFragmentManager(),"date picker");
+            datePicker.show(getSupportFragmentManager(), "date picker");
         });
 
         // HOUR
-        ImageButton buttonHour= findViewById(R.id.hour_add);
-        textViewTimes=findViewById(R.id.view_hour_add);
+        ImageButton buttonHour = findViewById(R.id.hour_add);
+        textViewTimes = findViewById(R.id.view_hour_add);
         buttonHour.setOnClickListener(v -> {
             resetList();
-            DialogFragment hourPicker= new TimerPickerFragment();
-            hourPicker.show(getSupportFragmentManager(),"time picker");
+            DialogFragment hourPicker = new TimerPickerFragment();
+            hourPicker.show(getSupportFragmentManager(), "time picker");
         });
 
         // MEETING ROOM
         mRoomReunion = findViewById(R.id.roomReunion);
-        selectionRoom= mApiService.getMeetingRoom().get(0);
+        selectionRoom = mApiService.getMeetingRoom().get(0);
         mRoomReunion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -96,17 +96,17 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
             }
         });
         // VALIDATE REUNION
-        ImageButton finishButton= findViewById(R.id.validate_btn);
+        ImageButton finishButton = findViewById(R.id.validate_btn);
         finishButton.setOnClickListener(v -> {
-            if(selectionRoom.getId()!=0 && selectionRoom!=null && !dateUtils.equals("") && !hour.equals("")){
-                nameOrganizer= editNameOrganizer.getText().toString(); /*Get the name organizer of edit text */
+            if (selectionRoom.getId() != 0 && selectionRoom != null && !dateUtils.equals("") && !hour.equals("")) {
+                nameOrganizer = editNameOrganizer.getText().toString(); /*Get the name organizer of edit text */
                 // Send new reunion
-                Reunion reunion= new Reunion(mApiService.getReunionSize()+1,selectionRoom.getId(), nameOrganizer, hour, date , mApiService.getPersonParticipant());
+                Reunion reunion = new Reunion(mApiService.getReunionSize() + 1, selectionRoom.getId(), nameOrganizer, hour, date, mApiService.getPersonParticipant());
                 mApiService.addReunion(reunion);
                 // Finish activity
                 finish();
-            }else{
-                Toast.makeText(AddReunionActivity.this, "Select all information" , Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(AddReunionActivity.this, "Select all information", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -116,30 +116,31 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.YEAR,year);
-        c.set(Calendar.MONTH,month);
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        date= DateFormat.getDateInstance(DateFormat.SHORT, Locale.ENGLISH).format(c.getTime());
+        date = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ENGLISH).format(c.getTime());
         dateUtils = DateUtils.formatDateData(date);
         textViewDate.setText(dateUtils);
         configSpinner(); /*Meeting available for this date*/
     }
+
     @SuppressLint("SetTextI18n")
     @Override
-    public void onTimeSet(TimePicker view,int hourOfDay, int minute) {
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         String minuteString;
-        if(minute<10){
-            minuteString ="0"+minute;
-        }else{
-           minuteString = String.valueOf(minute);
+        if (minute < 10) {
+            minuteString = "0" + minute;
+        } else {
+            minuteString = String.valueOf(minute);
         }
-        textViewTimes.setText(hourOfDay+"H"+ minuteString);
-        hour=textViewTimes.getText().toString();
+        textViewTimes.setText(hourOfDay + "H" + minuteString);
+        hour = textViewTimes.getText().toString();
         configSpinner(); /*Meeting available for this hour*/
     }
 
     // MEETING ROOM LIST AVAILABLE SPINNER
-    private void configSpinner(){
+    private void configSpinner() {
         //Meeting available for this date and hour
         if (dateUtils.equals(textViewDate.getText().toString()) && textViewTimes.getText().toString().equals(hour)) {
             mRoomReunion.setVisibility(View.VISIBLE);
@@ -153,12 +154,12 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
     private void initList() {
         mMeetingRoom = new ArrayList<>();
-        mApiService.getAvailabilityMeetingRoom(date,hour,45);
+        mApiService.getAvailabilityMeetingRoom(date, hour, 45);
         mMeetingRoom.addAll(mApiService.getListMeetingRoomAvailability());
     }
 
-    private void resetList(){
-        mMeetingRoom= new ArrayList<>();
+    private void resetList() {
+        mMeetingRoom = new ArrayList<>();
         mApiService.getResetAvailabilityMeetingRoom();
         mMeetingRoom.addAll(mApiService.getListMeetingRoomAvailability());
     }

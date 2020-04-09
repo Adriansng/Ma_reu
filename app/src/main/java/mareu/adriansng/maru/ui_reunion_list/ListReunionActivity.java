@@ -45,8 +45,6 @@ import mareu.adriansng.maru.ui_reunion_list.utils.SpinnerMeetingRoomAdapter;
 
 public class ListReunionActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    // FOR DESIGN
-    FloatingActionButton mAddButton;
     private RecyclerView recyclerView;
 
     // FOR DATA
@@ -66,25 +64,26 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        reunionApiService= DI.getReunionApiService();
+        reunionApiService = DI.getReunionApiService();
 
         // RECYCLER VIEW REUNION
         configureRecyclerView();
         initList();
 
         // ADD REUNION ACTIVITY
-        mAddButton= findViewById(R.id.add_reunion_button);
+        // FOR DESIGN
+        FloatingActionButton mAddButton = findViewById(R.id.add_reunion_button);
         mAddButton.setOnClickListener(v -> {
-            Context context=v.getContext();
-            Intent intent= new Intent(context,AddReunionActivity.class);
+            Context context = v.getContext();
+            Intent intent = new Intent(context, AddReunionActivity.class);
             context.startActivity(intent);
         });
 
         // POPUP FILTER REUNION
-        ActionMenuItemView filterPopup= findViewById(R.id.action_filter);
+        ActionMenuItemView filterPopup = findViewById(R.id.action_filter);
         filterPopup.setClickable(true);
         filterPopup.setOnClickListener(v -> {
-            Context mContext=v.getContext();
+            Context mContext = v.getContext();
             Dialog dialog = new Dialog(mContext);
             dialog.setContentView(R.layout.popup_filter_room);
             dialog.setTitle("Filter");
@@ -117,7 +116,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
             //Validate
             ImageButton buttonValidate = dialog.findViewById(R.id.validate_btn_popup);
             buttonValidate.setOnClickListener(v12 -> {
-                if (selectionRoom.getNameRoom().equals(" Select a room")  && date == null){
+                if (selectionRoom.getNameRoom().equals(" Select a room") && date == null) {
                     Toast.makeText(ListReunionActivity.this, "All meetings are posted", Toast.LENGTH_LONG).show();
                     initList();
                 }
@@ -136,7 +135,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
                     reunionApiService.getFilterMeetingRoom(selectionRoom.getId());
                     initListFilter();
                 }
-                date =null;
+                date = null;
                 dialog.dismiss();
             });
             //Cancel
@@ -151,30 +150,30 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
 
     // RECYCLER VIEW CONFIGURATION
     private void configureRecyclerView() {
-        recyclerView=findViewById(R.id.list_reunions);
+        recyclerView = findViewById(R.id.list_reunions);
         List<Reunion> mReunions = reunionApiService.getReunions();
-        adapter= new  ListReunionAdapter(mReunions);
+        adapter = new ListReunionAdapter(mReunions);
         recyclerView.setAdapter((adapter));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void initList() {
-        List<Reunion> mReunions= reunionApiService.getReunions();
-        ListReunionAdapter mAdapter= new ListReunionAdapter(mReunions);
+        List<Reunion> mReunions = reunionApiService.getReunions();
+        ListReunionAdapter mAdapter = new ListReunionAdapter(mReunions);
         recyclerView.setAdapter(mAdapter);
     }
 
     // FILTER CONFIGURATION
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     //Filter room
-    private void initListFilter(){
-        List<Reunion> mReunions= reunionApiService.getFilterReunions();
-        ListReunionAdapter mAdapter= new ListReunionAdapter(mReunions);
+    private void initListFilter() {
+        List<Reunion> mReunions = reunionApiService.getFilterReunions();
+        ListReunionAdapter mAdapter = new ListReunionAdapter(mReunions);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -187,8 +186,8 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.YEAR,year);
-        c.set(Calendar.MONTH,month);
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         date = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ENGLISH).format(c.getTime());
         textViewDate.setText(DateUtils.formatDateData(date));
@@ -207,6 +206,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         adapter.notifyDataSetChanged();
         initList();
     }
+
     @Override
     public void onStart() {
         super.onStart();

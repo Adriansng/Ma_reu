@@ -5,23 +5,35 @@ import java.util.Objects;
 
 public class Reunion {
 
-    /** Identifier */
+    /**
+     * Identifier
+     */
     private int id;
 
-    /** Meeting room */
-    private  int idMeetingRoom;
+    /**
+     * Meeting room
+     */
+    private final int idMeetingRoom;
 
-    /** Name organizer */
-    private  String nameOrganizer;
+    /**
+     * Name organizer
+     */
+    private final String nameOrganizer;
 
-    /** Hour */
-    private  String hour;
+    /**
+     * Hour
+     */
+    private final String hour;
 
-    /** Date */
-    private  String date;
+    /**
+     * Date
+     */
+    private final String date;
 
-    /** Address mail participants */
-    private List<Person> personParticipant;
+    /**
+     * Address mail participants
+     */
+    private final List<Person> personParticipant;
 
     /**
      * @param id;
@@ -32,36 +44,44 @@ public class Reunion {
      * @param personParticipant;
      */
 
-    public Reunion (int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<Person> personParticipant){
+    public Reunion(int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<Person> personParticipant) {
         this.id = id;
         this.idMeetingRoom = idMeetingRoom;
         this.nameOrganizer = nameOrganizer;
         this.hour = hour;
-        this.date= date;
+        this.date = date;
         this.personParticipant = personParticipant;
     }
 
     public static Reunion newReunion(int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<Person> personParticipant) {
-        return new Reunion(id,idMeetingRoom,nameOrganizer,hour, date,personParticipant);
+        return new Reunion(id, idMeetingRoom, nameOrganizer, hour, date, personParticipant);
     }
 
-    public int getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public  int getIdMeetingRoom() { return idMeetingRoom;}
+    public int getIdMeetingRoom() {
+        return idMeetingRoom;
+    }
 
-    public  String getNameOrganizer() {
+    public String getNameOrganizer() {
         return nameOrganizer;
     }
 
-    public  String getHour() { return hour; }
+    public String getHour() {
+        return hour;
+    }
 
-    public  String getDate() {
+    public String getDate() {
         return date;
     }
 
-    public  List<Person> getPersonParticipant() {
+    public List<Person> getPersonParticipant() {
         return personParticipant;
     }
 

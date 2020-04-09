@@ -20,19 +20,19 @@ import mareu.adriansng.maru.model.Person;
 import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 
-class ListReunionViewHolder extends RecyclerView.ViewHolder{
+class ListReunionViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView mReunionMeetingRoom;
-    private TextView mReunionListMail;
-    private ImageButton mDeleteButton;
-    private ImageView mAvatar;
+    private final TextView mReunionMeetingRoom;
+    private final TextView mReunionListMail;
+    private final ImageButton mDeleteButton;
+    private final ImageView mAvatar;
 
     ListReunionViewHolder(View itemView) {
         super(itemView);
-        mAvatar=itemView.findViewById(R.id.item_list_reunion_avatar);
-        mReunionMeetingRoom= itemView.findViewById(R.id.item_list_reunion_number);
-        mReunionListMail=itemView.findViewById(R.id.item_list_reunion_mail);
-        mDeleteButton=itemView.findViewById(R.id.item_list_user_delete_button);
+        mAvatar = itemView.findViewById(R.id.item_list_reunion_avatar);
+        mReunionMeetingRoom = itemView.findViewById(R.id.item_list_reunion_number);
+        mReunionListMail = itemView.findViewById(R.id.item_list_reunion_mail);
+        mDeleteButton = itemView.findViewById(R.id.item_list_user_delete_button);
 
     }
 
@@ -43,12 +43,12 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
         Context mContext = itemView.getContext();
         // FIELD
         StringBuilder address = new StringBuilder();
-        for(Person person: mReunion.getPersonParticipant()) {
+        for (Person person : mReunion.getPersonParticipant()) {
             address.append(person.getAddressMail());
             address.append(" - ");
         }
         DrawableCompat.setTint(this.mAvatar.getDrawable(), ContextCompat.getColor(mContext, apiService.getColorAvatarMeetingRoom(mReunion.getIdMeetingRoom())));
-        this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom())+ " - "+ mReunion.getHour()+" - "+ mReunion.getNameOrganizer());
+        this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom()) + " - " + mReunion.getHour() + " - " + mReunion.getNameOrganizer());
         this.mReunionListMail.setText(address.toString());
         this.mDeleteButton.setOnClickListener(v ->
                 EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));

@@ -43,6 +43,7 @@
         android:layout_height="75dp"
         android:layout_gravity="center"
         android:layout_marginTop="500dp"
-        android:background="@drawable/ic_check_validate_bleu_24dp" />
+        android:background="@drawable/ic_check_validate_bleu_24dp"
+        android:contentDescription="TODO" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

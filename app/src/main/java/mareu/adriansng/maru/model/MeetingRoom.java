@@ -4,17 +4,25 @@ import java.util.Objects;
 
 public class MeetingRoom {
 
-    /** Identifier */
+    /**
+     * Identifier
+     */
     private int id;
 
-    /**  Name room*/
-    private String nameRoom;
+    /**
+     * Name room
+     */
+    private final String nameRoom;
 
-    /** Availability */
+    /**
+     * Availability
+     */
     private Boolean availability;
 
-    /**Color avatar meeting room */
-    private int colorAvatar;
+    /**
+     * Color avatar meeting room
+     */
+    private final int colorAvatar;
 
     /**
      * @param id;
@@ -23,11 +31,11 @@ public class MeetingRoom {
      * @param colorAvatar;
      */
 
-    public MeetingRoom (int id, String nameRoom, Boolean availability, int colorAvatar){
-        this.id= id;
+    public MeetingRoom(int id, String nameRoom, Boolean availability, int colorAvatar) {
+        this.id = id;
         this.nameRoom = nameRoom;
         this.availability = availability;
-        this.colorAvatar= colorAvatar;
+        this.colorAvatar = colorAvatar;
     }
 
     public int getId() {

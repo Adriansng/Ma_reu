@@ -6,7 +6,7 @@ public class DeleteReunionEvent {
     /**
      * Reunion to delete
      */
-    public Reunion reunion;
+    public final Reunion reunion;
 
     /**
      * Constructor.

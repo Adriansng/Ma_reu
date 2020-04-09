@@ -52,7 +52,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/add_date_type"
                 android:textSize="15sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
 
             <ImageButton
@@ -105,7 +105,8 @@
                 app:layout_anchor="@+id/roomReunion"
                 android:visibility="gone"
                 app:layout_anchorGravity="start|center"
-                tools:ignore="HardcodedText,RtlSymmetry" />
+                tools:ignore="HardcodedText,RtlSymmetry"
+                android:focusable="true" />
 
             <TextView
                 android:id="@+id/textView3"

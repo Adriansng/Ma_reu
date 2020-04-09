@@ -31,7 +31,7 @@
         android:inputType="textPersonName"
         android:layout_gravity="top|end"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="125dp"/>
+        android:layout_marginEnd="125dp" />
 
     <ImageButton
         android:id="@+id/validate_btn"
@@ -40,6 +40,7 @@
         android:layout_gravity="bottom|center|end"
         android:layout_marginBottom="15dp"
         android:layout_marginEnd="15dp"
-        android:background="@drawable/ic_check_validate_bleu_24dp" />
+        android:background="@drawable/ic_check_validate_bleu_24dp"
+        android:contentDescription="TODO" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

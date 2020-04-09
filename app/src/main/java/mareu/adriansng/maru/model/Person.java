@@ -4,14 +4,20 @@ import java.util.Objects;
 
 public class Person {
 
-    /**Identifier*/
+    /**
+     * Identifier
+     */
     private Integer id;
 
-    /** Name*/
+    /**
+     * Name
+     */
     private String name;
 
-    /**Address mail*/
-    private String addressMail;
+    /**
+     * Address mail
+     */
+    private final String addressMail;
 
     /**
      * @param id;
