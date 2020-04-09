@@ -1,6 +1,5 @@
 package mareu.adriansng.maru.ui_reunion_list.utils;
 
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
@@ -11,9 +10,6 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
-/**
- * Created by Adrian SENEGAS 03/03/2020.
- */
 public class TimerPickerFragment extends DialogFragment {
     @NonNull
     @Override

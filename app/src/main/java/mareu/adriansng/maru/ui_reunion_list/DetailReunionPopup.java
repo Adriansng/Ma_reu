@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import mareu.adriansng.maru.R;
 
-public class DetailReunionPopup extends Dialog {
+class DetailReunionPopup extends Dialog {
 
     // DESIGN
     private TextView nameOrganizerDetail;
@@ -19,7 +19,7 @@ public class DetailReunionPopup extends Dialog {
     private ImageButton buttonDetail;
 
     // CONSTRUCTOR
-    public DetailReunionPopup(Context activity)
+    DetailReunionPopup(Context activity)
     {
         super(activity, R.style.Theme_AppCompat_Dialog);
         setContentView(R.layout.popup_detail_reunion);
@@ -31,29 +31,29 @@ public class DetailReunionPopup extends Dialog {
         this.buttonDetail =findViewById(R.id.detail_exit_btn);
     }
 
-    public void setDetailNameOrganizer(String detailNameOrganizer) {
+    void setDetailNameOrganizer(String detailNameOrganizer) {
         this.detailNameOrganizer = detailNameOrganizer;
     }
 
-    public void setDetailDate(String detailDate) {
+    void setDetailDate(String detailDate) {
         this.detailDate = detailDate;
     }
 
-    public void setDetailHour(String detailHour) {
+    void setDetailHour(String detailHour) {
         this.detailHour = detailHour;
     }
 
-    public void setDetailMeetingRoom(String detailMeetingRoom) {
+    void setDetailMeetingRoom(String detailMeetingRoom) {
         this.detailMeetingRoom = detailMeetingRoom;
     }
 
-    public void setDetailPersonList(String detailPersonList) {
+    void setDetailPersonList(String detailPersonList) {
         this.detailPersonList = detailPersonList;
     }
 
-    public ImageButton getButtonDetail(){return buttonDetail;}
+    ImageButton getButtonDetail(){return buttonDetail;}
 
-    public void build(){
+    void build(){
         show();
         nameOrganizerDetail.setText(detailNameOrganizer);
         dateDetail.setText(detailDate);

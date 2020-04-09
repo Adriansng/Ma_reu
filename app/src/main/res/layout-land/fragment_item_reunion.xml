@@ -12,6 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:contentDescription="@string/item_avatar_reu_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,32 +22,32 @@
 
     <TextView
         android:id="@+id/item_list_reunion_number"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
+        android:singleLine="true"
         android:text="@string/item_reunion_name"
         android:textColor="@color/colorNameReunion"
         android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/item_list_reunion_mail"
+        app:layout_constraintBottom_toBottomOf="@+id/item_list_reunion_avatar"
         app:layout_constraintEnd_toStartOf="@+id/item_list_user_delete_button"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/item_list_reunion_avatar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/item_list_reunion_avatar"
+        app:layout_constraintVertical_bias="0.100000024" />
 
     <TextView
         android:id="@+id/item_list_reunion_mail"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
         android:text="@string/item_address_mails"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/item_list_user_delete_button"
+        app:layout_constraintEnd_toEndOf="@+id/item_list_reunion_number"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/item_list_reunion_number" />
+        app:layout_constraintStart_toStartOf="@+id/item_list_reunion_number"
+        app:layout_constraintTop_toBottomOf="@+id/item_list_reunion_number" />
 
     <ImageButton
         android:id="@+id/item_list_user_delete_button"
@@ -53,7 +55,7 @@
         android:layout_height="wrap_content"
         android:background="@null"
         android:contentDescription="@string/item_button_delete_reu_description"
-        android:padding="10dp"
+        android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

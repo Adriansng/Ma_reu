@@ -5,7 +5,6 @@ import java.util.Objects;
 
 public class Reunion {
 
-
     /** Identifier */
     private int id;
 
@@ -25,12 +24,12 @@ public class Reunion {
     private List<Person> personParticipant;
 
     /**
-     * @param id
-     * @param idMeetingRoom
-     * @param nameOrganizer
-     * @param hour
-     * @param date
-     * @param personParticipant
+     * @param id;
+     * @param idMeetingRoom;
+     * @param nameOrganizer;
+     * @param hour;
+     * @param date;
+     * @param personParticipant;
      */
 
     public Reunion (int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<Person> personParticipant){
@@ -50,40 +49,22 @@ public class Reunion {
 
     public void setId(int id) { this.id = id; }
 
-    public  int getIdMeetingRoom() {
-        return idMeetingRoom;}
-
-    public void setIdMeetingRoom(int meetingRoom) {
-        this.idMeetingRoom = idMeetingRoom;
-    }
+    public  int getIdMeetingRoom() { return idMeetingRoom;}
 
     public  String getNameOrganizer() {
         return nameOrganizer;
     }
 
-    public  void setNameOrganizer(String nameOrganizer) {
-        this.nameOrganizer = nameOrganizer;
-    }
-
     public  String getHour() { return hour; }
-
-    public  void setHour(String hourDate) { this.hour = hourDate; }
 
     public  String getDate() {
         return date;
-    }
-
-    public  void setDate(String date) {
-        this.date = date;
     }
 
     public  List<Person> getPersonParticipant() {
         return personParticipant;
     }
 
-    public  void setPersonParticipant(List<Person> addressMailList) {
-        this.personParticipant = personParticipant;
-    }
 
     @Override
     public boolean equals(Object o) {

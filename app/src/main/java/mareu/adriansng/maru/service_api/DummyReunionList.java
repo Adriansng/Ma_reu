@@ -13,7 +13,7 @@ public abstract class DummyReunionList {
 
 
     //Generate MeetingRoom
-    public static List<MeetingRoom> DUMMY_MEETING_ROOM = Arrays.asList(
+    static List<MeetingRoom> DUMMY_MEETING_ROOM = Arrays.asList(
             new MeetingRoom(0," Select a room", true, R.color.colorSelectRoom),
             new MeetingRoom(1, "Meeting Room A", true, R.color.colorMeetingRoomA),
             new MeetingRoom(2, "Meeting Room B", true, R.color.colorMeetingRoomB),
@@ -28,7 +28,7 @@ public abstract class DummyReunionList {
     );
 
     //Generate Person
-    public static List<Person> DUMMY_PERSON= Arrays.asList(
+    static List<Person> DUMMY_PERSON= Arrays.asList(
             new Person(0,"Pierre","pierre@maReu.com"),
             new Person(1, "Manuel", "manuel@maReu.com"),
             new Person(2, "Bran", "bran@maReu.com")

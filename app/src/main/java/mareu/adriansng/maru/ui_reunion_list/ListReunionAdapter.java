@@ -1,25 +1,14 @@
 package mareu.adriansng.maru.ui_reunion_list;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import mareu.adriansng.maru.R;
@@ -37,12 +26,9 @@ public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHold
     private DetailReunionPopup detailReunionPopup;
 
     // CONSTRUCTOR
-    public ListReunionAdapter(List<Reunion> mReunions){
+    ListReunionAdapter(List<Reunion> mReunions){ this.mReunions = mReunions;}
 
-        this.mReunions = mReunions;
-
-    }
-
+    @NonNull
     @Override
     public ListReunionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context= parent.getContext();
@@ -51,10 +37,7 @@ public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHold
         return new ListReunionViewHolder(view);
     }
 
-
-
-    @SuppressLint("SetTextI18n")
-    @RequiresApi(api = Build.VERSION_CODES.M)
+    @SuppressLint({"SetTextI18n", "NewApi"})
     @Override
     public void onBindViewHolder(@NonNull ListReunionViewHolder holder, int position) {
         holder.bind(this.mReunions.get(position));
@@ -81,25 +64,14 @@ public class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHold
             }
             detailReunionPopup.setDetailPersonList(personListDetail.toString());
             //Exit
-            detailReunionPopup.getButtonDetail().setOnClickListener(v1 ->{
-            detailReunionPopup.dismiss();
-            });
+            detailReunionPopup.getButtonDetail().setOnClickListener((View v1) -> detailReunionPopup.dismiss());
             detailReunionPopup.build();
         });
-
     }
 
     @Override
     public int getItemCount() {
         return mReunions.size();
     }
-
-    public void updateList(List<Reunion> newList){
-        mReunions=new ArrayList<>();
-        mReunions.addAll(newList);
-        notifyDataSetChanged();
-    }
-
-
 }
 

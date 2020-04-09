@@ -13,7 +13,7 @@ public interface ReunionApiService {
     int getReunionSize();
     /**
      * get a single reunion by id
-     *@param id
+     *@param id;
      */
     Reunion getReunion(int id);
     /**
@@ -25,7 +25,7 @@ public interface ReunionApiService {
     // MEETING ROOM
     /**
      * get a name meeting room by id
-     *@param idMeetingRoom
+     *@param idMeetingRoom;
      */
     String getNameMeetingRome(int idMeetingRoom);
     int getColorAvatarMeetingRoom(int idMeetingRoom);
@@ -35,26 +35,24 @@ public interface ReunionApiService {
     List<Person> getPersonParticipant();
 
     // FILTER
-    List<Reunion> getFilterMeetingRoom(int idMeetingRoomFilter);
-    List<Reunion> getFilterDate(String dateReunion);
-    List<Reunion> getFilterMeetingAndDate(int idMeetingRoomFilter, String dateReunion);
+    void getFilterMeetingRoom(int idMeetingRoomFilter);
+    void getFilterDate(String dateReunion);
+    void getFilterMeetingAndDate(int idMeetingRoomFilter, String dateReunion);
 
     // AVAILABILITY
     List<MeetingRoom> getListMeetingRoomAvailability();
-    List<MeetingRoom> getAvailabilityMeetingRoom(String date, String hour, int nbMinute);
-    List<MeetingRoom> getResetAvailabilityMeetingRoom();
+    void getAvailabilityMeetingRoom(String date, String hour, int nbMinute);
+    void getResetAvailabilityMeetingRoom();
 
     // ACTIONS
     /**
      * Deletes a reunion
-     * @param reunion
+     * @param reunion;
      */
     void deleteReunion(Reunion reunion);
     /**
      * Add a reunion
-     * @param newReunion
+     * @param newReunion;
      */
     void addReunion(Reunion newReunion);
-
-
 }

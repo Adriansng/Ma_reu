@@ -17,10 +17,10 @@ public class MeetingRoom {
     private int colorAvatar;
 
     /**
-     * @param id
-     * @param nameRoom
-     * @param availability
-     * @param colorAvatar
+     * @param id;
+     * @param nameRoom;
+     * @param availability;
+     * @param colorAvatar;
      */
 
     public MeetingRoom (int id, String nameRoom, Boolean availability, int colorAvatar){
@@ -42,10 +42,6 @@ public class MeetingRoom {
         return nameRoom;
     }
 
-    public void setNameRoom(String nameRoom) {
-        this.nameRoom = nameRoom;
-    }
-
     public Boolean getAvailability() {
         return availability;
     }
@@ -56,10 +52,6 @@ public class MeetingRoom {
 
     public int getColorAvatar() {
         return colorAvatar;
-    }
-
-    public void setColorAvatar(int colorAvatar) {
-        this.colorAvatar = colorAvatar;
     }
 
     @Override

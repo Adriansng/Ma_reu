@@ -1,5 +1,6 @@
 package mareu.adriansng.maru.ui_reunion_list;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
@@ -52,8 +53,6 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     private TextView textViewDate;
     private TextView textViewTimes;
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,25 +65,19 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         // DATE
         ImageButton buttonDate=  findViewById(R.id.date_add);
         textViewDate=findViewById(R.id.view_date_add);
-        buttonDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetList(); /*Reset the list spinner meeting room*/
-                DialogFragment datePicker = new DatePickerFragment();
-                datePicker.show(getSupportFragmentManager(),"date picker");
-            }
+        buttonDate.setOnClickListener(v -> {
+            resetList(); /*Reset the list spinner meeting room*/
+            DialogFragment datePicker = new DatePickerFragment();
+            datePicker.show(getSupportFragmentManager(),"date picker");
         });
 
         // HOUR
         ImageButton buttonHour= findViewById(R.id.hour_add);
         textViewTimes=findViewById(R.id.view_hour_add);
-        buttonHour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetList();
-                DialogFragment hourPicker= new TimerPickerFragment();
-                hourPicker.show(getSupportFragmentManager(),"time picker");
-            }
+        buttonHour.setOnClickListener(v -> {
+            resetList();
+            DialogFragment hourPicker= new TimerPickerFragment();
+            hourPicker.show(getSupportFragmentManager(),"time picker");
         });
 
         // MEETING ROOM
@@ -104,26 +97,22 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         });
         // VALIDATE REUNION
         ImageButton finishButton= findViewById(R.id.validate_btn);
-        finishButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(selectionRoom.getId()!=0 && selectionRoom!=null && !dateUtils.equals("") && !hour.equals("")){
-                    nameOrganizer= editNameOrganizer.getText().toString(); /*Get the name organizer of edit text */
-                    // Send new reunion
-                    Reunion reunion= new Reunion(mApiService.getReunionSize()+1,selectionRoom.getId(), nameOrganizer, hour, date , mApiService.getPersonParticipant());
-                    mApiService.addReunion(reunion);
-                    // Finish activity
-                    finish();
-                }else{
-                    Toast.makeText(AddReunionActivity.this, "Select all information" , Toast.LENGTH_LONG).show();
-                }
+        finishButton.setOnClickListener(v -> {
+            if(selectionRoom.getId()!=0 && selectionRoom!=null && !dateUtils.equals("") && !hour.equals("")){
+                nameOrganizer= editNameOrganizer.getText().toString(); /*Get the name organizer of edit text */
+                // Send new reunion
+                Reunion reunion= new Reunion(mApiService.getReunionSize()+1,selectionRoom.getId(), nameOrganizer, hour, date , mApiService.getPersonParticipant());
+                mApiService.addReunion(reunion);
+                // Finish activity
+                finish();
+            }else{
+                Toast.makeText(AddReunionActivity.this, "Select all information" , Toast.LENGTH_LONG).show();
             }
         });
 
     }
 
     // DATE AND HOUR
-
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
@@ -135,6 +124,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         textViewDate.setText(dateUtils);
         configSpinner(); /*Meeting available for this date*/
     }
+    @SuppressLint("SetTextI18n")
     @Override
     public void onTimeSet(TimePicker view,int hourOfDay, int minute) {
         String minuteString;
@@ -149,7 +139,6 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     }
 
     // MEETING ROOM LIST AVAILABLE SPINNER
-
     private void configSpinner(){
         //Meeting available for this date and hour
         if (dateUtils.equals(textViewDate.getText().toString()) && textViewTimes.getText().toString().equals(hour)) {

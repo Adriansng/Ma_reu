@@ -4,25 +4,19 @@ import java.util.Objects;
 
 public class Person {
 
-    /**
-     * Identifier
-     */
+    /**Identifier*/
     private Integer id;
 
-    /**
-     * Name
-     */
+    /** Name*/
     private String name;
 
-    /**
-     * Address mail
-     */
+    /**Address mail*/
     private String addressMail;
 
     /**
-     * @param id
-     * @param name
-     * @param addressMail
+     * @param id;
+     * @param name;
+     * @param addressMail;
      */
 
     public Person(Integer id, String name, String addressMail) {
@@ -50,11 +44,6 @@ public class Person {
     public String getAddressMail() {
         return addressMail;
     }
-
-    public void setAddressMail(String addressMail) {
-        this.addressMail = addressMail;
-    }
-
 
     @Override
     public boolean equals(Object o) {

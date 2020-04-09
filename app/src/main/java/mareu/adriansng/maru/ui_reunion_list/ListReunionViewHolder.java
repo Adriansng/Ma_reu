@@ -1,5 +1,6 @@
 package mareu.adriansng.maru.ui_reunion_list;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageButton;
@@ -25,9 +26,8 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
     private TextView mReunionListMail;
     private ImageButton mDeleteButton;
     private ImageView mAvatar;
-    private ReunionApiService apiService;
 
-    public ListReunionViewHolder(View itemView) {
+    ListReunionViewHolder(View itemView) {
         super(itemView);
         mAvatar=itemView.findViewById(R.id.item_list_reunion_avatar);
         mReunionMeetingRoom= itemView.findViewById(R.id.item_list_reunion_number);
@@ -36,20 +36,20 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder{
 
     }
 
-
-    public void bind(Reunion mReunion) {
-        //data
-        apiService= DI.getReunionApiService();
+    @SuppressLint("SetTextI18n")
+    void bind(Reunion mReunion) {
+        // DATA
+        ReunionApiService apiService = DI.getReunionApiService();
         Context mContext = itemView.getContext();
-        //List mail
-        String address = "";
+        // FIELD
+        StringBuilder address = new StringBuilder();
         for(Person person: mReunion.getPersonParticipant()) {
-            address += person.getAddressMail();
-            address += " - ";
+            address.append(person.getAddressMail());
+            address.append(" - ");
         }
-        DrawableCompat.setTint(this.mAvatar.getDrawable(), ContextCompat.getColor(mContext,apiService.getColorAvatarMeetingRoom(mReunion.getIdMeetingRoom())));
+        DrawableCompat.setTint(this.mAvatar.getDrawable(), ContextCompat.getColor(mContext, apiService.getColorAvatarMeetingRoom(mReunion.getIdMeetingRoom())));
         this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom())+ " - "+ mReunion.getHour()+" - "+ mReunion.getNameOrganizer());
-        this.mReunionListMail.setText(address);
+        this.mReunionListMail.setText(address.toString());
         this.mDeleteButton.setOnClickListener(v ->
                 EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
     }

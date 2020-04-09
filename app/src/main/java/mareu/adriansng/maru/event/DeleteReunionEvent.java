@@ -11,7 +11,7 @@ public class DeleteReunionEvent {
     /**
      * Constructor.
      *
-     * @param reunion
+     * @param reunion;
      */
     public DeleteReunionEvent(Reunion reunion) {
         this.reunion = reunion;
