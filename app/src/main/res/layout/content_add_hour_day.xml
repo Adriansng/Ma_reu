@@ -41,7 +41,7 @@
                 android:background="@drawable/ic_date_range_black_24dp"
                 android:ems="10"
                 tools:ignore="RtlSymmetry"
-                android:contentDescription="@string/button_for_date_description" />
+                android:contentDescription="@string/filter_button_for_date_description" />
 
             <TextView
                 android:id="@+id/view_date_add"
@@ -50,7 +50,7 @@
                 android:layout_marginTop="45dp"
                 android:layout_marginStart="25dp"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/date_type"
+                android:text="@string/add_date_type"
                 android:textSize="15sp"
                 android:textStyle="bold"/>
 
@@ -65,7 +65,7 @@
                 android:background="@drawable/ic_access_time_black_24dp"
                 android:ems="10"
                 tools:ignore="RtlSymmetry"
-                android:contentDescription="@string/button_for_time_description" />
+                android:contentDescription="@string/filter_button_for_time_description" />
 
             <TextView
                 android:id="@+id/view_hour_add"
@@ -74,7 +74,7 @@
                 android:layout_marginTop="125dp"
                 android:layout_marginStart="25dp"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/hour_type"
+                android:text="@string/add_hour_type"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -101,7 +101,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
-                android:prompt="@string/select_a_meeting_room"
+                android:prompt="@string/filter_select_a_meeting_room"
                 app:layout_anchor="@+id/roomReunion"
                 android:visibility="gone"
                 app:layout_anchorGravity="start|center"
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center|top"
-                android:text="@string/choose_meeting_room"
+                android:text="@string/add_choose_meeting_room"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 tools:ignore="RtlSymmetry" />
