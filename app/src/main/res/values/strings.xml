@@ -8,12 +8,22 @@
     <string name="item_avatar_reu_description">avatar reu</string>
     <string name="item_button_delete_reu_description">button delete reu</string>
     // PARAM REUNION ADD
-    <string name="add_name_organizer">Organizer name</string>
+    <string name="add_name_organizer">Organizer name:</string>
     <string name="add_date_hour">Date and Hour:</string>
     <string name="add_choose_meeting_room">Choose a room</string>
     <string name="add_validate">Validate</string>
     <string name="add_date_type">Select your meeting date</string>
     <string name="add_hour_type">Select your meeting time\n(duration 45 min)</string>
+    <string name="add_your_name">your name</string>
+    <string name="add_title">ADD REUNION</string>
+    <string name="add_button_description">add_button_description</string>
+    <string name="add_description_reunion">your description reunion</string>
+    <string name="add_subject_reunion">Subject reunion:</string>
+    <string name="line_deco">line deco</string>
+    <string name="add_participants">Participant(s):</string>
+    <string name="add_name_participant_1">add name participant 1</string>
+    <string name="add_name_participant_3">add name participant 3</string>
+    <string name="add_name_participant_2">add name participant 2</string>
     // FILTER
     <string name="filter_room">Filter room</string>
     <string name="filter_date">Filter date:</string>
