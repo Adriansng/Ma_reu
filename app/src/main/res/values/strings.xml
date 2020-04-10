@@ -12,8 +12,8 @@
     <string name="add_date_hour">Date and Hour:</string>
     <string name="add_choose_meeting_room">Choose a room</string>
     <string name="add_validate">Validate</string>
-    <string name="add_date_type">Select your meeting date</string>
-    <string name="add_hour_type">Select your meeting time\n(duration 45 min)</string>
+    <string name="add_date_type">Date</string>
+    <string name="add_hour_type">Time (duration 45 min)</string>
     <string name="add_your_name">your name</string>
     <string name="add_title">ADD REUNION</string>
     <string name="add_button_description">add_button_description</string>
