@@ -100,7 +100,7 @@ public class ReunionServiceTest {
         service.getReunions().clear();
         service.addReunion(reunion1);
         assertEquals(1, service.getReunions().size());
-        assertTrue(service.getMeetingRoom().get(1).getAvailability());
+        assertEquals(true,service.getListMeetingRoomAvailability().get(1).getAvailability());
 
         service.getAvailabilityMeetingRoom("12/31/20", "23h30", 45);
         assertFalse(service.getMeetingRoom().get(1).getAvailability());
