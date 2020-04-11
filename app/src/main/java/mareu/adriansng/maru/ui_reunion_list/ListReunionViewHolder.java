@@ -21,7 +21,6 @@ import mareu.adriansng.maru.event.DeleteReunionEvent;
 import mareu.adriansng.maru.model.Person;
 import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
-import mareu.adriansng.maru.ui_reunion_list.utils.DateUtils;
 
 class ListReunionViewHolder extends RecyclerView.ViewHolder {
 
@@ -29,7 +28,7 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder {
     private final TextView mReunionListMail;
     private final ImageButton mDeleteButton;
     private final View mAvatar;
-    private DetailReunion detailReunion;
+    private DetailReunionActivity detailReunionActivity;
     private List<Reunion> mReunions;
 
     ListReunionViewHolder(View itemView) {
@@ -60,7 +59,7 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder {
         Gson gson = new Gson();
         this.itemView.setOnClickListener(v -> {
             Context mContext=v.getContext();
-            Intent intent= new Intent(mContext, DetailReunion.class);
+            Intent intent= new Intent(mContext, DetailReunionActivity.class);
             intent.putExtra("Reunion",gson.toJson(mReunion));
             mContext.startActivity(intent);
         });

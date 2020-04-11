@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.di.DI;
@@ -20,7 +21,7 @@ import mareu.adriansng.maru.service_api.ReunionApiService;
 import mareu.adriansng.maru.ui_reunion_list.utils.DateUtils;
 
 @SuppressLint("Registered")
-class DetailReunion extends Activity {
+class DetailReunionActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     @Override

@@ -23,12 +23,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/service_api/DummyReunionApiService.java">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/DetailReunion.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/DetailReunionActivity.java">
           <value>
             <set />
           </value>
