@@ -2,12 +2,15 @@ package mareu.adriansng.maru.ui_reunion_list;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -42,6 +45,14 @@ class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHolder> {
         if (position % 2 == 0) {
             holder.itemView.setBackgroundColor(mContext.getResources().getColor(R.color.colorItem, null));
         }
+        // POPUP DETAIL
+        Gson gson = new Gson();
+        holder.itemView.setOnClickListener(v -> {
+            Reunion mReunion= mReunions.get(position);
+            Intent intent= new Intent(mContext, DetailReunionActivity.class);
+            intent.putExtra("Reunion",gson.toJson(mReunion));
+            mContext.startActivity(intent);
+        });
     }
 
     @Override

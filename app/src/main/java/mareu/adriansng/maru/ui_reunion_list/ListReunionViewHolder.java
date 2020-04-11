@@ -28,8 +28,6 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder {
     private final TextView mReunionListMail;
     private final ImageButton mDeleteButton;
     private final View mAvatar;
-    private DetailReunionActivity detailReunionActivity;
-    private List<Reunion> mReunions;
 
     ListReunionViewHolder(View itemView) {
         super(itemView);
@@ -55,13 +53,6 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder {
         this.mReunionListMail.setText(address.toString());
         this.mDeleteButton.setOnClickListener(v ->
                 EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
-        // POPUP DETAIL
-        Gson gson = new Gson();
-        this.itemView.setOnClickListener(v -> {
-            Context mContext=v.getContext();
-            Intent intent= new Intent(mContext, DetailReunionActivity.class);
-            intent.putExtra("Reunion",gson.toJson(mReunion));
-            mContext.startActivity(intent);
-        });
+
     }
 }
