@@ -42,7 +42,7 @@ public class ReunionServiceTest {
     @Test
     public void addReunionList() {
         final Reunion reunion1= new Reunion(1,1,"name1","hour1","date1",service.getPersonParticipant());
-        final Reunion reunion2= new Reunion(2,12,"name2","hour2","date2",service.getPersonParticipant());
+        final Reunion reunion2= new Reunion(2,9,"name2","hour2","date2",service.getPersonParticipant());
 
         service.getReunions().clear();
         service.addReunion(reunion1);

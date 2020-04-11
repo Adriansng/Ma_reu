@@ -8,10 +8,10 @@
     android:orientation="vertical">
 
 
-    <ImageView
+    <View
         android:id="@+id/item_list_reunion_avatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
@@ -19,7 +19,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_avatar_meeting_room_24dp" />
+        android:background="@drawable/ic_avatar_meeting_room_24dp" />
 
     <TextView
         android:id="@+id/item_list_reunion_number"

@@ -2,11 +2,13 @@ package mareu.adriansng.maru.ui_reunion_list;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -47,28 +49,6 @@ class ListReunionAdapter extends RecyclerView.Adapter<ListReunionViewHolder> {
         if (position % 2 == 0) {
             holder.itemView.setBackgroundColor(mContext.getResources().getColor(R.color.colorItem, null));
         }
-        // POPUP DETAIL
-        holder.itemView.setOnClickListener(v -> {
-            detailReunionPopup = new DetailReunionPopup(mContext);
-            apiService = DI.getReunionApiService();
-            Reunion reunion = this.mReunions.get(position);
-            detailReunionPopup.setDetailNameOrganizer(reunion.getNameOrganizer() + "is organizing a meeting");
-            detailReunionPopup.setDetailMeetingRoom(apiService.getNameMeetingRome(reunion.getIdMeetingRoom()));
-            detailReunionPopup.setDetailDate(DateUtils.formatDateData(reunion.getDate()));
-            detailReunionPopup.setDetailHour(reunion.getHour());
-            StringBuilder personListDetail = new StringBuilder();
-            for (Person person : reunion.getPersonParticipant()) {
-                personListDetail.append("-");
-                personListDetail.append(person.getName());
-                personListDetail.append(" (");
-                personListDetail.append(person.getAddressMail());
-                personListDetail.append(")\n");
-            }
-            detailReunionPopup.setDetailPersonList(personListDetail.toString());
-            //Exit
-            detailReunionPopup.getButtonDetail().setOnClickListener((View v1) -> detailReunionPopup.dismiss());
-            detailReunionPopup.build();
-        });
     }
 
     @Override
