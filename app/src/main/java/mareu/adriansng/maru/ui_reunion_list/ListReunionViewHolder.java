@@ -2,14 +2,14 @@ package mareu.adriansng.maru.ui_reunion_list;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -29,7 +29,7 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder {
     private final TextView mReunionListMail;
     private final ImageButton mDeleteButton;
     private final View mAvatar;
-    private DetailReunionPopup detailReunionPopup;
+    private DetailReunion detailReunion;
     private List<Reunion> mReunions;
 
     ListReunionViewHolder(View itemView) {
@@ -51,31 +51,18 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder {
             address.append(person.getAddressMail());
             address.append(" - ");
         }
-        this.mAvatar.setBackgroundColor(apiService.getColorAvatarMeetingRoom(mReunion.getIdMeetingRoom()));
+        this.mAvatar.setBackgroundResource(apiService.getColorAvatarMeetingRoom(mReunion.getIdMeetingRoom()));
         this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom()) + " - " + mReunion.getHour() + " - " + mReunion.getNameOrganizer());
         this.mReunionListMail.setText(address.toString());
         this.mDeleteButton.setOnClickListener(v ->
                 EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
         // POPUP DETAIL
+        Gson gson = new Gson();
         this.itemView.setOnClickListener(v -> {
             Context mContext=v.getContext();
-            detailReunionPopup = new DetailReunionPopup(mContext);
-            detailReunionPopup.setDetailNameOrganizer(mReunion.getNameOrganizer() + "is organizing a meeting");
-            detailReunionPopup.setDetailMeetingRoom(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom()));
-            detailReunionPopup.setDetailDate(DateUtils.formatDateData(mReunion.getDate()));
-            detailReunionPopup.setDetailHour(mReunion.getHour());
-            StringBuilder personListDetail = new StringBuilder();
-            for (Person person : mReunion.getPersonParticipant()) {
-                personListDetail.append("-");
-                personListDetail.append(person.getName());
-                personListDetail.append(" (");
-                personListDetail.append(person.getAddressMail());
-                personListDetail.append(")\n");
-            }
-            detailReunionPopup.setDetailPersonList(personListDetail.toString());
-            //Exit
-            detailReunionPopup.getButtonDetail().setOnClickListener((View v1) -> detailReunionPopup.dismiss());
-            detailReunionPopup.build();
+            Intent intent= new Intent(mContext, DetailReunion.class);
+            intent.putExtra("Reunion",gson.toJson(mReunion));
+            mContext.startActivity(intent);
         });
     }
 }

@@ -28,7 +28,7 @@ public class DateUtils {
     }
 
     @SuppressLint("SimpleDateFormat")
-    public static String formatTimeLong(String dateString, String timeString) {
+    public static String formatTimeDate(String dateString, String timeString) {
         SimpleDateFormat formatter, FORMATTER;
         Date date;
         String myDateAndTime = "";
@@ -45,23 +45,17 @@ public class DateUtils {
         return myDateAndTime;
     }
 
-    @SuppressLint("SimpleDateFormat")
-    public static String addMinute(String dateTime, int nbMinute) {
-        SimpleDateFormat formatter;
-        Date date;
-        String myDate = "";
-        formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+    public static long formatTimeLong(String timeDate) {
+        long dateLong = 0;
         try {
-            date = formatter.parse(dateTime);
-            Calendar cal = Calendar.getInstance();
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+            Date date = sdf.parse(timeDate);
             if (date != null) {
-                cal.setTime(date);
+                dateLong = date.getTime();
             }
-            cal.add(Calendar.MINUTE, nbMinute);
-            myDate = formatter.format(cal.getTime());
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return myDate;
+        return dateLong;
     }
 }
