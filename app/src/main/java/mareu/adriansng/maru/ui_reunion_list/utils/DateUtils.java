@@ -58,4 +58,23 @@ public class DateUtils {
         }
         return dateLong;
     }
+
+    public static String addMinute(String dateTime, int nbMinute) {
+        SimpleDateFormat formatter;
+        Date date;
+        String myDate = "";
+        formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        try {
+            date = formatter.parse(dateTime);
+            Calendar cal = Calendar.getInstance();
+            if (date != null) {
+                cal.setTime(date);
+            }
+            cal.add(Calendar.MINUTE, nbMinute);
+            myDate = formatter.format(cal.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return myDate;
+    }
 }

@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+
 import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.di.DI;
 import mareu.adriansng.maru.model.Person;
@@ -29,8 +31,9 @@ class DetailReunionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_detail_reunion);
         ReunionApiService apiService = DI.getReunionApiService();
-        Intent intent = getIntent();
-        Reunion mReunion = intent.getParcelableExtra("Reunion");
+        Gson gson=new Gson();
+        String strObj= getIntent().getStringExtra("Reunion");
+        Reunion mReunion = gson.fromJson(strObj, Reunion.class);
         // DESIGN
         TextView nameOrganizerDetail = findViewById(R.id.detail_name_organizer_txt);
         TextView dateDetail = findViewById(R.id.detail_date_txt);
