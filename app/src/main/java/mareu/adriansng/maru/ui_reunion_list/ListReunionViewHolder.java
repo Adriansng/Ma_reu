@@ -28,6 +28,7 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder {
     private final TextView mReunionListMail;
     private final ImageButton mDeleteButton;
     private final View mAvatar;
+    private final Context context;
 
     ListReunionViewHolder(View itemView) {
         super(itemView);
@@ -35,11 +36,13 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder {
         mReunionMeetingRoom = itemView.findViewById(R.id.item_list_reunion_number);
         mReunionListMail = itemView.findViewById(R.id.item_list_reunion_mail);
         mDeleteButton = itemView.findViewById(R.id.item_list_user_delete_button);
+        context= itemView.getContext();
 
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "NewApi"})
     void bind(Reunion mReunion) {
+
         // DATA
         ReunionApiService apiService = DI.getReunionApiService();
         // FIELD
@@ -48,11 +51,10 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder {
             address.append(person.getAddressMail());
             address.append(" - ");
         }
-        this.mAvatar.setBackgroundColor(apiService.getColorAvatarMeetingRoom(mReunion.getIdMeetingRoom()));
+        this.mAvatar.setBackgroundColor(context.getResources().getColor(apiService.getColorAvatarMeetingRoom(mReunion.getIdMeetingRoom()),null));
         this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom()) + " - " + mReunion.getHour() + " - " + mReunion.getNameOrganizer());
         this.mReunionListMail.setText(address.toString());
         this.mDeleteButton.setOnClickListener(v ->
                 EventBus.getDefault().post(new DeleteReunionEvent(mReunion)));
-
     }
 }
