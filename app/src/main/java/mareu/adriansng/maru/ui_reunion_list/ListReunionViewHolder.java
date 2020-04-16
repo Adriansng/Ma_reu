@@ -48,7 +48,7 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder {
             address.append(person.getAddressMail());
             address.append(" - ");
         }
-        this.mAvatar.setBackgroundResource(apiService.getColorAvatarMeetingRoom(mReunion.getIdMeetingRoom()));
+        this.mAvatar.setBackgroundColor(apiService.getColorAvatarMeetingRoom(mReunion.getIdMeetingRoom()));
         this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom()) + " - " + mReunion.getHour() + " - " + mReunion.getNameOrganizer());
         this.mReunionListMail.setText(address.toString());
         this.mDeleteButton.setOnClickListener(v ->

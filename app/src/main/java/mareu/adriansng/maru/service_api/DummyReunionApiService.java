@@ -107,13 +107,12 @@ public class DummyReunionApiService implements ReunionApiService {
     @Override
     public void getAvailabilityMeetingRoom(String date, String hour, int nbMinute) {
             String startDate = DateUtils.formatTimeDate( date , hour);
-            String endDate =  DateUtils.addMinute(startDate,nbMinute);
-            long startDateLong = DateUtils.formatTimeLong(startDate);
-            long endDateLong = DateUtils.formatTimeLong(endDate);
+            long startDateLong = DateUtils.formatTimeLong(DateUtils.addMinute(startDate,-nbMinute));
+            long endDateLong = DateUtils.formatTimeLong(DateUtils.addMinute(startDate,nbMinute));
             for (Reunion reunion : reunions) {
                 String timeReunion = DateUtils.formatTimeDate(reunion.getDate(), reunion.getHour());
                 long timeReunionLong = DateUtils.formatTimeLong(timeReunion);
-                if (startDateLong < timeReunionLong  && timeReunionLong < endDateLong  || startDateLong == timeReunionLong || endDateLong== timeReunionLong ) {
+                if (timeReunionLong > startDateLong  && timeReunionLong < endDateLong  || startDateLong == timeReunionLong || endDateLong== timeReunionLong ) {
                     idMeetingRoom = reunion.getIdMeetingRoom();
                     meetingRoom.get(idMeetingRoom).setAvailability(false);
                 }
