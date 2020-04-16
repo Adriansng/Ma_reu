@@ -44,7 +44,7 @@ class DetailReunionActivity extends AppCompatActivity {
 
         // CONSTRUCTOR
         if (mReunion != null) {
-            nameOrganizerDetail.setText(mReunion.getNameOrganizer() + "is organizing a meeting");
+            nameOrganizerDetail.setText(mReunion.getNameOrganizer() + " is organizing a meeting");
         }
         if (mReunion != null) {
             meetingRoomDetail.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom()));
