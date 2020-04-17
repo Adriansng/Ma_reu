@@ -6,7 +6,6 @@
         style="?attr/spinnerDropDownItemStyle"
         android:layout_width="match_parent"
         android:layout_height="?attr/dropdownListPreferredItemHeight"
-        android:drawableStart="@drawable/ic_icons8_open_door"
         android:singleLine="true"
         android:text="@string/filter_meeting_room_a"
         android:textColor="@android:color/black"

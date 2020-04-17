@@ -104,9 +104,9 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         // VALIDATE REUNION
         ImageButton finishButton = findViewById(R.id.add_validate_btn);
         finishButton.setOnClickListener(v -> {
-            if (selectionRoom.getId() != 0 && selectionRoom != null && !dateUtils.equals("") && !hour.equals("")) {
-                nameOrganizer = editNameOrganizer.getText().toString(); /*Get the name organizer of edit text */
-                subjectReunion= editSubjectReunion.getText().toString();/*Get the subject of edit text*/
+            nameOrganizer = editNameOrganizer.getText().toString(); /*Get the name organizer of edit text */
+            subjectReunion= editSubjectReunion.getText().toString();/*Get the subject of edit text*/
+            if (selectionRoom.getId() != 0 && selectionRoom != null && nameOrganizer!=null && subjectReunion!=null) {
                 // Send new reunion
                 Reunion reunion = new Reunion(mApiService.getReunionSize() + 1, selectionRoom.getId(), nameOrganizer, hour, date, mApiService.getPersonParticipant(), subjectReunion);
                 mApiService.addReunion(reunion);

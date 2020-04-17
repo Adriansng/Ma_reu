@@ -56,10 +56,10 @@
                     android:layout_centerVertical="true"
                     android:ems="10"
                     android:hint="@string/add_your_name"
-                    android:inputType="textPersonName|textCapSentences"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
                     android:singleLine="true"
-                    android:textSize="12sp"
-                    android:importantForAutofill="no" />
+                    android:textSize="12sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -85,9 +85,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:hint="@string/add_reunion_subject"
-                    android:inputType="textAutoCorrect|textCapSentences"
-                    android:textSize="12sp"
-                    android:importantForAutofill="no" />
+                    android:importantForAutofill="no"
+                    android:inputType="textAutoCorrect"
+                    android:textSize="12sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
@@ -145,7 +145,7 @@
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="@+id/add_date_btn"
                 app:layout_constraintEnd_toStartOf="@+id/add_date_btn"
-                app:layout_constraintHorizontal_bias="0.75"
+                app:layout_constraintHorizontal_bias="0.85"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/add_date_btn" />
 
@@ -188,7 +188,7 @@
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="@+id/add_hour_btn"
                 app:layout_constraintEnd_toStartOf="@+id/add_hour_btn"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.75"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/add_hour_btn" />
 
