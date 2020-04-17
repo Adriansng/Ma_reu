@@ -106,7 +106,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         finishButton.setOnClickListener(v -> {
             nameOrganizer = editNameOrganizer.getText().toString(); /*Get the name organizer of edit text */
             subjectReunion= editSubjectReunion.getText().toString();/*Get the subject of edit text*/
-            if (selectionRoom.getId() != 0 && selectionRoom != null && nameOrganizer!=null && subjectReunion!=null) {
+            if (selectionRoom.getId() != 0 && selectionRoom != null && !nameOrganizer.equals("") && !subjectReunion.equals("")) {
                 // Send new reunion
                 Reunion reunion = new Reunion(mApiService.getReunionSize() + 1, selectionRoom.getId(), nameOrganizer, hour, date, mApiService.getPersonParticipant(), subjectReunion);
                 mApiService.addReunion(reunion);

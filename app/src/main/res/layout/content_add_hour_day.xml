@@ -56,10 +56,10 @@
                     android:layout_centerVertical="true"
                     android:ems="10"
                     android:hint="@string/add_your_name"
-                    android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:singleLine="true"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    tools:ignore="Autofill" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -85,9 +85,10 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:hint="@string/add_reunion_subject"
-                    android:importantForAutofill="no"
+                    android:lines="2"
                     android:inputType="text"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    tools:ignore="Autofill" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
@@ -283,7 +284,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="23dp"
-                android:focusable="true"
+                android:focusable="false"
                 android:hint="@string/add_name_participant_1"
                 android:inputType="none"
                 android:singleLine="false"
@@ -294,7 +295,7 @@
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toEndOf="@+id/add_participant_image"
                 app:layout_constraintTop_toTopOf="@+id/add_participant_image"
-                tools:focusableInTouchMode="true"
+                tools:focusableInTouchMode="false"
                 tools:ignore="Autofill" />
 
 
@@ -304,10 +305,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:hint="@string/add_name_participant_2"
-                android:focusable="true"
-                tools:focusableInTouchMode="true"
+                android:focusable="false"
+                tools:focusableInTouchMode="false"
                 android:inputType="none"
-                android:selectAllOnFocus="false"
                 android:singleLine="false"
                 android:textSize="12sp"
                 android:textStyle="italic"
@@ -323,8 +323,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="16dp"
-                android:focusable="true"
-                tools:focusableInTouchMode="true"
+                android:focusable="false"
+                tools:focusableInTouchMode="false"
                 android:hint="@string/add_name_participant_3"
                 android:inputType="none"
                 android:singleLine="false"
