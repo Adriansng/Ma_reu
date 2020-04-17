@@ -41,8 +41,8 @@ public class ReunionServiceTest {
     // ACTION
     @Test
     public void addReunionList() {
-        final Reunion reunion1= new Reunion(1,1,"name1","hour1","date1",service.getPersonParticipant());
-        final Reunion reunion2= new Reunion(2,9,"name2","hour2","date2",service.getPersonParticipant());
+        final Reunion reunion1= new Reunion(1,1,"name1","hour1","date1",service.getPersonParticipant(), "");
+        final Reunion reunion2= new Reunion(2,9,"name2","hour2","date2",service.getPersonParticipant(), "");
 
         service.getReunions().clear();
         service.addReunion(reunion1);
@@ -66,8 +66,8 @@ public class ReunionServiceTest {
     // FILTER
     @Test
     public void filterReunionList() {
-        final Reunion reunion1 = new Reunion(1, 1, "name1", "hour1", "date1", service.getPersonParticipant());
-        final Reunion reunion2 = new Reunion(2, 9, "name2", "hour2", "date2", service.getPersonParticipant());
+        final Reunion reunion1 = new Reunion(1, 1, "name1", "hour1", "date1", service.getPersonParticipant(), "");
+        final Reunion reunion2 = new Reunion(2, 9, "name2", "hour2", "date2", service.getPersonParticipant(), "");
 
         service.getReunions().clear();
         service.addReunion(reunion1);
@@ -79,12 +79,12 @@ public class ReunionServiceTest {
         assertNotEquals(2,service.getReunionSize());
         assertEquals(service.getReunion(0).getIdMeetingRoom(),1);
         assertNotEquals(9, service.getReunion(0).getIdMeetingRoom());
-        //filter date
+        //filter popup_filter_date_btn
         service.getFilterDate("date1");
         assertEquals(1,service.getReunionSize());
         assertEquals(service.getReunion(0).getDate(),"date1");
         assertNotEquals("date2", service.getReunion(0).getDate());
-        //filter room and date
+        //filter room and popup_filter_date_btn
         service.getFilterMeetingAndDate(1,"date1");
         assertEquals(1,service.getReunionSize());
         assertEquals(service.getReunion(0).getIdMeetingRoom(),1);
@@ -95,7 +95,7 @@ public class ReunionServiceTest {
 
     @Test
     public void availabilityRoom() {
-        final Reunion reunion1 = new Reunion(1, 1, "name1", "23h30", "12/31/20", service.getPersonParticipant());
+        final Reunion reunion1 = new Reunion(1, 1, "name1", "23h30", "12/31/20", service.getPersonParticipant(), "");
 
         service.getReunions().clear();
         service.addReunion(reunion1);

@@ -36,25 +36,32 @@ public class Reunion {
     private final List<Person> personParticipant;
 
     /**
-     * @param id;
-     * @param idMeetingRoom;
-     * @param nameOrganizer;
-     * @param hour;
-     * @param date;
-     * @param personParticipant;
+     * Address mail participants
+     */
+    private final String subjectReunion;
+
+    /**
+     * @param id ;
+     * @param idMeetingRoom ;
+     * @param nameOrganizer ;
+     * @param hour ;
+     * @param date ;
+     * @param personParticipant ;
+     * @param subjectReunion
      */
 
-    public Reunion(int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<Person> personParticipant) {
+    public Reunion(int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<Person> personParticipant, String subjectReunion) {
         this.id = id;
         this.idMeetingRoom = idMeetingRoom;
         this.nameOrganizer = nameOrganizer;
         this.hour = hour;
         this.date = date;
         this.personParticipant = personParticipant;
+        this.subjectReunion = subjectReunion;
     }
 
-    public static Reunion newReunion(int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<Person> personParticipant) {
-        return new Reunion(id, idMeetingRoom, nameOrganizer, hour, date, personParticipant);
+    public static Reunion newReunion(int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<Person> personParticipant, String subjectReunion) {
+        return new Reunion(id, idMeetingRoom, nameOrganizer, hour, date, personParticipant, subjectReunion);
     }
 
     public int getId() {
@@ -85,6 +92,7 @@ public class Reunion {
         return personParticipant;
     }
 
+    public String getSubjectReunion() { return subjectReunion;}
 
     @Override
     public boolean equals(Object o) {

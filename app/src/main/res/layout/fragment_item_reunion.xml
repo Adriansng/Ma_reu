@@ -37,7 +37,7 @@
         android:textStyle="bold"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="@+id/item_list_reunion_avatar"
-        app:layout_constraintEnd_toStartOf="@+id/item_list_user_delete_button"
+        app:layout_constraintEnd_toStartOf="@+id/item_list_user_delete_btn"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/item_list_reunion_avatar"
         app:layout_constraintTop_toTopOf="@+id/item_list_reunion_avatar"
@@ -61,7 +61,7 @@
         tools:singleLine="true" />
 
     <ImageButton
-        android:id="@+id/item_list_user_delete_button"
+        android:id="@+id/item_list_user_delete_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"

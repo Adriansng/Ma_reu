@@ -2,7 +2,7 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nestedScrollView"
+    android:id="@+id/add_nestedScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DBD6D6"
@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_1_add"
+        android:id="@+id/add_cardView1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -33,100 +33,88 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/add_name_organizer"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/name_organizer"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_username_text_input_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginEnd="24dp"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                android:selectAllOnFocus="false"
-                android:singleLine="true"
-                android:text="@string/add_your_name"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                app:layout_constraintBottom_toBottomOf="@+id/textView"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:counterOverflowTextAppearance="@style/counterOverride"
+                app:counterTextAppearance="@style/counterText"
+                app:layout_constraintBottom_toBottomOf="@+id/add_organizer_image"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/textView"
-                app:layout_constraintTop_toTopOf="@+id/textView"
-                tools:ignore="SmallSp" />
+                app:layout_constraintStart_toEndOf="@+id/add_organizer_image"
+                app:layout_constraintTop_toTopOf="@+id/add_organizer_image">
+
+                <EditText
+                    android:id="@+id/add_name_organizer_edit_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:ems="10"
+                    android:hint="@string/add_your_name"
+                    android:inputType="textPersonName|textCapSentences"
+                    android:singleLine="true"
+                    android:textSize="12sp"
+                    android:importantForAutofill="no" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_description_text_input_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="35"
+                app:counterOverflowTextAppearance="@style/counterOverride"
+                app:counterTextAppearance="@style/counterText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/add_username_text_input_layout"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/add_username_text_input_layout"
+                app:layout_constraintTop_toBottomOf="@+id/add_username_text_input_layout">
+
+                <EditText
+                    android:id="@+id/add_subject_reunion_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:hint="@string/add_reunion_subject"
+                    android:inputType="textAutoCorrect|textCapSentences"
+                    android:textSize="12sp"
+                    android:importantForAutofill="no" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/ic_icons8_horizontal_line_2"
-                android:contentDescription="@string/line_deco"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-            <TextView
-                android:id="@+id/subject_reunion"
+                android:id="@+id/add_organizer_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="32dp"
-                android:elevation="2dp"
-                android:text="@string/add_subject_reunion"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_icons8_male_user"
+                android:contentDescription="@string/add_organizer_image_description" />
 
-            <EditText
-                android:id="@+id/subject_reunion_edit"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginEnd="23dp"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                android:selectAllOnFocus="false"
-                android:singleLine="false"
-                android:text="@string/add_description_reunion"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                app:layout_constraintBottom_toBottomOf="@+id/subject_reunion"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.1"
-                app:layout_constraintStart_toEndOf="@+id/subject_reunion"
-                app:layout_constraintTop_toTopOf="@+id/subject_reunion"
-                tools:ignore="SmallSp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_2_add"
+        android:id="@+id/add_cardView_2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="#A6C0F6"
         app:cardCornerRadius="5dp"
         app:cardMaxElevation="@dimen/cardview_default_elevation"
-        app:layout_constraintEnd_toEndOf="@+id/cardView_1_add"
-        app:layout_constraintStart_toStartOf="@+id/cardView_1_add"
-        app:layout_constraintTop_toBottomOf="@+id/cardView_1_add"
+        app:layout_constraintEnd_toEndOf="@+id/add_cardView1"
+        app:layout_constraintStart_toStartOf="@+id/add_cardView1"
+        app:layout_constraintTop_toBottomOf="@+id/add_cardView1"
         tools:ignore="PrivateResource">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -134,83 +122,144 @@
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/date_add"
+                android:id="@+id/add_date_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/ic_date_range_black_24dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/ic_icons8_calendar"
                 android:contentDescription="@string/filter_button_for_date_description"
                 android:ems="10"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-                android:id="@+id/view_date_add"
+                android:id="@+id/add__date_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="32dp"
                 android:text="@string/add_date_type"
                 android:textSize="14sp"
                 android:textStyle="italic"
-                app:layout_constraintBottom_toBottomOf="@+id/date_add"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.25"
-                app:layout_constraintStart_toEndOf="@+id/date_add"
-                app:layout_constraintTop_toTopOf="@+id/date_add" />
+                app:layout_constraintBottom_toBottomOf="@+id/add_date_btn"
+                app:layout_constraintEnd_toStartOf="@+id/add_date_btn"
+                app:layout_constraintHorizontal_bias="0.75"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/add_date_btn" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/add_filter_line1_design"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="110dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/ic_icons8_horizontal_line_2"
-                android:contentDescription="@string/line_deco"
+                android:contentDescription="@string/add_line_deco_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/date_add" />
+                app:layout_constraintTop_toBottomOf="@+id/add_date_btn" />
 
 
             <ImageButton
-                android:id="@+id/hour_add"
+                android:id="@+id/add_hour_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/ic_access_time_black_24dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/ic_icons8_time_span"
                 android:contentDescription="@string/filter_button_for_time_description"
                 android:ems="10"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/add_date_btn"
+                app:layout_constraintTop_toBottomOf="@+id/add_filter_line1_design"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-                android:id="@+id/view_hour_add"
+                android:id="@+id/add_hour_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="32dp"
                 android:text="@string/add_hour_type"
                 android:textSize="14sp"
                 android:textStyle="italic"
-                app:layout_constraintBottom_toBottomOf="@+id/hour_add"
+                app:layout_constraintBottom_toBottomOf="@+id/add_hour_btn"
+                app:layout_constraintEnd_toStartOf="@+id/add_hour_btn"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/add_hour_btn" />
+
+            <ImageView
+                android:id="@+id/add_hour_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_icons8_schedule"
+                android:contentDescription="@string/add_time_image_description" />
+
+            <ImageView
+                android:id="@+id/add_filter_line1_design2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/ic_icons8_horizontal_line_2"
+                android:contentDescription="@string/add_line_deco_description"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.25"
-                app:layout_constraintStart_toEndOf="@+id/hour_add"
-                app:layout_constraintTop_toTopOf="@+id/hour_add" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_hour_btn" />
+
+
+            <Spinner
+                android:id="@+id/add_roomReunion_spinner"
+                style="@style/Widget.AppCompat.Spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:dropDownWidth="300dp"
+                android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
+                android:paddingRight="14dp"
+                android:popupBackground="@android:color/white"
+                android:popupElevation="3dp"
+                android:stateListAnimator="@drawable/spinner_sla"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/add_filter_line1_design_3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/add_filter_line1_design_3"
+                app:layout_constraintTop_toTopOf="@+id/add_filter_line1_design_3"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+            <ImageView
+                android:id="@+id/add_filter_line1_design_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/add_hour_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_filter_line1_design2"
+                app:srcCompat="@drawable/ic_icons8_open_door_2"
+                android:contentDescription="@string/add_line_deco_description" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_3_add"
+        android:id="@+id/add_cardView_3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -218,9 +267,9 @@
         android:padding="50dp"
         app:cardCornerRadius="5dp"
         app:cardMaxElevation="@dimen/cardview_default_elevation"
-        app:layout_constraintEnd_toEndOf="@+id/cardView_2_add"
-        app:layout_constraintStart_toStartOf="@+id/cardView_2_add"
-        app:layout_constraintTop_toBottomOf="@+id/cardView_2_add"
+        app:layout_constraintEnd_toEndOf="@+id/add_cardView_2"
+        app:layout_constraintStart_toStartOf="@+id/add_cardView_2"
+        app:layout_constraintTop_toBottomOf="@+id/add_cardView_2"
         tools:ignore="PrivateResource">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -228,38 +277,26 @@
             android:layout_height="match_parent">
 
 
-            <TextView
-                android:id="@+id/add_participant"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/add_participants"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <EditText
                 android:id="@+id/add_participant_1_edit_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginEnd="23dp"
                 android:editable="false"
+                android:hint="@string/add_name_participant_1"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
                 android:selectAllOnFocus="false"
                 android:singleLine="false"
-                android:text="@string/add_name_participant_1"
                 android:textSize="12sp"
                 android:textStyle="italic"
-                app:layout_constraintBottom_toBottomOf="@+id/add_participant"
+                app:layout_constraintBottom_toBottomOf="@+id/add_participant_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
-                app:layout_constraintStart_toEndOf="@+id/add_participant"
-                app:layout_constraintTop_toTopOf="@+id/add_participant"
-                tools:ignore="SmallSp" />
+                app:layout_constraintStart_toEndOf="@+id/add_participant_image"
+                app:layout_constraintTop_toTopOf="@+id/add_participant_image"
+                tools:ignore="Deprecated,SmallSp" />
 
 
             <EditText
@@ -268,98 +305,66 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:editable="false"
+                android:hint="@string/add_name_participant_2"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
                 android:selectAllOnFocus="false"
                 android:singleLine="false"
-                android:text="@string/add_name_participant_2"
                 android:textSize="12sp"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="@+id/add_participant_1_edit_text"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/add_participant_1_edit_text"
                 app:layout_constraintTop_toBottomOf="@+id/add_participant_1_edit_text"
-                tools:ignore="SmallSp" />
+                tools:ignore="Deprecated,SmallSp" />
 
             <EditText
                 android:id="@+id/add_participant_3_edit_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp"
                 android:editable="false"
+                android:hint="@string/add_name_participant_3"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
                 android:selectAllOnFocus="false"
                 android:singleLine="false"
-                android:text="@string/add_name_participant_3"
                 android:textSize="12sp"
                 android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/add_participant_2_edit_text"
                 app:layout_constraintStart_toStartOf="@+id/add_participant_2_edit_text"
                 app:layout_constraintTop_toBottomOf="@+id/add_participant_2_edit_text"
-                tools:ignore="SmallSp" />
+                tools:ignore="Deprecated,SmallSp" />
 
             <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/ic_icons8_horizontal_line_2"
-                android:contentDescription="@string/line_deco"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/add_participant_3_edit_text" />
-
-            <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/add_participant_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="32dp"
-                android:text="@string/add_choose_meeting_room"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageView3"
-                tools:ignore="RtlSymmetry" />
-
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/roomReunion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginBottom="32dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3"
-                app:layout_constraintVertical_bias="0.0"
-                tools:ignore="HardcodedText,RtlSymmetry" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_icons8_people"
+                android:contentDescription="@string/add_participant_image_description" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <ImageButton
-        android:id="@+id/validate_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/ic_check_validate_bleu_24dp"
-        android:contentDescription="@string/add_button_description"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView_3_add" />
+        <ImageButton
+            android:id="@+id/add_validate_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/ic_check_validate_bleu_24dp"
+            android:contentDescription="@string/add_button_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_cardView_3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

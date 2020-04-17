@@ -35,9 +35,9 @@ public abstract class DummyReunionList {
     );
 
     public static final List<Reunion> DUMMY_REUNION = Arrays.asList(
-            new Reunion(0, 2, "Henri", "10H00", "5/12/20", Arrays.asList(DUMMY_PERSON.get(0), DUMMY_PERSON.get(1), DUMMY_PERSON.get(2))),
-            new Reunion(1, 5, "Bernard", "10H30", "6/11/20", Arrays.asList(DUMMY_PERSON.get(0), DUMMY_PERSON.get(1), DUMMY_PERSON.get(2))),
-            new Reunion(2, 8, "Arnaud", "15H00", "5/25/20", Arrays.asList(DUMMY_PERSON.get(0), DUMMY_PERSON.get(1), DUMMY_PERSON.get(2)))
+            new Reunion(0, 2, "Henri", "10H00", "5/12/20", Arrays.asList(DUMMY_PERSON.get(0), DUMMY_PERSON.get(1), DUMMY_PERSON.get(2)), "There will be a recovery meeting on the probability of having a meeting"),
+            new Reunion(1, 5, "Bernard", "10H30", "6/11/20", Arrays.asList(DUMMY_PERSON.get(0), DUMMY_PERSON.get(1), DUMMY_PERSON.get(2)), "There will be a recovery meeting on the probability of having a meeting"),
+            new Reunion(2, 8, "Arnaud", "15H00", "5/25/20", Arrays.asList(DUMMY_PERSON.get(0), DUMMY_PERSON.get(1), DUMMY_PERSON.get(2)), "There will be a recovery meeting on the probability of having a meeting")
     );
 
     static List<Reunion> generateReunion() {

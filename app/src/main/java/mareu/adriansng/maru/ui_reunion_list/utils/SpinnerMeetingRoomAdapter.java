@@ -38,7 +38,7 @@ public class SpinnerMeetingRoomAdapter extends ArrayAdapter<MeetingRoom> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.country_spinner_row, parent, false);
         }
-        TextView textViewName = convertView.findViewById(R.id.text_spinner_name);
+        TextView textViewName = convertView.findViewById(R.id.item_spinner_room_txt);
         MeetingRoom mMeetingRoom = getItem(position);
         if (mMeetingRoom != null) {
             textViewName.setText("  "+mMeetingRoom.getNameRoom());

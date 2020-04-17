@@ -43,6 +43,9 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
     //Name organizer
     private String nameOrganizer;
     private EditText editNameOrganizer;
+    //Subject Reunion
+    private String subjectReunion;
+    private EditText editSubjectReunion;
     //Meeting room
     private MeetingRoom selectionRoom;
     private Spinner mRoomReunion;
@@ -60,20 +63,23 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         mApiService = DI.getReunionApiService();
 
         // NAME ORGANIZER
-        editNameOrganizer = findViewById(R.id.name_organizer);
+        editNameOrganizer = findViewById(R.id.add_name_organizer_edit_txt);
+
+        // SUBJECT REUNION
+        editSubjectReunion=findViewById(R.id.add_subject_reunion_edit);
 
         // DATE
-        ImageButton buttonDate = findViewById(R.id.date_add);
-        textViewDate = findViewById(R.id.view_date_add);
+        ImageButton buttonDate = findViewById(R.id.add_date_btn);
+        textViewDate = findViewById(R.id.add__date_txt);
         buttonDate.setOnClickListener(v -> {
             resetList(); /*Reset the list spinner meeting room*/
             DialogFragment datePicker = new DatePickerFragment();
-            datePicker.show(getSupportFragmentManager(), "date picker");
+            datePicker.show(getSupportFragmentManager(), "popup_filter_date_btn picker");
         });
 
         // HOUR
-        ImageButton buttonHour = findViewById(R.id.hour_add);
-        textViewTimes = findViewById(R.id.view_hour_add);
+        ImageButton buttonHour = findViewById(R.id.add_hour_btn);
+        textViewTimes = findViewById(R.id.add_hour_txt);
         buttonHour.setOnClickListener(v -> {
             resetList();
             DialogFragment hourPicker = new TimerPickerFragment();
@@ -81,7 +87,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         });
 
         // MEETING ROOM
-        mRoomReunion = findViewById(R.id.roomReunion);
+        mRoomReunion = findViewById(R.id.add_roomReunion_spinner);
         selectionRoom = mApiService.getMeetingRoom().get(0);
         mRoomReunion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -96,12 +102,13 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
             }
         });
         // VALIDATE REUNION
-        ImageButton finishButton = findViewById(R.id.validate_btn);
+        ImageButton finishButton = findViewById(R.id.add_validate_btn);
         finishButton.setOnClickListener(v -> {
             if (selectionRoom.getId() != 0 && selectionRoom != null && !dateUtils.equals("") && !hour.equals("")) {
                 nameOrganizer = editNameOrganizer.getText().toString(); /*Get the name organizer of edit text */
+                subjectReunion= editSubjectReunion.getText().toString();/*Get the subject of edit text*/
                 // Send new reunion
-                Reunion reunion = new Reunion(mApiService.getReunionSize() + 1, selectionRoom.getId(), nameOrganizer, hour, date, mApiService.getPersonParticipant());
+                Reunion reunion = new Reunion(mApiService.getReunionSize() + 1, selectionRoom.getId(), nameOrganizer, hour, date, mApiService.getPersonParticipant(), subjectReunion);
                 mApiService.addReunion(reunion);
                 // Finish activity
                 finish();
@@ -122,7 +129,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         date = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ENGLISH).format(c.getTime());
         dateUtils = DateUtils.formatDateData(date);
         textViewDate.setText(dateUtils);
-        configSpinner(); /*Meeting available for this date*/
+        configSpinner(); /*Meeting available for this popup_filter_date_btn*/
     }
 
     @SuppressLint("SetTextI18n")
@@ -141,7 +148,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
     // MEETING ROOM LIST AVAILABLE SPINNER
     private void configSpinner() {
-        //Meeting available for this date and hour
+        //Meeting available for this popup_filter_date_btn and hour
         if (dateUtils.equals(textViewDate.getText().toString()) && textViewTimes.getText().toString().equals(hour)) {
             mRoomReunion.setVisibility(View.VISIBLE);
             initList();

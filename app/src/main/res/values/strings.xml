@@ -5,44 +5,46 @@
     // ITEM RECYCLER VIEW REUNION
     <string name="item_reunion_name">Reunion A - 0H00 - Name</string>
     <string name="item_address_mails">address mail 1, address mail 2, address mail 3, address mail 4</string>
-    <string name="item_avatar_reu_description">avatar reu</string>
-    <string name="item_button_delete_reu_description">button delete reu</string>
+    //Description
+    <string name="item_avatar_reu_description">avatar reunion (description)</string>
+    <string name="item_button_delete_reu_description">button delete reunion (description)</string>
+
     // PARAM REUNION ADD
-    <string name="add_name_organizer">Organizer name:</string>
-    <string name="add_date_hour">Date and Hour:</string>
-    <string name="add_choose_meeting_room">Choose a room</string>
-    <string name="add_validate">Validate</string>
+    <string name="add_title">ADD REUNION</string>
+    <string name="add_your_name">Name</string>
+    <string name="add_reunion_subject">Meeting subject</string>
     <string name="add_date_type">Date</string>
     <string name="add_hour_type">Time (duration 45 min)</string>
-    <string name="add_your_name">your name</string>
-    <string name="add_title">ADD REUNION</string>
-    <string name="add_button_description">add_button_description</string>
-    <string name="add_description_reunion">your description reunion</string>
-    <string name="add_subject_reunion">Subject reunion:</string>
-    <string name="line_deco">line deco</string>
-    <string name="add_participants">Participant(s):</string>
-    <string name="add_name_participant_1">add name participant 1</string>
-    <string name="add_name_participant_3">add name participant 3</string>
-    <string name="add_name_participant_2">add name participant 2</string>
+    <string name="add_name_participant_1">name participant 1</string>
+    <string name="add_name_participant_3">name participant 3</string>
+    <string name="add_name_participant_2">name participant 2</string>
+    //Description
+    <string name="add_line_deco_description">line design (description)</string>
+    <string name="add_button_description">add button (description)</string>
+    <string name="add_organizer_image_description">organizer image (description)</string>
+    <string name="add_time_image_description">time image (description)</string>
+    <string name="add_participant_image_description">participants image (description)</string>
+
     // FILTER
-    <string name="filter_room">Filter room</string>
-    <string name="filter_date">Filter date:</string>
     <string name="filter_meeting_room">Filter meeting room</string>
     <string name="filter_meeting_room_a">- Meeting room A</string>
-    <string name="filter_button_cancel_filter">button cancel filter</string>
-    <string name="filter_button_validate_filter">button validate filter</string>
     <string name="filter_select_a_meeting_date">Select a meeting date</string>
-    <string name="filter_select_a_meeting_room">Select a room</string>
+    //Description
     <string name="filter_button_for_date_description">Button for date (description)</string>
     <string name="filter_button_for_time_description">Button for time (description)</string>
+    <string name="filter_button_cancel_description">button cancel filter (description)</string>
+    <string name="filter_button_validate_description">button validate filter (description)</string>
+    <string name="filter_meeting_room_image_description">meeting room image (Description)</string>
+
     // DETAIL REUNION
     <string name="detail_name_organizer">Jacques is organizing a meeting</string>
     <string name="detail_date">March 19, 2020</string>
     <string name="detail_hour">at 15H30</string>
-    <string name="detail_participant_1">With as participant:</string>
     <string name="detail_participant_2">-Jacques (jacques@mareu.com)\n-Bernard (bernard@mareu.com)\n-Arnaud (arnaud@mareu.com)</string>
     <string name="detail_meeting_room">in meeting room A</string>
-    <string name="detail_description_1">Description:</string>
     <string name="detail_description_2">There will be a recovery meeting on the probability of having a meeting</string>
-    <string name="detail_description_button">button exit description detail</string>
+    //Description
+    <string name="detail_button_description">button exit (description)</string>
+    <string name="detail_participant_svg_description">image participants (description)</string>
+    <string name="detail_reunion_image_description">image description reunion (description)</string>
 </resources>

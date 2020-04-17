@@ -1,10 +1,6 @@
 package mareu.adriansng.maru.ui_reunion_list;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -29,7 +25,7 @@ class DetailReunionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.popup_detail_reunion);
+        setContentView(R.layout.activity_detail_reunion);
         ReunionApiService apiService = DI.getReunionApiService();
         Gson gson=new Gson();
         String strObj= getIntent().getStringExtra("Reunion");
@@ -39,24 +35,17 @@ class DetailReunionActivity extends AppCompatActivity {
         TextView dateDetail = findViewById(R.id.detail_date_txt);
         TextView hourDetail = findViewById(R.id.detail_hour_txt);
         TextView meetingRoomDetail = findViewById(R.id.detail_meeting_room);
-        TextView personListDetail = findViewById(R.id.detail_participant_2_txt);
+        TextView personListDetail = findViewById(R.id.detail_participant_txt);
+        TextView subjectReunion= findViewById(R.id.detail_description_txt);
         ImageButton buttonDetail = findViewById(R.id.detail_exit_btn);
 
         // CONSTRUCTOR
         if (mReunion != null) {
             nameOrganizerDetail.setText(mReunion.getNameOrganizer() + " is organizing a meeting");
-        }
-        if (mReunion != null) {
             meetingRoomDetail.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom()));
-        }
-        if (mReunion != null) {
             dateDetail.setText(DateUtils.formatDateData(mReunion.getDate()));
-        }
-        if (mReunion != null) {
             hourDetail.setText(mReunion.getHour());
-        }
-        StringBuilder personName= new StringBuilder();
-        if (mReunion != null) {
+            StringBuilder personName= new StringBuilder();
             for (Person person : mReunion.getPersonParticipant()) {
                 personName.append("-");
                 personName.append(person.getName());
@@ -64,8 +53,9 @@ class DetailReunionActivity extends AppCompatActivity {
                 personName.append(person.getAddressMail());
                 personName.append(")\n");
             }
+            personListDetail.setText(personName.toString());
+            subjectReunion.setText(mReunion.getSubjectReunion());
         }
-        personListDetail.setText(personName.toString());
         //Exit
         buttonDetail.setOnClickListener((View v1) -> finish());
     }

@@ -4,36 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinatorLayout3"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#7FD1CECE">
 
     <TextView
-        android:id="@+id/popup_filter_date_title"
+        android:id="@+id/filter_title_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/filter_date"
-        android:textColor="#504E4E"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:text="@string/app_action_filter"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#454242"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
-        android:id="@+id/date"
+        android:id="@+id/filter_date_btn"
         android:layout_width="52dp"
         android:layout_height="49dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/ic_date_range_black_24dp"
+        android:background="@drawable/ic_icons8_calendar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popup_filter_date_title" />
+        app:layout_constraintTop_toBottomOf="@+id/filter_title_txt" />
 
     <TextView
-        android:id="@+id/view_date_filter"
+        android:id="@+id/filter_date_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -41,81 +39,83 @@
         android:text="@string/filter_select_a_meeting_date"
         android:textColor="#615F5F"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/date"
+        app:layout_constraintBottom_toBottomOf="@+id/filter_date_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.39"
-        app:layout_constraintStart_toEndOf="@+id/date"
-        app:layout_constraintTop_toTopOf="@+id/date" />
+        app:layout_constraintStart_toEndOf="@+id/filter_date_btn"
+        app:layout_constraintTop_toTopOf="@+id/filter_date_btn" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/filter_line_deco"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/ic_icons8_horizontal_line_2"
-        android:contentDescription="@string/line_deco"
+        android:contentDescription="@string/add_line_deco_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
+        app:layout_constraintTop_toBottomOf="@+id/filter_date_btn" />
 
-    <TextView
-        android:id="@+id/popup_filter_room_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:padding="15dp"
-        android:text="@string/filter_meeting_room"
-        android:textColor="#504E4E"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/spinner_room_reunion"
+    <Spinner
+        android:id="@+id/filter_room_spinner"
+        style="@style/Widget.AppCompat.Spinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
+        android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
+        android:paddingRight="14dp"
+        android:popupBackground="@android:color/white"
+        android:popupElevation="3dp"
+        android:stateListAnimator="@drawable/spinner_sla"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/filter_meetingRoom_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popup_filter_room_title"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintStart_toEndOf="@+id/filter_meetingRoom_image"
+        app:layout_constraintTop_toTopOf="@+id/filter_meetingRoom_image"
+        tools:ignore="PrivateResource,RtlHardcoded,RtlSymmetry" />
 
     <ImageButton
-        android:id="@+id/validate_btn_popup"
+        android:id="@+id/filter_validate_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/ic_check_validate_bleu_24dp"
-        android:contentDescription="@string/filter_button_validate_filter"
+        android:contentDescription="@string/filter_button_validate_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cancel_btn_popup"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_room_reunion"
+        app:layout_constraintStart_toEndOf="@+id/filter_cancel_btn"
+        app:layout_constraintTop_toBottomOf="@+id/filter_room_spinner"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/cancel_btn_popup"
+        android:id="@+id/filter_cancel_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/ic_cancel_red_24dp"
-        android:contentDescription="@string/filter_button_cancel_filter"
+        android:contentDescription="@string/filter_button_cancel_description"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/validate_btn_popup"
+        app:layout_constraintEnd_toStartOf="@+id/filter_validate_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_room_reunion"
+        app:layout_constraintTop_toBottomOf="@+id/filter_room_spinner"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/filter_meetingRoom_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/filter_date_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filter_line_deco"
+        app:srcCompat="@drawable/ic_icons8_open_door_2"
+        android:contentDescription="@string/filter_meeting_room_image_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
