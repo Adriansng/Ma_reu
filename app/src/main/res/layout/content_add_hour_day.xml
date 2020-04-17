@@ -40,7 +40,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="24dp"
                 app:counterEnabled="true"
-                app:counterMaxLength="10"
+                app:counterMaxLength="15"
                 app:counterOverflowTextAppearance="@style/counterOverride"
                 app:counterTextAppearance="@style/counterText"
                 app:layout_constraintBottom_toBottomOf="@+id/add_organizer_image"
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 app:counterEnabled="true"
-                app:counterMaxLength="35"
+                app:counterMaxLength="45"
                 app:counterOverflowTextAppearance="@style/counterOverride"
                 app:counterTextAppearance="@style/counterText"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -86,7 +86,7 @@
                     android:layout_centerVertical="true"
                     android:hint="@string/add_reunion_subject"
                     android:importantForAutofill="no"
-                    android:inputType="textAutoCorrect"
+                    android:inputType="text"
                     android:textSize="12sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -283,10 +283,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="23dp"
+                android:focusable="true"
                 android:hint="@string/add_name_participant_1"
-                android:importantForAutofill="no"
                 android:inputType="none"
-                android:selectAllOnFocus="false"
                 android:singleLine="false"
                 android:textSize="12sp"
                 android:textStyle="italic"
@@ -294,7 +293,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toEndOf="@+id/add_participant_image"
-                app:layout_constraintTop_toTopOf="@+id/add_participant_image" />
+                app:layout_constraintTop_toTopOf="@+id/add_participant_image"
+                tools:focusableInTouchMode="true"
+                tools:ignore="Autofill" />
 
 
             <EditText
@@ -303,8 +304,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:hint="@string/add_name_participant_2"
-                android:importantForAutofill="no"
-                android:inputType="none|textPersonName"
+                android:focusable="true"
+                tools:focusableInTouchMode="true"
+                android:inputType="none"
                 android:selectAllOnFocus="false"
                 android:singleLine="false"
                 android:textSize="12sp"
@@ -312,7 +314,8 @@
                 app:layout_constraintEnd_toEndOf="@+id/add_participant_1_edit_text"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/add_participant_1_edit_text"
-                app:layout_constraintTop_toBottomOf="@+id/add_participant_1_edit_text"/>
+                app:layout_constraintTop_toBottomOf="@+id/add_participant_1_edit_text"
+                tools:ignore="Autofill" />
 
             <EditText
                 android:id="@+id/add_participant_3_edit_text"
@@ -320,17 +323,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="16dp"
+                android:focusable="true"
+                tools:focusableInTouchMode="true"
                 android:hint="@string/add_name_participant_3"
-                android:importantForAutofill="no"
-                android:inputType="none|textPersonName"
-                android:selectAllOnFocus="false"
+                android:inputType="none"
                 android:singleLine="false"
                 android:textSize="12sp"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/add_participant_2_edit_text"
                 app:layout_constraintStart_toStartOf="@+id/add_participant_2_edit_text"
-                app:layout_constraintTop_toBottomOf="@+id/add_participant_2_edit_text" />
+                app:layout_constraintTop_toBottomOf="@+id/add_participant_2_edit_text"
+                tools:ignore="Autofill" />
 
             <ImageView
                 android:id="@+id/add_participant_image"
