@@ -3,10 +3,15 @@ package mareu.adriansng.maru.ui_reunion_list;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.BlendModeColorFilter;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.core.graphics.BlendModeColorFilterCompat;
+import androidx.core.graphics.BlendModeCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -47,7 +52,7 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder {
             address.append(person.getAddressMail());
             address.append(" - ");
         }
-        this.mAvatar.setForegroundTintList(ColorStateList.valueOf(context.getResources().getColor(apiService.getColorAvatarMeetingRoom(mReunion.getIdMeetingRoom()),null)));
+        this.mAvatar.getBackground().setColorFilter(BlendModeColorFilterCompat.createBlendModeColorFilterCompat(context.getResources().getColor(apiService.getColorAvatarMeetingRoom(mReunion.getIdMeetingRoom()),null), BlendModeCompat.SRC_ATOP));
         this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom()) + " - " + mReunion.getHour() + " - " + mReunion.getNameOrganizer());
         this.mReunionListMail.setText(address.toString());
         this.mDeleteButton.setOnClickListener(v ->

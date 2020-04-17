@@ -30,12 +30,5 @@
         <item name="android:textColor">#ff0000</item>
     </style>
 
-    <style name="avatarView">
-        <shape xmlns:android="http://schemas.android.com/apk/res/android"
-            android:shape="oval">
-            <solid
-                android:color="#D71412"/>
-        </shape>
-    </style>
 
 </resources>
