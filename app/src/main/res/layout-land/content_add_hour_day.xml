@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_nestedScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DBD6D6"
+    tools:context=".ui_reunion_list.AddReunionActivity"
+    tools:showIn="@layout/add_reunion_activity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/add_cardView1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="#A6C0F6"
+            app:cardCornerRadius="5dp"
+            app:cardMaxElevation="@dimen/cardview_default_elevation"
+            app:layout_constraintEnd_toStartOf="@+id/add_cardView_3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="PrivateResource">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/add_username_text_input_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="24dp"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="15"
+                    app:counterOverflowTextAppearance="@style/counterOverride"
+                    app:counterTextAppearance="@style/counterText"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_organizer_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/add_organizer_image"
+                    app:layout_constraintTop_toTopOf="@+id/add_organizer_image">
+
+                    <EditText
+                        android:id="@+id/add_name_organizer_edit_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:ems="10"
+                        android:hint="@string/add_your_name"
+                        android:inputType="textPersonName"
+                        android:singleLine="true"
+                        android:textSize="12sp"
+                        tools:ignore="Autofill" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/add_description_text_input_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="45"
+                    app:counterOverflowTextAppearance="@style/counterOverride"
+                    app:counterTextAppearance="@style/counterText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/add_username_text_input_layout"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/add_username_text_input_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/add_username_text_input_layout">
+
+                    <EditText
+                        android:id="@+id/add_subject_reunion_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:hint="@string/add_reunion_subject"
+                        android:inputType="text"
+                        android:lines="2"
+                        android:textSize="12sp"
+                        tools:ignore="Autofill" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/add_organizer_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:contentDescription="@string/add_organizer_image_description"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_icons8_male_user" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/add_cardView_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:background="#A6C0F6"
+            app:cardCornerRadius="5dp"
+            app:cardMaxElevation="@dimen/cardview_default_elevation"
+            app:layout_constraintEnd_toStartOf="@+id/add_validate_btn"
+            app:layout_constraintStart_toStartOf="@+id/add_cardView1"
+            app:layout_constraintTop_toBottomOf="@+id/add_cardView1"
+            tools:ignore="PrivateResource">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/add_date_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="50dp"
+                    android:background="@drawable/ic_icons8_calendar"
+                    android:contentDescription="@string/filter_button_for_date_description"
+                    android:ems="10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/add__date_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="50dp"
+                    android:text="@string/add_date_type"
+                    android:textSize="14sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_date_btn"
+                    app:layout_constraintEnd_toStartOf="@+id/add_date_btn"
+                    app:layout_constraintTop_toTopOf="@+id/add_date_btn" />
+
+                <ImageView
+                    android:id="@+id/add_filter_line1_design"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="110dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/ic_icons8_horizontal_line_2"
+                    android:contentDescription="@string/add_line_deco_description"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/add_date_btn" />
+
+
+                <ImageButton
+                    android:id="@+id/add_hour_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="100dp"
+                    android:background="@drawable/ic_icons8_time_span"
+                    android:contentDescription="@string/filter_button_for_time_description"
+                    android:ems="10"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_date_btn"
+                    app:layout_constraintEnd_toStartOf="@+id/add__date_txt"
+                    app:layout_constraintTop_toTopOf="@+id/add_date_btn"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/add_hour_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="50dp"
+                    android:text="@string/add_hour_type"
+                    android:textSize="14sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_hour_btn"
+                    app:layout_constraintEnd_toStartOf="@+id/add_hour_btn"
+                    app:layout_constraintTop_toTopOf="@+id/add_hour_btn" />
+
+                <ImageView
+                    android:id="@+id/add_hour_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:contentDescription="@string/add_time_image_description"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_icons8_schedule" />
+
+
+                <Spinner
+                    android:id="@+id/add_roomReunion_spinner"
+                    style="@style/Widget.AppCompat.Spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:dropDownWidth="300dp"
+                    android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
+                    android:paddingRight="14dp"
+                    android:popupBackground="@android:color/white"
+                    android:popupElevation="3dp"
+                    android:stateListAnimator="@drawable/spinner_sla"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_filter_line1_design_3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/add_filter_line1_design_3"
+                    app:layout_constraintTop_toTopOf="@+id/add_filter_line1_design_3"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+                <ImageView
+                    android:id="@+id/add_filter_line1_design_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="32dp"
+                    android:contentDescription="@string/add_line_deco_description"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/add_hour_image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/add_filter_line1_design"
+                    app:srcCompat="@drawable/ic_icons8_open_door_2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/add_cardView_3"
+            android:layout_width="0dp"
+            android:layout_height="149dp"
+            android:layout_marginStart="350dp"
+            android:layout_marginTop="8dp"
+            android:background="#A6C0F6"
+            android:padding="50dp"
+            app:cardCornerRadius="5dp"
+            app:cardMaxElevation="@dimen/cardview_default_elevation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.92"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="PrivateResource">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <EditText
+                    android:id="@+id/add_participant_1_edit_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="23dp"
+                    android:focusable="false"
+                    android:hint="@string/add_name_participant_1"
+                    android:inputType="none"
+                    android:singleLine="false"
+                    android:textSize="12sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_participant_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toEndOf="@+id/add_participant_image"
+                    app:layout_constraintTop_toTopOf="@+id/add_participant_image"
+                    tools:focusableInTouchMode="false"
+                    tools:ignore="Autofill" />
+
+
+                <EditText
+                    android:id="@+id/add_participant_2_edit_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:focusable="false"
+                    android:hint="@string/add_name_participant_2"
+                    android:inputType="none"
+                    android:singleLine="false"
+                    android:textSize="12sp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="@+id/add_participant_1_edit_text"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/add_participant_1_edit_text"
+                    app:layout_constraintTop_toBottomOf="@+id/add_participant_1_edit_text"
+                    tools:focusableInTouchMode="false"
+                    tools:ignore="Autofill" />
+
+                <EditText
+                    android:id="@+id/add_participant_3_edit_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:focusable="false"
+                    android:hint="@string/add_name_participant_3"
+                    android:inputType="none"
+                    android:singleLine="false"
+                    android:textSize="12sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/add_participant_2_edit_text"
+                    app:layout_constraintStart_toStartOf="@+id/add_participant_2_edit_text"
+                    app:layout_constraintTop_toBottomOf="@+id/add_participant_2_edit_text"
+                    tools:focusableInTouchMode="false"
+                    tools:ignore="Autofill" />
+
+                <ImageView
+                    android:id="@+id/add_participant_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:contentDescription="@string/add_participant_image_description"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_icons8_people" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageButton
+            android:id="@+id/add_validate_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/ic_check_validate_bleu_24dp"
+            android:contentDescription="@string/add_button_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_cardView_3"
+            app:layout_constraintVertical_bias="0.487" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
