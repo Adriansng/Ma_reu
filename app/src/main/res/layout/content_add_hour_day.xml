@@ -283,10 +283,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="23dp"
-                android:editable="false"
                 android:hint="@string/add_name_participant_1"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"
+                android:inputType="none"
                 android:selectAllOnFocus="false"
                 android:singleLine="false"
                 android:textSize="12sp"
@@ -295,8 +294,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toEndOf="@+id/add_participant_image"
-                app:layout_constraintTop_toTopOf="@+id/add_participant_image"
-                tools:ignore="Deprecated,SmallSp" />
+                app:layout_constraintTop_toTopOf="@+id/add_participant_image" />
 
 
             <EditText
@@ -304,10 +302,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:editable="false"
                 android:hint="@string/add_name_participant_2"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"
+                android:inputType="none|textPersonName"
                 android:selectAllOnFocus="false"
                 android:singleLine="false"
                 android:textSize="12sp"
@@ -315,8 +312,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/add_participant_1_edit_text"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/add_participant_1_edit_text"
-                app:layout_constraintTop_toBottomOf="@+id/add_participant_1_edit_text"
-                tools:ignore="Deprecated,SmallSp" />
+                app:layout_constraintTop_toBottomOf="@+id/add_participant_1_edit_text"/>
 
             <EditText
                 android:id="@+id/add_participant_3_edit_text"
@@ -324,10 +320,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="16dp"
-                android:editable="false"
                 android:hint="@string/add_name_participant_3"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"
+                android:inputType="none|textPersonName"
                 android:selectAllOnFocus="false"
                 android:singleLine="false"
                 android:textSize="12sp"
@@ -335,8 +330,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/add_participant_2_edit_text"
                 app:layout_constraintStart_toStartOf="@+id/add_participant_2_edit_text"
-                app:layout_constraintTop_toBottomOf="@+id/add_participant_2_edit_text"
-                tools:ignore="Deprecated,SmallSp" />
+                app:layout_constraintTop_toBottomOf="@+id/add_participant_2_edit_text" />
 
             <ImageView
                 android:id="@+id/add_participant_image"
