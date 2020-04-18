@@ -70,7 +70,7 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
         // DATE
         ImageButton buttonDate = findViewById(R.id.add_date_btn);
-        textViewDate = findViewById(R.id.add__date_txt);
+        textViewDate = findViewById(R.id.add_date_txt);
         buttonDate.setOnClickListener(v -> {
             resetList(); /*Reset the list spinner meeting room*/
             DialogFragment datePicker = new DatePickerFragment();

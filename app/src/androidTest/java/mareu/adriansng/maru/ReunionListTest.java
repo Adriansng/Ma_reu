@@ -2,7 +2,6 @@ package mareu.adriansng.maru;
 
 import android.content.Context;
 import android.widget.DatePicker;
-import android.widget.TimePicker;
 
 import androidx.test.espresso.contrib.PickerActions;
 import androidx.test.espresso.contrib.RecyclerViewActions;
@@ -15,10 +14,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.Arrays;
-import java.util.List;
-
 import mareu.adriansng.maru.ui_reunion_list.ListReunionActivity;
+import mareu.adriansng.maru.utils.ChangeText;
 import mareu.adriansng.maru.utils.DeleteViewAction;
 
 import static androidx.test.espresso.Espresso.onData;
@@ -31,7 +28,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static mareu.adriansng.maru.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.Matchers.instanceOf;
@@ -57,6 +53,7 @@ public class ReunionListTest {
     public void setUp() {
         ListReunionActivity mActivity = mActivityRule.getActivity();
         assertThat(mActivity, notNullValue());
+
     }
 
     @Test
@@ -95,25 +92,26 @@ public class ReunionListTest {
     }
 
     @Test
-    public void AddingReunion() throws  Exception {
+    public void AddingReunion() {
         // Given: We launch AddReunionActivity
         // This is fixed
         int ITEMS_COUNT = 3;
         //Calendar ITEM_HOUR_DATE= 1579512600000;
-        String ITEM_ORGANIZER = "Pascal";
-        List<String> ITEM_ADDRESS_MAIL = Arrays.asList("address mail 1", "address mail 2", "address mail 3");
+        String ITEM_ORGANIZER = "Name";
+        String ITEM_SUBJECT= "Subject";
+        String ITEM_DATE="01/01/01";
+        String ITEM_HOUR="10H00";
         // When perform a click on launch activity
         onView(withId(R.id.list_reunion_add_btn)).perform(click());
         // Date reunion
-        onView(allOf(withId(R.id.add_date_btn),isDisplayed())).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2021, 1, 24));
+        onView(allOf(withId(R.id.add_date_txt), isDisplayed())).perform(ChangeText.setTextInTextView(ITEM_DATE));
         // Hour reunion
-        onView(allOf(withId(R.id.add_hour_btn),isDisplayed())).perform(click());
-        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(10, 30));
+        onView(allOf(withId(R.id.add_hour_txt), isDisplayed())).perform(ChangeText.setTextInTextView(ITEM_HOUR));
         // Name organizer
         onView(allOf(withId(R.id.add_name_organizer_edit_txt), isDisplayed())).perform(replaceText(ITEM_ORGANIZER));
-        //onView(allOf(withId(R.id.info_address_mail_edit), isDisplayed()).perform(replaceText(String.valueOf(ITEM_ADDRESS_MAIL))));
-        // EditText info reunion
+        // Subject
+        onView(allOf(withId(R.id.add_subject_reunion_edit), isDisplayed())).perform(replaceText(ITEM_SUBJECT)); // EditText info reunion
+        // Room
         onView(allOf(withId(R.id.add_roomReunion_spinner), isDisplayed())).perform(click());
         onData(allOf(is(instanceOf(String.class)))).atPosition(1).perform(click());
         // Validate reunion
