@@ -2,10 +2,6 @@ package mareu.adriansng.maru.ui_reunion_list;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.BlendModeColorFilter;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;

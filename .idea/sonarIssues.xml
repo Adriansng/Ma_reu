@@ -18,6 +18,41 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/dataBase/dao/ProjectDao.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/Project.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/ProjectAndTask.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/ProjectWithTask.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/ProjectWithTasks.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/Task.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/build.gradle">
           <value>
             <set />
@@ -53,37 +88,7 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/build.gradle">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/dataBase/dao/ProjectDao.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/Project.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/ProjectAndTask.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/ProjectWithTask.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/ProjectWithTasks.java">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/Task.java">
+        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/ListReunionViewHolder.java">
           <value>
             <set />
           </value>
