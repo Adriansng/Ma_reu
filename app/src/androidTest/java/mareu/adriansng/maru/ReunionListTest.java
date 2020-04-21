@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 import mareu.adriansng.maru.ui_reunion_list.ListReunionActivity;
+import mareu.adriansng.maru.utils.ChangeText;
 import mareu.adriansng.maru.utils.DeleteViewAction;
 
 import static androidx.test.espresso.Espresso.onView;
@@ -126,9 +127,10 @@ public class ReunionListTest {
     @Test
     public void FilterDateReunion() {
         int ITEMS_COUNT = 3;
-        final Reunion reunion1 = new Reunion(1, 1, "name1", "11h00", "date1", service.getPersonParticipant(), "");
-        final Reunion reunion2 = new Reunion(2, 9, "name2", "11h00", "date2", service.getPersonParticipant(), "");
-        final Reunion reunion3 = new Reunion(3, 9, "name3", "12h00", "date2", service.getPersonParticipant(), "");
+        String ITEM_DATE="01/01/01";
+        final Reunion reunion1 = new Reunion(1, 1, "name1", "11h00", "02/01/01", service.getPersonParticipant(), "");
+        final Reunion reunion2 = new Reunion(2, 9, "name2", "11h00", "01/01/01", service.getPersonParticipant(), "");
+        final Reunion reunion3 = new Reunion(3, 9, "name3", "12h00", "01/01/01", service.getPersonParticipant(), "");
 
         service.getReunions().clear();
         service.addReunion(reunion1);
@@ -140,8 +142,8 @@ public class ReunionListTest {
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
         // Date choose
-        service.getFilterDate("date2");
-         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
+        onView(allOf(withId(R.id.filter_date_btn), isDisplayed())).perform(ChangeText.setTextInTextView(ITEM_DATE));
+        onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         //Check number is 2
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 1));
     }
@@ -172,9 +174,10 @@ public class ReunionListTest {
     @Test
     public void FilterRoomAndDateReunion() {
         int ITEMS_COUNT = 3;
-        final Reunion reunion1 = new Reunion(1, 1, "name1", "10h30", "date1", service.getPersonParticipant(), "");
-        final Reunion reunion2 = new Reunion(2, 5, "name2", "11h00", "date2", service.getPersonParticipant(), "");
-        final Reunion reunion3 = new Reunion(3, 5, "name3", "12h00", "date2", service.getPersonParticipant(), "");
+        String ITEM_DATE="01/01/01";
+        final Reunion reunion1 = new Reunion(1, 1, "name1", "10h30", "02/01/01", service.getPersonParticipant(), "");
+        final Reunion reunion2 = new Reunion(2, 5, "name2", "11h00", "01/01/01", service.getPersonParticipant(), "");
+        final Reunion reunion3 = new Reunion(3, 5, "name3", "12h00", "01/01/01", service.getPersonParticipant(), "");
 
         service.getReunions().clear();
         service.addReunion(reunion1);
@@ -186,7 +189,7 @@ public class ReunionListTest {
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
         //Date and room choose
-        service.getFilterMeetingAndDate(5,"date2");
+        onView(allOf(withId(R.id.filter_date_btn), isDisplayed())).perform(ChangeText.setTextInTextView(ITEM_DATE));
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         //Check
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 1));
@@ -195,9 +198,10 @@ public class ReunionListTest {
     @Test
     public void FilterResetReunion() {
         int ITEMS_COUNT = 3;
-        final Reunion reunion1 = new Reunion(1, 1, "name1", "10h30", "date1", service.getPersonParticipant(), "");
-        final Reunion reunion2 = new Reunion(2, 5, "name2", "11h00", "date2", service.getPersonParticipant(), "");
-        final Reunion reunion3 = new Reunion(3, 5, "name3", "12h00", "date3", service.getPersonParticipant(), "");
+        String ITEM_DATE="01/01/01";
+        final Reunion reunion1 = new Reunion(1, 1, "name1", "10h30", "02/01/01",service.getPersonParticipant(), "");
+        final Reunion reunion2 = new Reunion(2, 5, "name2", "11h00", "01/01/01", service.getPersonParticipant(), "");
+        final Reunion reunion3 = new Reunion(3, 2, "name3", "12h00", "01/01/01", service.getPersonParticipant(), "");
 
         service.getReunions().clear();
         service.addReunion(reunion1);
@@ -207,7 +211,7 @@ public class ReunionListTest {
         // Open the overflow menu OR open the options menu,
         // depending on if the device has a hardware or software overflow menu button.
         onView(withId(R.id.action_filter)).perform(click());
-        service.getFilterMeetingRoom(5);
+        onView(allOf(withId(R.id.filter_date_btn), isDisplayed())).perform(ChangeText.setTextInTextView(ITEM_DATE));
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT-1));
         // Open the overflow menu OR open the options menu,
