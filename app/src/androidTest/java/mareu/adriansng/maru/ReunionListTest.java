@@ -14,6 +14,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import mareu.adriansng.maru.model.Reunion;
+import mareu.adriansng.maru.service_api.ReunionApiService;
 import mareu.adriansng.maru.ui_reunion_list.ListReunionActivity;
 import mareu.adriansng.maru.utils.ChangeText;
 import mareu.adriansng.maru.utils.DeleteViewAction;
@@ -30,6 +32,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static mareu.adriansng.maru.utils.RecyclerViewItemCountAssertion.withItemCount;
+import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.AllOf.allOf;
@@ -44,6 +47,8 @@ import static org.junit.Assert.assertThat;
  */
 @RunWith(AndroidJUnit4.class)
 public class ReunionListTest {
+
+    private ReunionApiService service;
 
     @Rule
     public ActivityTestRule<ListReunionActivity> mActivityRule =
@@ -113,7 +118,7 @@ public class ReunionListTest {
         onView(allOf(withId(R.id.add_subject_reunion_edit), isDisplayed())).perform(replaceText(ITEM_SUBJECT)); // EditText info reunion
         // Room
         onView(allOf(withId(R.id.add_roomReunion_spinner), isDisplayed())).perform(click());
-        onData(allOf(is(instanceOf(String.class)))).atPosition(1).perform(click());
+        onData(anything()).atPosition(2).perform(click());
         // Validate reunion
         onView(allOf(withId(R.id.add_validate_btn), isDisplayed())).perform(click());
         // Then: the number of element is 4
@@ -123,9 +128,16 @@ public class ReunionListTest {
     @Test
     public void FilterDateReunion() {
         int ITEMS_COUNT = 3;
+
+        final Reunion reunion1 = new Reunion(1, 1, "name1", "hour1", "date1", service.getPersonParticipant(), "");
+        final Reunion reunion2 = new Reunion(2, 9, "name2", "hour2", "date2", service.getPersonParticipant(), "");
+
+        service.getReunions().clear();
+        service.addReunion(reunion1);
+        service.addReunion(reunion2);
         // Open the overflow menu OR open the options menu,
         // depending on if the device has a hardware or software overflow menu button.
-        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
+        onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
         // Click DatePicker
         onView(allOf(withId(R.id.add_date_btn),isDisplayed())).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2020, 5, 25));
@@ -139,10 +151,10 @@ public class ReunionListTest {
         int ITEMS_COUNT = 3;
         // Open the overflow menu OR open the options menu,
         // depending on if the device has a hardware or software overflow menu button.
-        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
+        onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
         // Click DatePicker
         onView(allOf(withId(R.id.add_roomReunion_spinner), isDisplayed())).perform(click());
-        onData(allOf(is(instanceOf(String.class)))).atPosition(2).perform(click());
+        onData(anything()).atPosition(2).perform(click());
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         //Check number is 1
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 2));
@@ -152,7 +164,7 @@ public class ReunionListTest {
     public void FilterResetReunion() {
         // Open the overflow menu OR open the options menu,
         // depending on if the device has a hardware or software overflow menu button.
-        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
+        onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
        onView(allOf(withId(R.id.filter_cancel_btn), isDisplayed())).perform(click());
     }
 }

@@ -3,6 +3,16 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="/Dummy.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="/a.dummy">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="/fragment.java">
           <value>
             <set />
@@ -28,7 +38,212 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/model/Reunion.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/AddReunionActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/mareu/adriansng/maru/ui_reunion_list/ListReunionActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/dataBase/dao/ProjectDao.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/Project.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/ProjectAndTask.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/ProjectWithTask.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/ProjectWithTasks.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Project 5 Todoc/app/src/main/java/com/cleanup/todoc/model/Task.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SaveMyTrip/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SaveMyTrip/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SaveMyTrip/app/src/main/java/com/openclassrooms/savemytrip/base/BaseActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SaveMyTrip/app/src/main/java/com/openclassrooms/savemytrip/todolist/TodoListActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SaveMyTrip/app/src/main/java/com/openclassrooms/savemytrip/tripbook/TripBookActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SaveMyTrip/app/src/main/java/com/openclassrooms/savemytrip/utils/ItemClickSupport.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SaveMyTrip/app/src/main/java/com/openclassrooms/savemytrip/utils/StorageUtils.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SaveMyTrip/app/src/main/java/com/openclassrooms/savemytrip/utils/StorgeUtils.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/build/generated/ap_generated_sources/debug/out/com/cleanup/todoc/dataBase/dao/TaskDao_Impl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/androidTest/java/com/cleanup/todoc/LiveDataTesUtil.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/androidTest/java/com/cleanup/todoc/LiveDataTestUtil.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/androidTest/java/com/cleanup/todoc/TaskDao.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/androidTest/java/com/cleanup/todoc/TaskDaoTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/dataBase/TodocBaseData.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/dataBase/TodocBasedata.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/dataBase/dao/ProjectDao.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/dataBase/dao/TaskDao.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/injections/Injection.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/injections/ViewModelFactory.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/model/Project.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/model/ProjectWithTasks.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/model/Task.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/repositories/ProjectDataRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/repositories/TaskDataRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/repository/TaskDataRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/ui/MainActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/ui/TaskViewHolder.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/ui/TaskViewModel.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/main/java/com/cleanup/todoc/ui/TasksAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/test/java/com/cleanup/todoc/TaskDaoTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc-master/app/src/test/java/com/cleanup/todoc/TaskUnitTest.java">
           <value>
             <set />
           </value>

@@ -60,10 +60,6 @@ public class Reunion {
         this.subjectReunion = subjectReunion;
     }
 
-    public static Reunion newReunion(int id, int idMeetingRoom, String nameOrganizer, String hour, String date, List<Person> personParticipant, String subjectReunion) {
-        return new Reunion(id, idMeetingRoom, nameOrganizer, hour, date, personParticipant, subjectReunion);
-    }
-
     public int getId() {
         return id;
     }
