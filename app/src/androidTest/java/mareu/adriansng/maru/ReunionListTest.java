@@ -2,10 +2,7 @@ package mareu.adriansng.maru;
 
 import android.content.Context;
 
-import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.contrib.RecyclerViewActions;
-import androidx.test.espresso.matcher.RootMatchers;
-import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
@@ -143,8 +140,8 @@ public class ReunionListTest {
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
         // Date choose
-        service.getFilterDate("date1");
-       onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
+        service.getFilterDate("date2");
+         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         //Check number is 2
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 1));
     }
@@ -167,7 +164,7 @@ public class ReunionListTest {
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
         // Room choose
         service.getFilterMeetingRoom(5);
-        onView(ViewMatchers.withId(R.id.filter_validate_btn)).inRoot(RootMatchers.isPlatformPopup()).perform(ViewActions.click());
+        onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         //Check
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 1));
     }
@@ -190,7 +187,7 @@ public class ReunionListTest {
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
         //Date and room choose
         service.getFilterMeetingAndDate(5,"date2");
-        onView(ViewMatchers.withId(R.id.filter_validate_btn)).inRoot(RootMatchers.isPlatformPopup()).perform(ViewActions.click());
+        onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         //Check
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 1));
     }
@@ -211,12 +208,12 @@ public class ReunionListTest {
         // depending on if the device has a hardware or software overflow menu button.
         onView(withId(R.id.action_filter)).perform(click());
         service.getFilterMeetingRoom(5);
-        onView(ViewMatchers.withId(R.id.filter_validate_btn)).inRoot(RootMatchers.isPlatformPopup()).perform(ViewActions.click());
+        onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT-1));
         // Open the overflow menu OR open the options menu,
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
-        onView(ViewMatchers.withId(R.id.filter_cancel_btn)).inRoot(RootMatchers.isPlatformPopup()).perform(ViewActions.click());
+        onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         // Check reset list
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT));
 
