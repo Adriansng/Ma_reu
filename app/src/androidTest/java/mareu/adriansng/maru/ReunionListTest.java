@@ -126,16 +126,9 @@ public class ReunionListTest {
 
     @Test
     public void FilterDateReunion() {
+        // 3 reunions in the list, one of which is dated 5/25/20
         int ITEMS_COUNT = 3;
-        String ITEM_DATE="01/01/01";
-        final Reunion reunion1 = new Reunion(1, 1, "name1", "11h00", "02/01/01", service.getPersonParticipant(), "");
-        final Reunion reunion2 = new Reunion(2, 9, "name2", "11h00", "01/01/01", service.getPersonParticipant(), "");
-        final Reunion reunion3 = new Reunion(3, 9, "name3", "12h00", "01/01/01", service.getPersonParticipant(), "");
-
-        service.getReunions().clear();
-        service.addReunion(reunion1);
-        service.addReunion(reunion2);
-        service.addReunion(reunion3);
+        String ITEM_DATE="5/25/20";
         // Check list with two meetings that have two identical dates
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT));
         // Open the overflow menu OR open the options menu,
@@ -150,15 +143,8 @@ public class ReunionListTest {
 
     @Test
     public void FilterRoomReunion() {
+        // 3 reunions in the list,one of which happens in room H (int 8)
         int ITEMS_COUNT = 3;
-        final Reunion reunion1 = new Reunion(1, 1, "name1", "10h30", "date1", service.getPersonParticipant(), "");
-        final Reunion reunion2 = new Reunion(2, 5, "name2", "11h00", "date2", service.getPersonParticipant(), "");
-        final Reunion reunion3 = new Reunion(3, 5, "name3", "12h00", "date3", service.getPersonParticipant(), "");
-
-        service.getReunions().clear();
-        service.addReunion(reunion1);
-        service.addReunion(reunion2);
-        service.addReunion(reunion3);
         // Check list with two meetings that have two identical meeting room
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT));
         // Open the overflow menu OR open the options menu,
@@ -174,7 +160,7 @@ public class ReunionListTest {
     @Test
     public void FilterRoomAndDateReunion() {
         int ITEMS_COUNT = 3;
-        String ITEM_DATE="01/01/01";
+        String ITEM_DATE="5/25/20";
         final Reunion reunion1 = new Reunion(1, 1, "name1", "10h30", "02/01/01", service.getPersonParticipant(), "");
         final Reunion reunion2 = new Reunion(2, 5, "name2", "11h00", "01/01/01", service.getPersonParticipant(), "");
         final Reunion reunion3 = new Reunion(3, 5, "name3", "12h00", "01/01/01", service.getPersonParticipant(), "");
@@ -197,21 +183,14 @@ public class ReunionListTest {
 
     @Test
     public void FilterResetReunion() {
+        // 3 reunions in the list, one of which is dated 5/25/20
         int ITEMS_COUNT = 3;
-        String ITEM_DATE="01/01/01";
-        final Reunion reunion1 = new Reunion(1, 1, "name1", "10h30", "02/01/01",service.getPersonParticipant(), "");
-        final Reunion reunion2 = new Reunion(2, 5, "name2", "11h00", "01/01/01", service.getPersonParticipant(), "");
-        final Reunion reunion3 = new Reunion(3, 2, "name3", "12h00", "01/01/01", service.getPersonParticipant(), "");
-
-        service.getReunions().clear();
-        service.addReunion(reunion1);
-        service.addReunion(reunion2);
-        service.addReunion(reunion3);
+        String ITEM_DATE="5/25/20";
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT));
         // Open the overflow menu OR open the options menu,
         // depending on if the device has a hardware or software overflow menu button.
         onView(withId(R.id.action_filter)).perform(click());
-        onView(allOf(withId(R.id.filter_date_btn), isDisplayed())).perform(ChangeText.setTextInTextView(ITEM_DATE));
+        onView(allOf(withId(R.id.filter_date_txt), isDisplayed())).perform(ChangeText.setTextInTextView(ITEM_DATE));
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT-1));
         // Open the overflow menu OR open the options menu,
