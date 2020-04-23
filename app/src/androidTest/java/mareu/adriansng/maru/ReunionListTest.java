@@ -135,7 +135,7 @@ public class ReunionListTest {
 
     @Test
     public void FilterRoomReunion() {
-        // 3 reunions in the list,one of which happens in room H (int 8)
+        // 3 reunions in the list,one of which happens in room B
         int ITEMS_COUNT = 3;
         // Check list with two meetings that have two identical meeting room
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT));
@@ -143,7 +143,7 @@ public class ReunionListTest {
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
         // Room choose
-        SpinnerSelect.setSpinnerDialog(R.id.add_roomReunion_spinner,"Meeting Room H");
+        SpinnerSelect.setSpinnerDialog(R.id.add_roomReunion_spinner,"Meeting Room B");
         //Check
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 2));
     }
@@ -158,7 +158,7 @@ public class ReunionListTest {
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
         //Date
-        TimeAndDataPicker.setDate(R.id.filter_date_btn,2020,5,25);
+        TimeAndDataPicker.setDate(R.id.filter_date_btn,2020,5,12);
         //Room
         SpinnerSelect.setSpinnerDialog(R.id.add_roomReunion_spinner,"Meeting Room H");
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
