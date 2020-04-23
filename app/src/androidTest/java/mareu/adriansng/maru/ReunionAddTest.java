@@ -2,13 +2,11 @@ package mareu.adriansng.maru;
 
 import android.content.Context;
 
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import mareu.adriansng.maru.service_api.ReunionApiService;
 import mareu.adriansng.maru.ui_reunion_list.AddReunionActivity;
@@ -26,10 +24,11 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+
+
 /**
  * Created by Adrian SENEGAS 21/04/2020.
  */
-@RunWith(AndroidJUnit4.class)
 public class ReunionAddTest {
 
     private ReunionApiService service;
@@ -54,6 +53,7 @@ public class ReunionAddTest {
 
     @Test
     public void AddingReunion() {
+
         // Given: We launch AddReunionActivity
         //Calendar ITEM_HOUR_DATE= 1579512600000;
         String ITEM_ORGANIZER = "Name";

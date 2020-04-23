@@ -11,18 +11,19 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 import mareu.adriansng.maru.ui_reunion_list.ListReunionActivity;
-import mareu.adriansng.maru.utils.ChangeText;
 import mareu.adriansng.maru.utils.DeleteViewAction;
+import mareu.adriansng.maru.utils.TimeAndDataPicker;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static mareu.adriansng.maru.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.core.AllOf.allOf;
@@ -90,55 +91,47 @@ public class ReunionListTest {
     public void AddingReunion() {
 
         int ITEMS_COUNT = 3;
-        final Reunion reunion1 = new Reunion(1, 1, "name1", "11h00", "date1", service.getPersonParticipant(), "");
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT));
-        service.addReunion(reunion1);
-        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT+1));
+        onView(withId(R.id.list_reunion_add_btn)).perform(click());
 
-
-        //**
-        // Given: We launch AddReunionActivity
-        // This is fixed
-       // int ITEMS_COUNT = 3;
+         // Given: We launch AddReunionActivity
         //Calendar ITEM_HOUR_DATE= 1579512600000;
-       // String ITEM_ORGANIZER = "Name";
-       // String ITEM_SUBJECT= "Subject";
-        //String ITEM_DATE="01/01/01";
-       // String ITEM_HOUR="10H00";
-        // When perform a click on launch activity
-        //onView(withId(R.id.list_reunion_add_btn)).perform(click());
+        String ITEM_ORGANIZER = "Name";
+        String ITEM_SUBJECT= "Subject";
         // Date reunion
-        //onView(allOf(withId(R.id.add_date_txt), isDisplayed())).perform(ChangeText.setTextInTextView(ITEM_DATE));
+        TimeAndDataPicker.setDate(R.id.add_date_btn,2020,5,25);
         // Hour reunion
-        //onView(allOf(withId(R.id.add_hour_txt), isDisplayed())).perform(ChangeText.setTextInTextView(ITEM_HOUR));
+        TimeAndDataPicker.setTime(R.id.add_hour_btn,10,15);
         // Name organizer
-        //onView(allOf(withId(R.id.add_name_organizer_edit_txt), isDisplayed())).perform(replaceText(ITEM_ORGANIZER));
+        onView(allOf(withId(R.id.add_name_organizer_edit_txt), isDisplayed())).perform(replaceText(ITEM_ORGANIZER));
         // Subject
-        //onView(allOf(withId(R.id.add_subject_reunion_edit), isDisplayed())).perform(replaceText(ITEM_SUBJECT)); // EditText info reunion
+        onView(allOf(withId(R.id.add_subject_reunion_edit), isDisplayed())).perform(replaceText(ITEM_SUBJECT)); // EditText info reunion
         // Room
-        //onView(allOf(withId(R.id.add_roomReunion_spinner), isDisplayed())).perform(click());
-        //onView(allOf(withId(R.id.item_spinner_room_txt),isDisplayed() withText("Meeting Room A"))).perform(click());
+        onView(allOf(withId(R.id.add_roomReunion_spinner), isDisplayed())).perform(click());
+        onView(allOf(withId(R.id.item_spinner_room_txt),isDisplayed(),withText("Meeting Room A"))).perform(click());
         // Validate reunion
-        //onView(allOf(withId(R.id.add_validate_btn), isDisplayed())).perform(click());
-        // Then: the number of element is 4
-        //onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT + 1));
+        onView(allOf(withId(R.id.add_validate_btn), isDisplayed())).perform(click());
+
+
+        onView(allOf(withId(R.id.add_validate_btn), isDisplayed())).perform(click());
+        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT+1));
     }
+
 
     @Test
     public void FilterDateReunion() {
         // 3 reunions in the list, one of which is dated 5/25/20
         int ITEMS_COUNT = 3;
-        String ITEM_DATE="5/25/20";
         // Check list with two meetings that have two identical dates
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT));
         // Open the overflow menu OR open the options menu,
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
         // Date choose
-        onView(allOf(withId(R.id.filter_date_btn), isDisplayed())).perform(ChangeText.setTextInTextView(ITEM_DATE));
+        TimeAndDataPicker.setDate(R.id.filter_date_btn,2020,5,25);
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
-        //Check number is 2
-        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 1));
+        //Check number is 1
+        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 2));
     }
 
     @Test
@@ -151,48 +144,42 @@ public class ReunionListTest {
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
         // Room choose
-        service.getFilterMeetingRoom(5);
-        onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
+        onView(allOf(withId(R.id.filter_room_spinner), isDisplayed())).perform(click());
+        onView(allOf(withId(R.id.item_spinner_room_txt),isDisplayed(),withText("Meeting Room H"))).perform(click());
         //Check
-        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 1));
+        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 2));
     }
 
     @Test
     public void FilterRoomAndDateReunion() {
         int ITEMS_COUNT = 3;
         String ITEM_DATE="5/25/20";
-        final Reunion reunion1 = new Reunion(1, 1, "name1", "10h30", "02/01/01", service.getPersonParticipant(), "");
-        final Reunion reunion2 = new Reunion(2, 5, "name2", "11h00", "01/01/01", service.getPersonParticipant(), "");
-        final Reunion reunion3 = new Reunion(3, 5, "name3", "12h00", "01/01/01", service.getPersonParticipant(), "");
-
-        service.getReunions().clear();
-        service.addReunion(reunion1);
-        service.addReunion(reunion2);
-        service.addReunion(reunion3);
         // Check list with two meetings that have two identical meeting room and date
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT));
         // Open the overflow menu OR open the options menu,
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
-        //Date and room choose
-        onView(allOf(withId(R.id.filter_date_btn), isDisplayed())).perform(ChangeText.setTextInTextView(ITEM_DATE));
+        //Date
+        TimeAndDataPicker.setDate(R.id.filter_date_btn,2020,5,25);
+        //Room
+        onView(allOf(withId(R.id.filter_room_spinner), isDisplayed())).perform(click());
+        onView(allOf(withId(R.id.item_spinner_room_txt),isDisplayed(),withText("Meeting Room H"))).perform(click());
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         //Check
-        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 1));
+        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 2));
     }
 
     @Test
     public void FilterResetReunion() {
         // 3 reunions in the list, one of which is dated 5/25/20
         int ITEMS_COUNT = 3;
-        String ITEM_DATE="5/25/20";
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT));
         // Open the overflow menu OR open the options menu,
         // depending on if the device has a hardware or software overflow menu button.
         onView(withId(R.id.action_filter)).perform(click());
-        onView(allOf(withId(R.id.filter_date_txt), isDisplayed())).perform(ChangeText.setTextInTextView(ITEM_DATE));
+        TimeAndDataPicker.setDate(R.id.filter_date_btn,2020,5,25);
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
-        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT-1));
+        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT-2));
         // Open the overflow menu OR open the options menu,
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
