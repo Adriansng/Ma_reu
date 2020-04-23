@@ -17,15 +17,18 @@ import mareu.adriansng.maru.utils.DeleteViewAction;
 import mareu.adriansng.maru.utils.SpinnerSelect;
 import mareu.adriansng.maru.utils.TimeAndDataPicker;
 
+import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
+import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static mareu.adriansng.maru.utils.RecyclerViewItemCountAssertion.withItemCount;
+import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.core.AllOf.allOf;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertEquals;
@@ -107,12 +110,10 @@ public class ReunionListTest {
         // Subject
         onView(allOf(withId(R.id.add_subject_reunion_edit), isDisplayed())).perform(replaceText(ITEM_SUBJECT)); // EditText info reunion
         // Room
-        SpinnerSelect.setSpinner(R.id.add_roomReunion_spinner,2,"Meeting Room B");
+        SpinnerSelect.setSpinner(R.id.add_roomReunion_spinner,2); // "Meeting Room B" selected
         // Validate reunion
-        onView(allOf(withId(R.id.add_validate_btn), isDisplayed())).perform(click());
+        onView(withId(R.id.add_validate_btn)).perform(scrollTo(),click());
 
-
-        onView(allOf(withId(R.id.add_validate_btn), isDisplayed())).perform(click());
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT+1));
     }
 
@@ -143,7 +144,7 @@ public class ReunionListTest {
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
         // Room choose
-        SpinnerSelect.setSpinnerDialog(R.id.add_roomReunion_spinner,"Meeting Room B");
+        SpinnerSelect.setSpinnerDialog(R.id.filter_room_spinner,"Meeting Room B");
         //Check
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 2));
     }
@@ -160,7 +161,7 @@ public class ReunionListTest {
         //Date
         TimeAndDataPicker.setDate(R.id.filter_date_btn,2020,5,12);
         //Room
-        SpinnerSelect.setSpinnerDialog(R.id.add_roomReunion_spinner,"Meeting Room H");
+        SpinnerSelect.setSpinnerDialog(R.id.filter_room_spinner,"Meeting Room H");
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         //Check
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 2));

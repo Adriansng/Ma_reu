@@ -303,6 +303,26 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../todoc/app/build/generated/ap_generated_sources/debug/out/com/cleanup/todoc/dataBase/dao/TaskDao_Impl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc/app/src/main/java/com/cleanup/todoc/dataBase/TodocBasedata.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc/app/src/main/java/com/cleanup/todoc/repositories/ProjectDataRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../todoc/app/src/main/java/com/cleanup/todoc/ui/MainActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
       </map>
     </option>
   </component>
