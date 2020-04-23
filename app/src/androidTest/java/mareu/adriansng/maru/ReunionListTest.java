@@ -1,11 +1,16 @@
 package mareu.adriansng.maru;
 
 import android.content.Context;
+import android.view.View;
 
+import androidx.test.espresso.UiController;
+import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.contrib.RecyclerViewActions;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
+import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -24,7 +29,9 @@ import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
+import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static mareu.adriansng.maru.utils.RecyclerViewItemCountAssertion.withItemCount;
@@ -75,23 +82,11 @@ public class ReunionListTest {
     }
 
     /**
-     * When we delete an item, the item is no more shown
+     * When we add and delete an item, the item is no more shown
      */
-    @Test
-    public void DeleteReunion() {
-        // Given : We remove the element at position 1
-        // This is fixed
-        int ITEMS_COUNT = 3;
-        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT));
-        // When perform a click on a delete icon
-        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed()))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(0, new DeleteViewAction()));
-        // Then : the number of element is 2
-        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 1));
-    }
 
     @Test
-    public void AddingReunion() {
+    public void AddingAndDeleteReunion() {
 
         int ITEMS_COUNT = 3;
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT));
@@ -112,9 +107,31 @@ public class ReunionListTest {
         // Room
         SpinnerSelect.setSpinner(R.id.add_roomReunion_spinner,2); // "Meeting Room B" selected
         // Validate reunion
-        onView(withId(R.id.add_validate_btn)).perform(scrollTo(),click());
 
+        onView(withId(R.id.add_validate_btn)).check(matches(allOf(isEnabled(), isClickable()))).perform(
+                new ViewAction() {
+                    @Override
+                    public Matcher<View> getConstraints() {
+                        return isEnabled(); // no constraints, they are checked above
+                    }
+
+                    @Override
+                    public String getDescription() {
+                        return "click plus button";
+                    }
+
+                    @Override
+                    public void perform(UiController uiController, View view) {
+                        view.performClick();
+                    }
+                }
+        );
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT+1));
+        // When perform a click on a delete icon
+        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed()))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(3, new DeleteViewAction()));
+        // Then : the number of element is 2
+        onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 2));
     }
 
 
@@ -127,7 +144,7 @@ public class ReunionListTest {
         // Open the overflow menu OR open the options menu,
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
-        // Date choose
+        // Date
         TimeAndDataPicker.setDate(R.id.filter_date_btn,2020,5,25);
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         //Check number is 1
@@ -143,8 +160,9 @@ public class ReunionListTest {
         // Open the overflow menu OR open the options menu,
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
-        // Room choose
-        SpinnerSelect.setSpinnerDialog(R.id.filter_room_spinner,"Meeting Room B");
+        // Room
+        SpinnerSelect.setSpinnerDialog(R.id.filter_room_spinner, 2);
+        onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         //Check
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 2));
     }
@@ -152,7 +170,6 @@ public class ReunionListTest {
     @Test
     public void FilterRoomAndDateReunion() {
         int ITEMS_COUNT = 3;
-        String ITEM_DATE="5/25/20";
         // Check list with two meetings that have two identical meeting room and date
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT));
         // Open the overflow menu OR open the options menu,
@@ -161,7 +178,7 @@ public class ReunionListTest {
         //Date
         TimeAndDataPicker.setDate(R.id.filter_date_btn,2020,5,12);
         //Room
-        SpinnerSelect.setSpinnerDialog(R.id.filter_room_spinner,"Meeting Room H");
+        SpinnerSelect.setSpinnerDialog(R.id.filter_room_spinner,2);
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         //Check
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 2));
@@ -177,6 +194,7 @@ public class ReunionListTest {
         onView(withId(R.id.action_filter)).perform(click());
         TimeAndDataPicker.setDate(R.id.filter_date_btn,2020,5,25);
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
+        // Check
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT-2));
         // Open the overflow menu OR open the options menu,
         // depending on if the device has a hardware or software overflow menu button.
@@ -184,6 +202,5 @@ public class ReunionListTest {
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         // Check reset list
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT));
-
     }
 }

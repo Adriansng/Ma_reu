@@ -24,9 +24,8 @@ public class SpinnerSelect {
     }
 
 
-    public static void setSpinnerDialog(int spinnerId, String selectionText){
+    public static void setSpinnerDialog(int spinnerId,int selection){
         onView(withId(spinnerId)).perform(click());
-        onView(withText(selectionText)).inRoot(isPlatformPopup()).perform(click());
-        onView(withId(spinnerId)).check(matches(withSpinnerText(containsString(selectionText))));
+        onData(anything()).atPosition(selection).inRoot(isPlatformPopup()).perform(click());
     }
 }
