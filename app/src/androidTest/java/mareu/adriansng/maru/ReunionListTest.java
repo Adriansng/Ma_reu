@@ -107,7 +107,7 @@ public class ReunionListTest {
         // Subject
         onView(allOf(withId(R.id.add_subject_reunion_edit), isDisplayed())).perform(replaceText(ITEM_SUBJECT)); // EditText info reunion
         // Room
-        SpinnerSelect.setSpinner(R.id.add_roomReunion_spinner,2,"Meeting Room A");
+        SpinnerSelect.setSpinner(R.id.add_roomReunion_spinner,2,"Meeting Room B");
         // Validate reunion
         onView(allOf(withId(R.id.add_validate_btn), isDisplayed())).perform(click());
 
@@ -143,7 +143,7 @@ public class ReunionListTest {
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
         // Room choose
-        SpinnerSelect.setSpinner(R.id.add_roomReunion_spinner,8,"Meeting Room H");
+        SpinnerSelect.setSpinnerDialog(R.id.add_roomReunion_spinner,"Meeting Room H");
         //Check
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 2));
     }
@@ -160,7 +160,7 @@ public class ReunionListTest {
         //Date
         TimeAndDataPicker.setDate(R.id.filter_date_btn,2020,5,25);
         //Room
-        SpinnerSelect.setSpinner(R.id.add_roomReunion_spinner,8,"Meeting Room H");
+        SpinnerSelect.setSpinnerDialog(R.id.add_roomReunion_spinner,"Meeting Room H");
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         //Check
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 2));
