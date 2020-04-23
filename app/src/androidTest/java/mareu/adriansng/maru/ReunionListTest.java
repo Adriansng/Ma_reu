@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 import mareu.adriansng.maru.ui_reunion_list.ListReunionActivity;
 import mareu.adriansng.maru.utils.DeleteViewAction;
+import mareu.adriansng.maru.utils.SpinnerSelect;
 import mareu.adriansng.maru.utils.TimeAndDataPicker;
 
 import static androidx.test.espresso.Espresso.onView;
@@ -23,7 +24,6 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static mareu.adriansng.maru.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.core.AllOf.allOf;
@@ -107,8 +107,7 @@ public class ReunionListTest {
         // Subject
         onView(allOf(withId(R.id.add_subject_reunion_edit), isDisplayed())).perform(replaceText(ITEM_SUBJECT)); // EditText info reunion
         // Room
-        onView(allOf(withId(R.id.add_roomReunion_spinner), isDisplayed())).perform(click());
-        onView(allOf(withId(R.id.item_spinner_room_txt),isDisplayed(),withText("Meeting Room A"))).perform(click());
+        SpinnerSelect.setSpinner(R.id.add_roomReunion_spinner,2,"Meeting Room A");
         // Validate reunion
         onView(allOf(withId(R.id.add_validate_btn), isDisplayed())).perform(click());
 
@@ -144,8 +143,7 @@ public class ReunionListTest {
         // depending on if the device has a hardware or software overflow menu button.
         onView(allOf(withId(R.id.action_filter),isDisplayed())).perform(click());
         // Room choose
-        onView(allOf(withId(R.id.filter_room_spinner), isDisplayed())).perform(click());
-        onView(allOf(withId(R.id.item_spinner_room_txt),isDisplayed(),withText("Meeting Room H"))).perform(click());
+        SpinnerSelect.setSpinner(R.id.add_roomReunion_spinner,8,"Meeting Room H");
         //Check
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 2));
     }
@@ -162,8 +160,7 @@ public class ReunionListTest {
         //Date
         TimeAndDataPicker.setDate(R.id.filter_date_btn,2020,5,25);
         //Room
-        onView(allOf(withId(R.id.filter_room_spinner), isDisplayed())).perform(click());
-        onView(allOf(withId(R.id.item_spinner_room_txt),isDisplayed(),withText("Meeting Room H"))).perform(click());
+        SpinnerSelect.setSpinner(R.id.add_roomReunion_spinner,8,"Meeting Room H");
         onView(allOf(withId(R.id.filter_validate_btn), isDisplayed())).perform(click());
         //Check
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT - 2));

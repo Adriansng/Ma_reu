@@ -73,6 +73,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/mareu/adriansng/maru/utils/SpinnerSelect.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/androidTest/java/mareu/adriansng/maru/utils/TimeAndDataPicker.java">
           <value>
             <set />
