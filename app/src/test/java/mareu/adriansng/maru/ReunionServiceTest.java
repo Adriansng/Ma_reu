@@ -20,6 +20,7 @@ import static org.junit.Assert.assertNotEquals;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
+
 public class ReunionServiceTest {
     private ReunionApiService service;
 
