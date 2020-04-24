@@ -81,13 +81,10 @@ public class ReunionListTest {
 
     @Test
     public void AddingAndDeleteReunion() {
-
         int ITEMS_COUNT = 3;
         onView(allOf(withId(R.id.list_reunion_recycler_view), isDisplayed())).check(withItemCount(ITEMS_COUNT));
         onView(withId(R.id.list_reunion_add_btn)).perform(click());
-
          // Given: We launch AddReunionActivity
-        //Calendar ITEM_HOUR_DATE= 1579512600000;
         String ITEM_ORGANIZER = "Name";
         String ITEM_SUBJECT= "Subject";
         // Date reunion
@@ -101,19 +98,16 @@ public class ReunionListTest {
         // Room
         SpinnerSelect.setSpinner(R.id.add_roomReunion_spinner,2); // "Meeting Room B" selected
         // Validate reunion
-
         onView(withId(R.id.add_validate_btn)).check(matches(allOf(isEnabled(), isClickable()))).perform(
                 new ViewAction() {
                     @Override
                     public Matcher<View> getConstraints() {
                         return isEnabled(); // no constraints, they are checked above
                     }
-
                     @Override
                     public String getDescription() {
                         return "click plus button";
                     }
-
                     @Override
                     public void perform(UiController uiController, View view) {
                         view.performClick();

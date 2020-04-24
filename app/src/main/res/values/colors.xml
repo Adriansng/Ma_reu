@@ -16,4 +16,11 @@
     <color name="colorMeetingRoomH">#2C12D7</color>
     <color name="colorMeetingRoomI">#7C12D7</color>
     <color name="colorMeetingRoomJ">#D712C5</color>
+    <color name="background">#DDDADA</color>
+    <color name="background_card">#FFFFFF</color>
+    <color name="text_color_title">#131313</color>
+    <color name="background_NestedScrollView">#DBD6D6</color>
+    <color name="background_card_content">#A6C0F6</color>
+    <color name="background_filter">#7FD1CECE</color>
+    <color name="text_color_filter">#615F5F</color>
 </resources>

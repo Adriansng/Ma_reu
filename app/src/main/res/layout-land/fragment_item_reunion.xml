@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
 
-    <ImageView
+    <View
         android:id="@+id/item_list_reunion_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

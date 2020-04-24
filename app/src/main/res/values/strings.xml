@@ -10,7 +10,7 @@
     <string name="item_button_delete_reu_description">button delete reunion (description)</string>
 
     // PARAM REUNION ADD
-    <string name="add_title">ADD REUNION</string>
+    <string name="add_title">NEW REUNION</string>
     <string name="add_your_name">Name</string>
     <string name="add_reunion_subject">Meeting subject</string>
     <string name="add_date_type">Date</string>

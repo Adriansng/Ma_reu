@@ -2,12 +2,12 @@ package mareu.adriansng.maru.ui_reunion_list;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.core.graphics.BlendModeColorFilterCompat;
-import androidx.core.graphics.BlendModeCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -37,7 +37,7 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    @SuppressLint({"SetTextI18n", "NewApi"})
+    @SuppressLint("SetTextI18n")
     void bind(Reunion mReunion) {
 
         // DATA
@@ -48,7 +48,12 @@ class ListReunionViewHolder extends RecyclerView.ViewHolder {
             address.append(person.getAddressMail());
             address.append(" - ");
         }
-        this.mAvatar.getBackground().setColorFilter(BlendModeColorFilterCompat.createBlendModeColorFilterCompat(context.getResources().getColor(apiService.getColorAvatarMeetingRoom(mReunion.getIdMeetingRoom()),null), BlendModeCompat.SRC_ATOP));
+
+
+        this.mAvatar.setBackgroundResource(R.drawable.ic_avatar_meeting_room_24dp);
+        GradientDrawable drawable = (GradientDrawable) mAvatar.getBackground();
+        drawable.setColor(ContextCompat.getColor(context, apiService.getColorAvatarMeetingRoom(mReunion.getIdMeetingRoom())));
+
         this.mReunionMeetingRoom.setText(apiService.getNameMeetingRome(mReunion.getIdMeetingRoom()) + " - " + mReunion.getHour() + " - " + mReunion.getNameOrganizer());
         this.mReunionListMail.setText(address.toString());
         this.mDeleteButton.setOnClickListener(v ->
