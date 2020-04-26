@@ -18,8 +18,8 @@ import mareu.adriansng.maru.model.Reunion;
 import mareu.adriansng.maru.service_api.ReunionApiService;
 import mareu.adriansng.maru.ui_reunion_list.utils.DateUtils;
 
-@SuppressLint("Registered")
-class DetailReunionActivity extends AppCompatActivity {
+
+public class DetailReunionActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     @Override
