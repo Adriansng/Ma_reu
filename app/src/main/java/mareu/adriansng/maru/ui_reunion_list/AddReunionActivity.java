@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.di.DI;
 import mareu.adriansng.maru.model.MeetingRoom;
@@ -41,85 +43,63 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
     // FOR PARAMETER ADD REUNION
     //Name organizer
-    private String nameOrganizer;
-    private EditText editNameOrganizer;
+    @BindView(R.id.add_name_organizer_edit_txt)
+    EditText editNameOrganizer;
+
     //Subject Reunion
-    private String subjectReunion;
-    private EditText editSubjectReunion;
+    @BindView(R.id.add_subject_reunion_edit)
+    EditText editSubjectReunion;
+
     //Meeting room
-    private MeetingRoom selectionRoom;
+    @BindView(R.id.add_roomReunion_spinner)
     private Spinner mRoomReunion;
-    //Date and hour
-    private String date;
-    private String hour = "";
-    private String dateUtils = "";
+    private MeetingRoom selectionRoom;
+
+    //Date
+    @BindView(R.id.add_date_txt)
     private TextView textViewDate;
+    @BindView(R.id.add_date_btn)
+    ImageButton buttonDate;
+    private String date;
+    private String dateUtils = "";
+
+    //Hour
+    @BindView(R.id.add_hour_txt)
     private TextView textViewTimes;
+    @BindView(R.id.add_hour_btn)
+    ImageButton buttonHour;
+    private String hour = "";
+
+    //Validate
+    @BindView(R.id.add_validate_btn)
+    ImageButton finishButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_reunion_activity);
+        ButterKnife.bind(this);
         mApiService = DI.getReunionApiService();
 
-        // NAME ORGANIZER
-        editNameOrganizer = findViewById(R.id.add_name_organizer_edit_txt);
-
-        // SUBJECT REUNION
-        editSubjectReunion=findViewById(R.id.add_subject_reunion_edit);
-
         // DATE
-        ImageButton buttonDate = findViewById(R.id.add_date_btn);
-        textViewDate = findViewById(R.id.add_date_txt);
-        buttonDate.setOnClickListener(v -> {
-            resetList(); /*Reset the list spinner meeting room*/
-            DialogFragment datePicker = new DatePickerFragment();
-            datePicker.show(getSupportFragmentManager(), "popup_filter_date_btn picker");
-        });
+        buttonDate.setOnClickListener(this::datePickerClick);
 
         // HOUR
-        ImageButton buttonHour = findViewById(R.id.add_hour_btn);
-        textViewTimes = findViewById(R.id.add_hour_txt);
-        buttonHour.setOnClickListener(v -> {
-            resetList();
-            DialogFragment hourPicker = new TimerPickerFragment();
-            hourPicker.show(getSupportFragmentManager(), "time picker");
-        });
+        buttonHour.setOnClickListener(this::timePickerClick);
 
         // MEETING ROOM
-        mRoomReunion = findViewById(R.id.add_roomReunion_spinner);
-        selectionRoom = mApiService.getMeetingRoom().get(0);
-        mRoomReunion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        setSelectionRoom(mApiService);
 
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectionRoom = mApiService.getListMeetingRoomAvailability().get(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
         // VALIDATE REUNION
-        ImageButton finishButton = findViewById(R.id.add_validate_btn);
-        finishButton.setOnClickListener(v -> {
-            nameOrganizer = editNameOrganizer.getText().toString(); /*Get the name organizer of edit text */
-            subjectReunion= editSubjectReunion.getText().toString();/*Get the subject of edit text*/
-            if (selectionRoom.getId() != 0 && selectionRoom != null && !nameOrganizer.equals("") && !subjectReunion.equals("")) {
-                // Send new reunion
-                Reunion reunion = new Reunion(mApiService.getReunionSize() + 1, selectionRoom.getId(), nameOrganizer, hour, date, mApiService.getPersonParticipant(), subjectReunion);
-                mApiService.addReunion(reunion);
-                // Finish activity
-                finish();
-            } else {
-                Toast.makeText(AddReunionActivity.this, "Select all information", Toast.LENGTH_LONG).show();
-            }
-        });
-
+        finishButton.setOnClickListener(this::onClick);
     }
 
-    // DATE AND HOUR
+    // DATE
+    private void datePickerClick(View v){
+        resetList(); /*Reset the list spinner meeting room*/
+        DialogFragment datePicker = new DatePickerFragment();
+        datePicker.show(getSupportFragmentManager(), "popup_filter_date_btn picker");
+    }
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
@@ -130,6 +110,13 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         dateUtils = DateUtils.formatDateData(date);
         textViewDate.setText(dateUtils);
         configSpinner(); /*Meeting available for this popup_filter_date_btn*/
+    }
+
+    // HOUR
+    private void timePickerClick(View v){
+        resetList();
+        DialogFragment hourPicker = new TimerPickerFragment();
+        hourPicker.show(getSupportFragmentManager(), "time picker");
     }
 
     @SuppressLint("SetTextI18n")
@@ -146,7 +133,23 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         configSpinner(); /*Meeting available for this hour*/
     }
 
-    // MEETING ROOM LIST AVAILABLE SPINNER
+    // MEETING ROOM
+    private void setSelectionRoom(ReunionApiService mApiService){
+        selectionRoom = mApiService.getMeetingRoom().get(0);
+        mRoomReunion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectionRoom = mApiService.getListMeetingRoomAvailability().get(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
     private void configSpinner() {
         //Meeting available for this popup_filter_date_btn and hour
         if (dateUtils.equals(textViewDate.getText().toString()) && textViewTimes.getText().toString().equals(hour)) {
@@ -169,5 +172,24 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
         mMeetingRoom = new ArrayList<>();
         mApiService.getResetAvailabilityMeetingRoom();
         mMeetingRoom.addAll(mApiService.getListMeetingRoomAvailability());
+    }
+
+    // VALIDATE
+    private void validate(View v, ReunionApiService mApiService){
+        String nameOrganizer = editNameOrganizer.getText().toString(); /*Get the name organizer of edit text */
+        String subjectReunion = editSubjectReunion.getText().toString();/*Get the subject of edit text*/
+        if (selectionRoom.getId() != 0 && selectionRoom != null && !nameOrganizer.equals("") && !subjectReunion.equals("")) {
+            // Send new reunion
+            Reunion reunion = new Reunion(mApiService.getReunionSize() + 1, selectionRoom.getId(), nameOrganizer, hour, date, mApiService.getPersonParticipant(), subjectReunion);
+            mApiService.addReunion(reunion);
+            // Finish activity
+            finish();
+        } else {
+            Toast.makeText(AddReunionActivity.this, "Select all information", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void onClick(View v) {
+        validate(v, mApiService);
     }
 }

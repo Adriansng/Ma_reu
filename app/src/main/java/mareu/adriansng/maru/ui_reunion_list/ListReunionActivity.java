@@ -32,6 +32,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import mareu.adriansng.maru.R;
 import mareu.adriansng.maru.di.DI;
@@ -45,18 +46,36 @@ import mareu.adriansng.maru.ui_reunion_list.utils.SpinnerMeetingRoomAdapter;
 
 public class ListReunionActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    private RecyclerView recyclerView;
-
     // FOR DATA
     private ReunionApiService reunionApiService;
-
-    // FOR FILTER
-    private SpinnerMeetingRoomAdapter mAdapterSpinner;
-    private ListReunionAdapter adapter;
     private ArrayList<MeetingRoom> mMeetingRoom;
+
+
+    // FOR RECYCLER VIEW
+    private ListReunionAdapter adapter;
+
+    @BindView(R.id.list_reunion_recycler_view)
+    RecyclerView recyclerView;
+
     private MeetingRoom selectionRoom;
     private String date;
-    private TextView textViewDate;
+
+    @BindView(R.id.action_filter)
+    ActionMenuItemView filterPopup;
+    @BindView(R.id.filter_date_btn)
+    Button mButtonDate;
+    @BindView(R.id.filter_date_txt)
+    TextView textViewDate;
+    @BindView(R.id.filter_room_spinner)
+    Spinner mSpinner;
+    @BindView(R.id.filter_validate_btn)
+    ImageButton buttonValidate;
+    @BindView(R.id.filter_cancel_btn)
+    ImageButton buttonCancel;
+
+    // FOR ADD ACTIVITY
+    @BindView(R.id.list_reunion_add_btn)
+    FloatingActionButton mAddButton;
 
     // OVERRIDE
     @Override
@@ -70,87 +89,16 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         configureRecyclerView();
         initList();
 
-        // ADD REUNION ACTIVITY
-        // FOR DESIGN
-        FloatingActionButton mAddButton = findViewById(R.id.list_reunion_add_btn);
-        mAddButton.setOnClickListener(v -> {
-            Context context = v.getContext();
-            Intent intent = new Intent(context, AddReunionActivity.class);
-            context.startActivity(intent);
-        });
-
-        // POPUP FILTER REUNION
-        ActionMenuItemView filterPopup = findViewById(R.id.action_filter);
+        // FILTER
         filterPopup.setClickable(true);
-        filterPopup.setOnClickListener(v -> {
-            Context mContext = v.getContext();
-            Dialog dialog = new Dialog(mContext);
-            dialog.setContentView(R.layout.popup_filter_room);
-            dialog.setTitle("Filter");
+        filterPopup.setOnClickListener(this::startPopupFilter);
 
-            //Filter popup_filter_date_btn
-            Button mButtonDate = dialog.findViewById(R.id.filter_date_btn);
-            textViewDate = dialog.findViewById(R.id.filter_date_txt);
-            mButtonDate.setOnClickListener(v1 -> {
-                DialogFragment datePicker = new DatePickerFragment();
-                datePicker.show(getSupportFragmentManager(), "popup_filter_date_btn picker");
-            });
-
-            //Filter room
-            Spinner mSpinner = dialog.findViewById(R.id.filter_room_spinner);
-            initListSpinner();
-            mAdapterSpinner = new SpinnerMeetingRoomAdapter(ListReunionActivity.this, mMeetingRoom);
-            mSpinner.setAdapter(mAdapterSpinner);
-            mSpinner.setPrompt("Select a room");
-            mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    selectionRoom = reunionApiService.getMeetingRoom().get(position);
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-            //Validate
-            ImageButton buttonValidate = dialog.findViewById(R.id.filter_validate_btn);
-            buttonValidate.setOnClickListener(v12 -> {
-                if (selectionRoom.getNameRoom().equals(" Select a room") && date == null) {
-                    Toast.makeText(ListReunionActivity.this, "All meetings are posted", Toast.LENGTH_LONG).show();
-                    initList();
-                }
-                if (!selectionRoom.getNameRoom().equals(" Select a room") && date != null) {
-                    Toast.makeText(ListReunionActivity.this, "You have filter with " + selectionRoom.getNameRoom() + " and on the " + date, Toast.LENGTH_LONG).show();
-                    reunionApiService.getFilterMeetingAndDate(selectionRoom.getId(), date);
-                    initListFilter();
-                }
-                if (date != null && selectionRoom.getNameRoom().equals(" Select a room")) {
-                    Toast.makeText(ListReunionActivity.this, "You have filter on the " + date, Toast.LENGTH_LONG).show();
-                    reunionApiService.getFilterDate(date);
-                    initListFilter();
-                }
-                if (!selectionRoom.getNameRoom().equals(" Select a room") && date == null) {
-                    Toast.makeText(ListReunionActivity.this, "You have filter with " + selectionRoom.getNameRoom(), Toast.LENGTH_LONG).show();
-                    reunionApiService.getFilterMeetingRoom(selectionRoom.getId());
-                    initListFilter();
-                }
-                date = null;
-                dialog.dismiss();
-            });
-            //Cancel
-            ImageButton buttonCancel = dialog.findViewById(R.id.filter_cancel_btn);
-            buttonCancel.setOnClickListener(v13 -> {
-                initList();
-                dialog.dismiss();
-            });
-            dialog.show();
-        });
+        // ADD REUNION ACTIVITY
+        mAddButton.setOnClickListener(this::startAddActivity);
     }
 
     // RECYCLER VIEW CONFIGURATION
     private void configureRecyclerView() {
-        recyclerView = findViewById(R.id.list_reunion_recycler_view);
         List<Reunion> mReunions = reunionApiService.getReunions();
         adapter = new ListReunionAdapter(mReunions);
         recyclerView.setAdapter((adapter));
@@ -170,7 +118,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         return true;
     }
 
-    //Filter room
+    // Filter room
     private void initListFilter() {
         List<Reunion> mReunions = reunionApiService.getFilterReunions();
         ListReunionAdapter mAdapter = new ListReunionAdapter(mReunions);
@@ -182,7 +130,7 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         mMeetingRoom.addAll(reunionApiService.getMeetingRoom());
     }
 
-    //Filter popup_filter_date_btn
+    // Filter popup date picker
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
@@ -191,6 +139,75 @@ public class ListReunionActivity extends AppCompatActivity implements DatePicker
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         date = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ENGLISH).format(c.getTime());
         textViewDate.setText(DateUtils.formatDateData(date));
+    }
+
+    // INIT FILTER
+    private void startPopupFilter(View v){
+        Context mContext = v.getContext();
+        Dialog dialog = new Dialog(mContext);
+        dialog.setContentView(R.layout.popup_filter_room);
+        dialog.setTitle("Filter");
+        ButterKnife.bind(this,dialog);
+
+        //Filter popup date picker
+        mButtonDate.setOnClickListener(v1 -> {
+            DialogFragment datePicker = new DatePickerFragment();
+            datePicker.show(getSupportFragmentManager(), "popup_filter_date_btn picker");
+        });
+
+        //Filter room
+        initListSpinner();
+        SpinnerMeetingRoomAdapter mAdapterSpinner = new SpinnerMeetingRoomAdapter(ListReunionActivity.this, mMeetingRoom);
+        mSpinner.setAdapter(mAdapterSpinner);
+        mSpinner.setPrompt("Select a room");
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectionRoom = reunionApiService.getMeetingRoom().get(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        //Validate
+        buttonValidate.setOnClickListener(v12 -> {
+            if (selectionRoom.getNameRoom().equals(" Select a room") && date == null) {
+                Toast.makeText(ListReunionActivity.this, "All meetings are posted", Toast.LENGTH_LONG).show();
+                initList();
+            }
+            if (!selectionRoom.getNameRoom().equals(" Select a room") && date != null) {
+                Toast.makeText(ListReunionActivity.this, "You have filter with " + selectionRoom.getNameRoom() + " and on the " + date, Toast.LENGTH_LONG).show();
+                reunionApiService.getFilterMeetingAndDate(selectionRoom.getId(), date);
+                initListFilter();
+            }
+            if (date != null && selectionRoom.getNameRoom().equals(" Select a room")) {
+                Toast.makeText(ListReunionActivity.this, "You have filter on the " + date, Toast.LENGTH_LONG).show();
+                reunionApiService.getFilterDate(date);
+                initListFilter();
+            }
+            if (!selectionRoom.getNameRoom().equals(" Select a room") && date == null) {
+                Toast.makeText(ListReunionActivity.this, "You have filter with " + selectionRoom.getNameRoom(), Toast.LENGTH_LONG).show();
+                reunionApiService.getFilterMeetingRoom(selectionRoom.getId());
+                initListFilter();
+            }
+            date = null;
+            dialog.dismiss();
+        });
+        //Cancel
+        buttonCancel.setOnClickListener(v13 -> {
+            initList();
+            dialog.dismiss();
+        });
+        dialog.show();
+    }
+
+    // ADD ACTIVITY
+    private void startAddActivity(View v){
+        Context context = v.getContext();
+        Intent intent = new Intent(context, AddReunionActivity.class);
+        context.startActivity(intent);
     }
 
     // ACTIONS
