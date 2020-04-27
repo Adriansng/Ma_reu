@@ -68,6 +68,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/mareu/adriansng/maru/ui_reunion_list/ListReunionActivity_ViewBinding.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/androidTest/java/mareu/adriansng/maru/ReunionAddTest.java">
           <value>
             <set />
@@ -199,6 +204,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/test/java/mareu/adriansng/maru/Util.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Projet_5_Todoc/app/src/main/java/com/cleanup/todoc/ui/MainActivity.java">
           <value>
             <set />
           </value>

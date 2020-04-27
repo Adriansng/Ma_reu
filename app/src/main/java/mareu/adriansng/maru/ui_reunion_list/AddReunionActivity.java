@@ -52,20 +52,20 @@ public class AddReunionActivity extends AppCompatActivity implements DatePickerD
 
     //Meeting room
     @BindView(R.id.add_roomReunion_spinner)
-    private Spinner mRoomReunion;
+    Spinner mRoomReunion;
     private MeetingRoom selectionRoom;
 
     //Date
     @BindView(R.id.add_date_txt)
-    private TextView textViewDate;
+    TextView textViewDate;
     @BindView(R.id.add_date_btn)
-    ImageButton buttonDate;
+    public ImageButton buttonDate;
     private String date;
     private String dateUtils = "";
 
     //Hour
     @BindView(R.id.add_hour_txt)
-    private TextView textViewTimes;
+    TextView textViewTimes;
     @BindView(R.id.add_hour_btn)
     ImageButton buttonHour;
     private String hour = "";
